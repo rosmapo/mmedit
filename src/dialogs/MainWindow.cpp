@@ -530,6 +530,104 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     connectEditorAction(ui->actionIncreaseIndent, &ScintillaNext::tab);
     connectEditorAction(ui->actionDecreaseIndent, &ScintillaNext::backTab);
 
+    connect(ui->actionConvertTabsToSpaces, &QAction::triggered, this, [this]() {
+        ScintillaNext *editor = currentEditor();
+        const int tabWidth = editor->tabWidth();
+        const QString spaces = QString(tabWidth, ' ');
+        Finder f(editor);
+        const UndoAction ua(editor);
+        f.setSearchText(QStringLiteral("\t"));
+        f.setSearchFlags(0);
+        f.replaceAll(spaces);
+    });
+
+    connect(ui->actionConvertSpacesToTabs, &QAction::triggered, this, [this]() {
+        ScintillaNext *editor = currentEditor();
+        const int tabWidth = editor->tabWidth();
+        const QString spaces = QString(tabWidth, ' ');
+        Finder f(editor);
+        const UndoAction ua(editor);
+        f.setSearchText(spaces);
+        f.setSearchFlags(0);
+        f.replaceAll(QStringLiteral("\t"));
+    });
+
+    connect(ui->actionConvertLeadingSpacesToTabs, &QAction::triggered, this, [this]() {
+        ScintillaNext *editor = currentEditor();
+        const int tabWidth = editor->tabWidth();
+        const QString spaces = QString(tabWidth, ' ');
+        const UndoAction ua(editor);
+
+        const int lineCount = editor->lineCount();
+        for (int line = 0; line < lineCount; ++line) {
+            const int lineStart = editor->positionFromLine(line);
+            const int lineEnd   = editor->lineEndPosition(line);
+            if (lineStart == lineEnd)
+                continue;
+
+            int pos = lineStart;
+            while (pos < lineEnd) {
+                const QByteArray ch = editor->textRange(pos, pos + 1);
+                if (ch != " ")
+                    break;
+                ++pos;
+            }
+            const int leadingSpaces = pos - lineStart;
+            if (leadingSpaces < tabWidth)
+                continue;
+
+            const int fullTabs  = leadingSpaces / tabWidth;
+            const int remainder = leadingSpaces % tabWidth;
+            const QByteArray replacement = QByteArray(fullTabs, '\t') + QByteArray(remainder, ' ');
+            const QByteArray oldIndent = editor->textRange(lineStart, lineStart + leadingSpaces);
+            if (oldIndent == replacement)
+                continue;
+
+            editor->setTargetRange(lineStart, lineStart + leadingSpaces);
+            editor->replaceTarget(replacement.size(), replacement.constData());
+        }
+    });
+
+    connect(ui->actionTrimLeadingWhitespace, &QAction::triggered, this, [this]() {
+        ScintillaNext *editor = currentEditor();
+        const UndoAction ua(editor);
+        const int lineCount = editor->lineCount();
+        for (int line = 0; line < lineCount; ++line) {
+            const int lineStart = editor->positionFromLine(line);
+            const int lineEnd   = editor->lineEndPosition(line);
+            int pos = lineStart;
+            while (pos < lineEnd) {
+                const char ch = static_cast<char>(editor->charAt(pos));
+                if (ch != ' ' && ch != '\t')
+                    break;
+                ++pos;
+            }
+            if (pos == lineStart) continue;
+            editor->setTargetRange(lineStart, pos);
+            editor->replaceTarget(0, "");
+        }
+    });
+
+    connect(ui->actionTrimTrailingWhitespace, &QAction::triggered, this, [this]() {
+        ScintillaNext *editor = currentEditor();
+        const UndoAction ua(editor);
+        const int lineCount = editor->lineCount();
+        for (int line = 0; line < lineCount; ++line) {
+            const int lineStart = editor->positionFromLine(line);
+            const int lineEnd   = editor->lineEndPosition(line);
+            int pos = lineEnd;
+            while (pos > lineStart) {
+                const char ch = static_cast<char>(editor->charAt(pos - 1));
+                if (ch != ' ' && ch != '\t')
+                    break;
+                --pos;
+            }
+            if (pos == lineEnd) continue;
+            editor->setTargetRange(pos, lineEnd);
+            editor->replaceTarget(0, "");
+        }
+    });
+
     addAction(ui->actionToggleOverType);
     connect(ui->actionToggleOverType, &QAction::triggered, this, [this]() {
         currentEditor()->editToggleOvertype();

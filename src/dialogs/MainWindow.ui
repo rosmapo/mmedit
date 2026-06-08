@@ -110,6 +110,13 @@
      </property>
      <addaction name="actionIncreaseIndent"/>
      <addaction name="actionDecreaseIndent"/>
+     <addaction name="separator"/>
+     <addaction name="actionConvertTabsToSpaces"/>
+     <addaction name="actionConvertSpacesToTabs"/>
+     <addaction name="actionConvertLeadingSpacesToTabs"/>
+     <addaction name="separator"/>
+     <addaction name="actionTrimLeadingWhitespace"/>
+     <addaction name="actionTrimTrailingWhitespace"/>
     </widget>
     <widget class="QMenu" name="menuEOLConversion">
      <property name="title">
@@ -667,6 +674,31 @@
    </property>
    <property name="text">
     <string>Decrease Indent</string>
+   </property>
+  </action>
+  <action name="actionConvertTabsToSpaces">
+   <property name="text">
+    <string>Convert Tabs to Spaces</string>
+   </property>
+  </action>
+  <action name="actionConvertSpacesToTabs">
+   <property name="text">
+    <string>Convert Spaces to Tabs</string>
+   </property>
+  </action>
+  <action name="actionConvertLeadingSpacesToTabs">
+   <property name="text">
+    <string>Convert Leading Spaces to Tabs</string>
+   </property>
+  </action>
+  <action name="actionTrimLeadingWhitespace">
+   <property name="text">
+    <string>Trim Leading Whitespace</string>
+   </property>
+  </action>
+  <action name="actionTrimTrailingWhitespace">
+   <property name="text">
+    <string>Trim Trailing Whitespace</string>
    </property>
   </action>
   <action name="actionRename">

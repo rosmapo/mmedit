@@ -82,3 +82,5 @@ CREATE_SETTING(Editor, DefaultEOLMode, defaultEOLMode, QString, QStringLiteral("
 CREATE_SETTING(Editor, URLHighlighting, urlHighlighting, bool, true)
 CREATE_SETTING(Editor, ShowLineNumbers, showLineNumbers, bool, true)
 CREATE_SETTING(Editor, AutoCompletion, autoCompletion, bool, true)
+CREATE_SETTING(Editor, ExpandTabs, expandTabs, bool, false)
+CREATE_SETTING(Editor, TabWidth, tabWidth, int, 4)

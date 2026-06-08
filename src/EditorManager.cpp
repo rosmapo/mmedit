@@ -140,6 +140,23 @@ EditorManager::EditorManager(ApplicationSettings *settings, QObject *parent)
         }
     });
 
+    connect(settings, &ApplicationSettings::expandTabsChanged, this, [=](bool expandTabs) {
+        for (auto &editor : getEditors()) {
+            if (expandTabs) {
+                editor->QObject::setProperty("nn_skip_usetabs", true);
+            } else {
+                editor->QObject::setProperty("nn_skip_usetabs", QVariant()); // clear property
+            }
+            editor->setUseTabs(!expandTabs);
+        }
+    });
+
+    connect(settings, &ApplicationSettings::tabWidthChanged, this, [=](int width) {
+        for (auto &editor : getEditors()) {
+            editor->setTabWidth(width);
+        }
+    });
+
 }
 
 ScintillaNext *EditorManager::createEditor(const QString &name)
@@ -181,6 +198,13 @@ ScintillaNext *EditorManager::getEditorByFilePath(const QString &filePath)
 void EditorManager::manageEditor(ScintillaNext *editor)
 {
     editors.append(QPointer<ScintillaNext>(editor));
+
+    // If global "expand tabs" is on, tell SetLanguage not to override UseTabs
+    if (settings->expandTabs()) {
+        editor->QObject::setProperty("nn_skip_usetabs", true);
+    }
+    // Always tell SetLanguage not to override TabWidth – user controls it via Preferences
+    editor->QObject::setProperty("nn_skip_tabwidth", true);
 
     setupEditor(editor);
 
@@ -228,7 +252,8 @@ void EditorManager::setupEditor(ScintillaNext *editor)
     editor->setScrollWidth(1);
 
     editor->setTabDrawMode(SCTD_STRIKEOUT);
-    editor->setTabWidth(4);
+    editor->setTabWidth(settings->tabWidth());
+    editor->setUseTabs(!settings->expandTabs());
     editor->setBackSpaceUnIndents(true);
 
     editor->setCaretLineVisible(true);
@@ -249,7 +274,7 @@ void EditorManager::setupEditor(ScintillaNext *editor)
     editor->setElementColour(SC_ELEMENT_CARET, 0xFFFFFFFF);           // dark theme: white caret
     editor->setElementColour(SC_ELEMENT_CARET_ADDITIONAL, 0xFFFFFFFF); // dark theme: white multi-caret
     editor->setElementColour(SC_ELEMENT_CARET_LINE_BACK, 0xFF1E1E1E); // same as bg = no visible highlight
-    editor->setElementColour(SC_ELEMENT_WHITE_SPACE, 0xFF555555); // dark theme
+    editor->setElementColour(SC_ELEMENT_WHITE_SPACE, 0xFFE5C100); // vivid yellow – visible on dark bg
     // SC_ELEMENT_WHITE_SPACE_BACK
     // SC_ELEMENT_HOT_SPOT_ACTIVE
     // SC_ELEMENT_HOT_SPOT_ACTIVE_BACK

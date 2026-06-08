@@ -104,6 +104,13 @@ PreferencesDialog::PreferencesDialog(ApplicationSettings *settings, QWidget *par
     MapSettingToCheckBox(ui->checkBoxShowLineNumbers, &ApplicationSettings::showLineNumbers, &ApplicationSettings::setShowLineNumbers, &ApplicationSettings::showLineNumbersChanged);
     MapSettingToCheckBox(ui->checkBoxAutoCompletion, &ApplicationSettings::autoCompletion, &ApplicationSettings::setAutoCompletion, &ApplicationSettings::autoCompletionChanged);
 
+    // ── Indentation settings ──────────────────────────────────────────────
+    MapSettingToCheckBox(ui->checkBoxExpandTabs, &ApplicationSettings::expandTabs, &ApplicationSettings::setExpandTabs, &ApplicationSettings::expandTabsChanged);
+
+    ui->spbTabWidth->setValue(settings->tabWidth());
+    connect(ui->spbTabWidth, QOverload<int>::of(&QSpinBox::valueChanged), settings, &ApplicationSettings::setTabWidth);
+    connect(settings, &ApplicationSettings::tabWidthChanged, ui->spbTabWidth, &QSpinBox::setValue);
+
     QButtonGroup *buttonGroup = new QButtonGroup(this);
     buttonGroup->addButton(ui->radioFollowCurrentDirectory, ApplicationSettings::FollowCurrentDocument);
     buttonGroup->addButton(ui->radioLastUsedDirectory, ApplicationSettings::RememberLastUsed);
