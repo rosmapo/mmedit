@@ -60,6 +60,7 @@ signals:
     void editorAdded(ScintillaNext *editor);
     void editorCloseRequested(ScintillaNext *editor);
     void editorClosed(ScintillaNext *editor);
+    void lastEditorClosed();
     void editorActivated(ScintillaNext *editor);
     void editorOrderChanged();
 

@@ -80,6 +80,7 @@ private slots:
 
 private:
     void openFiles(const QStringList &files);
+    void exportLanguageFilesIfNeeded();
 
     void loadSettings();
 

@@ -1,10 +1,10 @@
-# Building Notepad Next
+# Building mmedit
 
-To build Notepad Next you will need CMake, a compatible C++ compiler, the Qt libraries, and the Notepad Next source code.
+To build mmedit you will need CMake, a compatible C++ compiler, the Qt libraries, and the mmedit source code.
 
 # Windows
 
-This section specifically describes how to build Notepad Next using Microsoft's Visual Studio 2022 compiler. 
+This section specifically describes how to build mmedit using Microsoft's Visual Studio 2022 compiler. 
 
 ## Installing Visual Studio 2022
 
@@ -24,12 +24,12 @@ This section specifically describes how to build Notepad Next using Microsoft's 
   * `Developer and Design Tools` > `Qt Creator CDB Debugger Support`
   * `Developer and Design Tools` > `Debugging Tools for Windows`
 
-## Cloning the Notepad Next Repository
+## Cloning the mmedit Repository
 
 1. In a command prompt (or git shell, powershell, etc) run:
-1. `git clone https://github.com/dail8859/NotepadNext.git`
+1. `git clone https://github.com/rosmapo/mmedit`
 
-## Building/Running Notepad Next
+## Building/Running mmedit
 
 1. Open Qt Creator and open the root `CMakeLists.txt` file.
 1. Configure the project for 'Desktop Qt 6.5 MSVC2019 64bit' (or whatever version of Qt you have installed)
@@ -76,6 +76,4 @@ cmake -S . -B build \
 cmake --build build --target appimage --parallel
 ```
 
-# MacOS
 
-TODO

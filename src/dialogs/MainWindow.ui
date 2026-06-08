@@ -313,6 +313,7 @@
     <addaction name="actionSplitHorizontal"/>
     <addaction name="actionSplitVertical"/>
     <addaction name="separator"/>
+    <addaction name="actionHexViewer"/>
    </widget>
    <widget class="QMenu" name="menuLanguage">
     <property name="title">
@@ -324,6 +325,8 @@
      <string>Settings</string>
     </property>
     <addaction name="actionPreferences"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpenLanguagesFolder"/>
    </widget>
    <widget class="QMenu" name="menuMacro">
     <property name="title">
@@ -351,8 +354,46 @@
     <property name="title">
      <string>Encoding</string>
     </property>
-    <addaction name="actionThis_is_not_currently_implemented"/>
+    <widget class="QMenu" name="menuSetEncoding">
+     <property name="title">
+      <string>Set Encoding</string>
+     </property>
+     <addaction name="actionEncSetUTF8"/>
+     <addaction name="actionEncSetUTF8BOM"/>
+     <addaction name="actionEncSetUTF16LE"/>
+     <addaction name="actionEncSetUTF16BE"/>
+     <addaction name="actionEncSetUTF16LEno"/>
+     <addaction name="actionEncSetUTF16BEno"/>
+     <addaction name="separator"/>
+     <addaction name="actionEncSetISO88591"/>
+     <addaction name="actionEncSetISO88592"/>
+     <addaction name="actionEncSetWin1250"/>
+     <addaction name="actionEncSetWin1251"/>
+     <addaction name="actionEncSetWin1252"/>
+     <addaction name="actionEncSetKOI8R"/>
+    </widget>
+    <widget class="QMenu" name="menuConvertEncoding">
+     <property name="title">
+      <string>Convert to</string>
+     </property>
+     <addaction name="actionEncConvUTF8"/>
+     <addaction name="actionEncConvUTF8BOM"/>
+     <addaction name="actionEncConvUTF16LE"/>
+     <addaction name="actionEncConvUTF16BE"/>
+     <addaction name="actionEncConvUTF16LEno"/>
+     <addaction name="actionEncConvUTF16BEno"/>
+     <addaction name="separator"/>
+     <addaction name="actionEncConvISO88591"/>
+     <addaction name="actionEncConvISO88592"/>
+     <addaction name="actionEncConvWin1250"/>
+     <addaction name="actionEncConvWin1251"/>
+     <addaction name="actionEncConvWin1252"/>
+     <addaction name="actionEncConvKOI8R"/>
+    </widget>
+    <addaction name="menuSetEncoding"/>
+    <addaction name="menuConvertEncoding"/>
    </widget>
+
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuSearch"/>
@@ -1100,6 +1141,19 @@
     <string>Edit Macros...</string>
    </property>
   </action>
+  <action name="actionOpenLanguagesFolder">
+   <property name="text">
+    <string>Open Languages Folder</string>
+   </property>
+  </action>
+  <action name="actionHexViewer">
+   <property name="text">
+    <string>Hex Viewer</string>
+   </property>
+   <property name="shortcut">
+    <string>F11</string>
+   </property>
+  </action>
   <action name="actionThis_is_not_currently_implemented">
    <property name="enabled">
     <bool>false</bool>
@@ -1108,6 +1162,30 @@
     <string>This is not currently implemented</string>
    </property>
   </action>
+  <action name="actionEncSetUTF8"><property name="text"><string>UTF-8</string></property></action>
+  <action name="actionEncSetUTF8BOM"><property name="text"><string>UTF-8 BOM</string></property></action>
+  <action name="actionEncSetUTF16LE"><property name="text"><string>UTF-16 LE BOM</string></property></action>
+  <action name="actionEncSetUTF16LEno"><property name="text"><string>UTF-16 LE</string></property></action>
+  <action name="actionEncSetUTF16BE"><property name="text"><string>UTF-16 BE BOM</string></property></action>
+  <action name="actionEncSetUTF16BEno"><property name="text"><string>UTF-16 BE</string></property></action>
+  <action name="actionEncSetISO88591"><property name="text"><string>ISO-8859-1 (Latin-1 Western)</string></property></action>
+  <action name="actionEncSetISO88592"><property name="text"><string>ISO-8859-2 (Latin-2 Central)</string></property></action>
+  <action name="actionEncSetWin1250"><property name="text"><string>Windows-1250 (Central European)</string></property></action>
+  <action name="actionEncSetWin1251"><property name="text"><string>Windows-1251 (Cyrillic)</string></property></action>
+  <action name="actionEncSetWin1252"><property name="text"><string>Windows-1252 (Western European)</string></property></action>
+  <action name="actionEncSetKOI8R"><property name="text"><string>KOI8-R (Russian)</string></property></action>
+  <action name="actionEncConvUTF8"><property name="text"><string>UTF-8</string></property></action>
+  <action name="actionEncConvUTF8BOM"><property name="text"><string>UTF-8 BOM</string></property></action>
+  <action name="actionEncConvUTF16LE"><property name="text"><string>UTF-16 LE BOM</string></property></action>
+  <action name="actionEncConvUTF16LEno"><property name="text"><string>UTF-16 LE</string></property></action>
+  <action name="actionEncConvUTF16BE"><property name="text"><string>UTF-16 BE BOM</string></property></action>
+  <action name="actionEncConvUTF16BEno"><property name="text"><string>UTF-16 BE</string></property></action>
+  <action name="actionEncConvISO88591"><property name="text"><string>ISO-8859-1 (Latin-1 Western)</string></property></action>
+  <action name="actionEncConvISO88592"><property name="text"><string>ISO-8859-2 (Latin-2 Central)</string></property></action>
+  <action name="actionEncConvWin1250"><property name="text"><string>Windows-1250 (Central European)</string></property></action>
+  <action name="actionEncConvWin1251"><property name="text"><string>Windows-1251 (Cyrillic)</string></property></action>
+  <action name="actionEncConvWin1252"><property name="text"><string>Windows-1252 (Western European)</string></property></action>
+  <action name="actionEncConvKOI8R"><property name="text"><string>KOI8-R (Russian)</string></property></action>
   <action name="actionColumnMode">
    <property name="text">
     <string>Column Mode...</string>

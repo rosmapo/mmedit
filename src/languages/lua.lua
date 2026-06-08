@@ -16,91 +16,106 @@ L.keywords = {
 }
 
 L.styles = {
+	-- Plain text
 	["DEFAULT"] = {
 		id = 0,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),  -- light grey
 		bgColor = rgb(0xFFFFFF),
 	},
+	-- Block comments --[[ ... ]]
 	["COMMENT"] = {
 		id = 1,
-		fgColor = rgb(0x008000),
+		fgColor = rgb(0x6A9955),  -- green (VSCode comment)
 		bgColor = rgb(0xFFFFFF),
+		fontStyle = 2,             -- italic
 	},
+	-- Line comments -- ...
 	["COMMENT LINE"] = {
 		id = 2,
-		fgColor = rgb(0x008000),
+		fgColor = rgb(0x6A9955),  -- green
 		bgColor = rgb(0xFFFFFF),
+		fontStyle = 2,             -- italic
 	},
+	-- Doc comments ---
 	["COMMENT DOC"] = {
 		id = 3,
-		fgColor = rgb(0x008080),
+		fgColor = rgb(0x6A9955),  -- green, same family
 		bgColor = rgb(0xFFFFFF),
+		fontStyle = 2,
 	},
-	["LITERALSTRING"] = {
-		id = 8,
-		fgColor = rgb(0x95004A),
-		bgColor = rgb(0xFFFFFF),
-	},
-	["PREPROCESSOR"] = {
-		id = 9,
-		fgColor = rgb(0x804000),
-		bgColor = rgb(0xFFFFFF),
-	},
-	["INSTRUCTION WORD"] = {
-		id = 5,
-		fgColor = rgb(0x0000FF),
-		bgColor = rgb(0xFFFFFF),
-		fontStyle = 1,
-	},
+	-- Numbers: 42, 3.14, 0xFF
 	["NUMBER"] = {
 		id = 4,
-		fgColor = rgb(0xFF8000),
+		fgColor = rgb(0xD7BA7D),  -- gold (VSCode number)
 		bgColor = rgb(0xFFFFFF),
 	},
+	-- Keywords: if, then, end, for, function...
+	["INSTRUCTION WORD"] = {
+		id = 5,
+		fgColor = rgb(0x569CD6),  -- blue (VSCode keyword)
+		bgColor = rgb(0xFFFFFF),
+		fontStyle = 1,             -- bold
+	},
+	-- Double-quoted strings "..."
 	["STRING"] = {
 		id = 6,
-		fgColor = rgb(0x808080),
+		fgColor = rgb(0xCE9178),  -- orange (VSCode string)
 		bgColor = rgb(0xFFFFFF),
 	},
+	-- Single-quoted strings '...'
 	["CHARACTER"] = {
 		id = 7,
-		fgColor = rgb(0x808080),
+		fgColor = rgb(0xCE9178),  -- orange
 		bgColor = rgb(0xFFFFFF),
 	},
+	-- Long strings [[ ... ]]
+	["LITERALSTRING"] = {
+		id = 8,
+		fgColor = rgb(0xCE9178),  -- orange (same as strings)
+		bgColor = rgb(0xFFFFFF),
+	},
+	-- Preprocessor / shebang
+	["PREPROCESSOR"] = {
+		id = 9,
+		fgColor = rgb(0x569CD6),  -- blue
+		bgColor = rgb(0xFFFFFF),
+	},
+	-- Operators: + - * / = ( ) [ ] { } , . : ;
 	["OPERATOR"] = {
 		id = 10,
-		fgColor = rgb(0x000080),
+		fgColor = rgb(0xD4D4D4),  -- light grey (unobtrusive)
 		bgColor = rgb(0xFFFFFF),
-		fontStyle = 1,
 	},
-	["FUNC1"] = {
-		id = 13,
-		fgColor = rgb(0x0080C0),
-		bgColor = rgb(0xFFFFFF),
-		fontStyle = 1,
-	},
-	["FUNC2"] = {
-		id = 14,
-		fgColor = rgb(0x8000FF),
-		bgColor = rgb(0xFFFFFF),
-		fontStyle = 1,
-	},
-	["FUNC3"] = {
-		id = 15,
-		fgColor = rgb(0x0000A0),
-		bgColor = rgb(0xFFFFFF),
-		fontStyle = 3,
-	},
+	-- Identifiers: variable names, function names
 	["IDENTIFIER"] = {
 		id = 11,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0x9CDCFE),  -- light blue (VSCode variable)
 		bgColor = rgb(0xFFFFFF),
 	},
+	-- Labels ::label::
 	["LABEL"] = {
 		id = 20,
-		fgColor = rgb(0x808000),
+		fgColor = rgb(0xD7BA7D),  -- gold
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 1,
+	},
+	-- Built-in functions (keyword set 1): print, pairs, ipairs, require...
+	["FUNC1"] = {
+		id = 13,
+		fgColor = rgb(0x4EC9B0),  -- teal (VSCode built-in type/function)
+		bgColor = rgb(0xFFFFFF),
+	},
+	-- Standard library methods (keyword set 2): string.format, math.floor...
+	["FUNC2"] = {
+		id = 14,
+		fgColor = rgb(0x4FC1FF),  -- bright cyan (VSCode method)
+		bgColor = rgb(0xFFFFFF),
+	},
+	-- Extended library (keyword set 3): io, os, debug...
+	["FUNC3"] = {
+		id = 15,
+		fgColor = rgb(0x4EC9B0),  -- teal
+		bgColor = rgb(0xFFFFFF),
 	},
 }
 return L

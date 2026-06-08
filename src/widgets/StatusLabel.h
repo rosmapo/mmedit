@@ -54,7 +54,7 @@ public:
 protected:
     QSize sizeHint() const override {
         QSize size = ClickableLabel::sizeHint();
-        size.setWidth(preferredSize);
+        size.setWidth(qMax(preferredSize, size.width() + 16));
         return size;
     }
 

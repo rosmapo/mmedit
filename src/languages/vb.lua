@@ -16,44 +16,44 @@ L.keywords = {
 L.styles = {
 	["DEFAULT"] = {
 		id = 7,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["COMMENT"] = {
 		id = 1,
-		fgColor = rgb(0x008000),
+		fgColor = rgb(0x6A9955),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["NUMBER"] = {
 		id = 2,
-		fgColor = rgb(0xFF0000),
+		fgColor = rgb(0xF44747),
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 1,
 	},
 	["WORD"] = {
 		id = 3,
-		fgColor = rgb(0x0000FF),
+		fgColor = rgb(0x569CD6),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["STRING"] = {
 		id = 4,
-		fgColor = rgb(0x808080),
+		fgColor = rgb(0x858585),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["PREPROCESSOR"] = {
 		id = 5,
-		fgColor = rgb(0xFF0000),
+		fgColor = rgb(0xF44747),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["OPERATOR"] = {
 		id = 6,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 1,
 	},
 	["DATE"] = {
 		id = 8,
-		fgColor = rgb(0x00FF00),
+		fgColor = rgb(0x6A9955),
 		bgColor = rgb(0xFFFFFF),
 	},
 }

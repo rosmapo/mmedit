@@ -38,6 +38,16 @@ ApplicationSetting<type> name{#group "/" #name, default};\
 ApplicationSettings::ApplicationSettings(QObject *parent)
     : QSettings{parent}
 {
+    // Set session-related defaults on first run (if keys don't exist yet)
+    if (!contains("App/RestorePreviousSession")) {
+        setValue("App/RestorePreviousSession", true);
+    }
+    if (!contains("App/RestoreUnsavedFiles")) {
+        setValue("App/RestoreUnsavedFiles", true);
+    }
+    if (!contains("App/RestoreTempFiles")) {
+        setValue("App/RestoreTempFiles", true);
+    }
 }
 
 CREATE_SETTING(Gui, ShowMenuBar, showMenuBar, bool, true)
@@ -51,9 +61,9 @@ CREATE_SETTING(Gui, ExitOnLastTabClosed, exitOnLastTabClosed, bool, false)
 
 CREATE_SETTING(Gui, CombineSearchResults, combineSearchResults, bool, false)
 
-CREATE_SETTING(App, RestorePreviousSession, restorePreviousSession, bool, false)
-CREATE_SETTING(App, RestoreUnsavedFiles, restoreUnsavedFiles, bool, false)
-CREATE_SETTING(App, RestoreTempFiles, restoreTempFiles, bool, false)
+CREATE_SETTING(App, RestorePreviousSession, restorePreviousSession, bool, true)
+CREATE_SETTING(App, RestoreUnsavedFiles, restoreUnsavedFiles, bool, true)
+CREATE_SETTING(App, RestoreTempFiles, restoreTempFiles, bool, true)
 
 CREATE_SETTING(App, DefaultDirectoryBehavior, defaultDirectoryBehavior, ApplicationSettings::DefaultDirectoryBehaviorEnum, ApplicationSettings::FollowCurrentDocument)
 CREATE_SETTING(App, DefaultDirectory, defaultDirectory, QString, QString())

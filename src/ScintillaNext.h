@@ -115,8 +115,18 @@ public:
     };
 
     BomType bom() const { return bomType; }
+    void setBomType(BomType b) { bomType = b; }
 
     bool isTemporary() const { return temporary; }
+    bool isNeedsElevation() const { return needsElevation; }
+    void setNeedsElevation(bool v) { needsElevation = v; }
+
+    // Encoding: the charset used when reading/writing the file (e.g. "UTF-8", "ISO-8859-1")
+    // Scintilla always works internally with UTF-8; charset is only used for disk I/O
+    QString charset() const { return m_charset; }
+    void setCharset(const QString &cs) { m_charset = cs; m_charsetUserSet = true; }
+    bool isCharsetUserSet() const { return m_charsetUserSet; }
+    void clearCharsetUserSet() { m_charsetUserSet = false; }
     void setTemporary(bool temp);
 
     void setFoldMarkers(const QString &type);
@@ -167,6 +177,9 @@ private:
     RangeAllocator indicatorResources;
 
     bool temporary = false; // Temporary file loaded from a session. It can either be a 'New' file or actual 'File'
+    bool m_charsetUserSet = false; // true only when user explicitly chose charset
+    bool needsElevation = false; // File requires root/pkexec to save
+    QString m_charset = QStringLiteral("UTF-8"); // disk encoding, Scintilla always uses UTF-8 internally
 
     bool readFromDisk(QFile &file);
     QDateTime fileTimestamp();

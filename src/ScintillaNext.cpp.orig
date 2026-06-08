@@ -269,11 +269,7 @@ void ScintillaNext::modifyFoldLevels(int level, int action)
 
         if (isHeader && actualLevel == level) {
             foldLine(line, action);
-            if (action == SC_FOLDACTION_CONTRACT) {
-                line = lastChild(line, -1) + 1;
-            } else {
-                ++line;
-            }
+            line = lastChild(line, -1) + 1;
         }
         else {
             ++line;

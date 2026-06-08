@@ -14,34 +14,34 @@ L.keywords = {
 L.styles = {
 	["DEFAULT"] = {
 		id = 0,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["COMMENT"] = {
 		id = 1,
-		fgColor = rgb(0x008000),
+		fgColor = rgb(0x6A9955),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["SECTION"] = {
 		id = 2,
-		fgColor = rgb(0x8000FF),
-		bgColor = rgb(0xF2F4FF),
+		fgColor = rgb(0xC586C0),
+		bgColor = rgb(0x1E1E1E),
 		fontStyle = 1,
 	},
 	["ASSIGNMENT"] = {
 		id = 3,
-		fgColor = rgb(0xFF0000),
+		fgColor = rgb(0xF44747),
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 1,
 	},
 	["DEFVAL"] = {
 		id = 4,
-		fgColor = rgb(0xFF0000),
+		fgColor = rgb(0xF44747),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["KEY"] = {
 		id = 5,
-		fgColor = rgb(0x0000FF),
+		fgColor = rgb(0x569CD6),
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 2,
 	},

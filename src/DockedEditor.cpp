@@ -77,6 +77,14 @@ DockedEditor::DockedEditor(QWidget *parent) : QObject(parent)
         emit editorActivated(editor);
     });
 
+    connect(dockManager, &ads::CDockManager::dockWidgetRemoved, this, [=](ads::CDockWidget*) {
+        qInfo("dockWidgetRemoved: count=%d", count());
+        if (count() == 0) {
+            qInfo("emitting lastEditorClosed");
+            emit lastEditorClosed();
+        }
+    });
+
     connect(dockManager, &ads::CDockManager::dockAreaCreated, this, [=](ads::CDockAreaWidget* DockArea) {
         DockedEditorTitleBar *titleBar = qobject_cast<DockedEditorTitleBar *>(DockArea->titleBar());
         connect(titleBar, &DockedEditorTitleBar::doubleClicked, this, &DockedEditor::titleBarDoubleClicked);

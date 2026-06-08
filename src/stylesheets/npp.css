@@ -1,17 +1,29 @@
 QStatusBar {
-    border-top: 1px solid darkgray;
+    border-top: 1px solid #1e1e1e;
+    background: #2b2b2b;
+    color: #aaaaaa;
 }
 
+QStatusBar::item {
+    border: none;
+}
+
+QStatusBar QLabel {
+    color: #aaaaaa;
+    padding: 0px 4px;
+}
+
+/* --- Taby dokumentov --- */
 ads--CDockWidgetTab ads--CElidingLabel {
-    color : black;
+    color: #aaaaaa;
 }
 
 ads--CDockWidgetTab {
-    background: rgb(192, 192, 192);
+    background: #3c3c3c;
     margin-top: 2px;
-    border-left: 1px solid white;
-    border-top: 2px solid white;
-    border-right: 2px solid gray;
+    border-left: 1px solid #555555;
+    border-top: 2px solid #555555;
+    border-right: 2px solid #1e1e1e;
     padding: 2px 2px 0px 2px;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
@@ -19,59 +31,74 @@ ads--CDockWidgetTab {
 
 ads--CDockWidgetTab[activeTab="true"]
 {
-    background: rgb(240, 240, 240);
-    border-top: 4px solid rgb(255, 202, 176);
+    background: #2b2b2b;
+    border-top: 4px solid #0078d4;
     padding-bottom: 2px;
     margin-top: 1px;
+}
+
+ads--CDockWidgetTab[activeTab="true"] ads--CElidingLabel {
+    color: #d4d4d4;
 }
 
 ads--CDockWidgetTab[focused="true"]
 {
-    background: rgb(240, 240, 240);
-    border-top: 4px solid orange;
+    background: #2b2b2b;
+    border-top: 4px solid #ff8c00;
     padding-bottom: 2px;
     margin-top: 1px;
 }
 
+ads--CDockWidgetTab[focused="true"] ads--CElidingLabel {
+    color: #d4d4d4;
+}
+
 ads--CDockWidgetTab:hover[activeTab="false"] {
-    background: rgb(210, 210, 210);
+    background: #484848;
 }
 
 ads--CDockAreaTitleBar
 {
-    background: transparent;
-    border-bottom: 1px solid darkgray;
+    background: #3c3c3c;
+    border-bottom: 1px solid #1e1e1e;
     padding-bottom: 0px;
 }
 
 ads--CDockWidgetTab[activeTab="false"] QLabel {
-    color: gray;
+    color: #888888;
 }
 
 #tabCloseButton
 {
-    background: rgba(0, 0, 0, 16);
+    background: transparent;
     margin-bottom: 1px;
-    margin-left: 4px;
+    margin-left: 2px;
     border: none;
-    padding: 0px -2px;
+    padding: 0px;
+    max-width: 16px;
+    max-height: 16px;
+    min-width: 14px;
+    min-height: 14px;
+    color: #888888;
+    qproperty-iconSize: 12px;
 }
 
 #tabCloseButton:hover
 {
-    border: 1px solid rgba(0, 0, 0, 32);
-    background-color: rgb(251, 115, 115);
-    color: green;
+    border: 1px solid #666666;
+    border-radius: 2px;
+    background-color: #c0392b;
+    color: #ffffff;
 }
 
 #tabCloseButton:pressed
 {
-    background: red;
+    background: #e74c3c;
 }
 
 #QuickFindWidget {
-    border-left: 1px solid darkgray;
-    border-right: 1px solid darkgray;
-    border-bottom: 3px solid blue;
-    background: palette(window);
+    border-left: 1px solid #555555;
+    border-right: 1px solid #555555;
+    border-bottom: 3px solid #0078d4;
+    background: #3c3c3c;
 }

@@ -18,62 +18,62 @@ L.keywords = {
 L.styles = {
 	["WHITESPACE"] = {
 		id = 0,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["COMMENT"] = {
 		id = 1,
-		fgColor = rgb(0x007F00),
+		fgColor = rgb(0x6A9955),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["TASK START/END"] = {
 		id = 2,
-		fgColor = rgb(0xFFFF00),
-		bgColor = rgb(0x606060),
+		fgColor = rgb(0xD7BA7D),
+		bgColor = rgb(0x3C3C3C),
 	},
 	["SECTION KEYWORDS"] = {
 		id = 3,
-		fgColor = rgb(0x00007F),
+		fgColor = rgb(0x569CD6),
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 1,
 	},
 	["KEYWORDS"] = {
 		id = 4,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 1,
 	},
 	["MODIFICATORS"] = {
 		id = 5,
-		fgColor = rgb(0x00007F),
+		fgColor = rgb(0x569CD6),
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 2,
 	},
 	["ASTERISK"] = {
 		id = 6,
-		fgColor = rgb(0x000000),
-		bgColor = rgb(0xFFE0FF),
+		fgColor = rgb(0xD4D4D4),
+		bgColor = rgb(0x1E1E1E),
 		fontStyle = 1,
 	},
 	["NUMBER"] = {
 		id = 7,
-		fgColor = rgb(0x007F7F),
+		fgColor = rgb(0x4EC9B0),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["DOUBLE QUOTED STRING"] = {
 		id = 8,
-		fgColor = rgb(0x7F007F),
+		fgColor = rgb(0xC586C0),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["ENVIRONMENT VARIABLE"] = {
 		id = 9,
-		fgColor = rgb(0x000000),
-		bgColor = rgb(0xFFFFE0),
+		fgColor = rgb(0xD4D4D4),
+		bgColor = rgb(0x1E1E1E),
 	},
 	["IDENTIFIER"] = {
 		id = 10,
-		fgColor = rgb(0x000000),
-		bgColor = rgb(0xFF0000),
+		fgColor = rgb(0xD4D4D4),
+		bgColor = rgb(0x3D0000),
 	},
 }
 return L

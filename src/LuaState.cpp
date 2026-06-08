@@ -21,6 +21,9 @@
 #include "lua.hpp"
 
 #include <QFile>
+#include <QDir>
+#include <QSettings>
+#include <QFileInfo>
 
 #include <sstream>
 #include <string>
@@ -54,21 +57,26 @@ std::string dumpLuaState(lua_State *L) {
 static int require_resource(lua_State *L)
 {
     const char *module = luaL_checkstring(L, 1);
-
-    QString module_file = QString(":/languages/%1.lua").arg(module);
-    QFile f(module_file);
-
     lua_pop(L, 1);
+
+    // 1. User-override: ~/.config/NotepadNext/languages/<module>.lua
+    const QString configDir = QFileInfo(QSettings().fileName()).dir().path();
+    const QString userFile = configDir + "/languages/" + QString(module) + ".lua";
+
+    // 2. Fallback: embedded Qt resource
+    const QString resourceFile = QString(":/languages/%1.lua").arg(module);
+
+    // Try user file first, then resource
+    const QString filePath = QFile::exists(userFile) ? userFile : resourceFile;
+    QFile f(filePath);
 
     if (f.exists()) {
         f.open(QFile::ReadOnly);
         luaL_loadstring(L, f.readAll().constData());
         f.close();
-
-        // At this point either the function or an error string is on the stack
     }
     else {
-        lua_pushfstring(L, "\n\tno file '%s'", module_file.toLatin1().constData());
+        lua_pushfstring(L, "\n\tno file '%s'", resourceFile.toLatin1().constData());
     }
 
     return 1;

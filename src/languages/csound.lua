@@ -19,85 +19,85 @@ L.keywords = {
 L.styles = {
 	["DEFAULT"] = {
 		id = 0,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["COMMENT"] = {
 		id = 1,
-		fgColor = rgb(0x669999),
+		fgColor = rgb(0x4EC9B0),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["NUMBER"] = {
 		id = 2,
-		fgColor = rgb(0x339933),
+		fgColor = rgb(0x6A9955),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["OPERATOR"] = {
 		id = 3,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["INSTR"] = {
 		id = 4,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["IDENTIFIER"] = {
 		id = 5,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["OPCODE"] = {
 		id = 6,
-		fgColor = rgb(0x0000FF),
+		fgColor = rgb(0x569CD6),
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 1,
 	},
 	["HEADER STATEMENT"] = {
 		id = 7,
-		fgColor = rgb(0xCC2200),
+		fgColor = rgb(0xF44747),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["USER KEYWORDS"] = {
 		id = 8,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["COMMENT BLOCK"] = {
 		id = 9,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["PARAMETER"] = {
 		id = 10,
-		fgColor = rgb(0x660099),
+		fgColor = rgb(0xC586C0),
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 1,
 	},
 	["A-RATE VARIABLE"] = {
 		id = 11,
-		fgColor = rgb(0x660099),
+		fgColor = rgb(0xC586C0),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["K-RATE VARIABLE"] = {
 		id = 12,
-		fgColor = rgb(0x660099),
+		fgColor = rgb(0xC586C0),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["I-RATE VARIABLE"] = {
 		id = 13,
-		fgColor = rgb(0x660099),
+		fgColor = rgb(0xC586C0),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["GLOBAL VARIABLE"] = {
 		id = 14,
-		fgColor = rgb(0x660099),
+		fgColor = rgb(0xC586C0),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["END OF LINE WHERE STRING IS NOT CLOSED"] = {
 		id = 15,
-		fgColor = rgb(0x000000),
-		bgColor = rgb(0xE0C0E0),
+		fgColor = rgb(0xD4D4D4),
+		bgColor = rgb(0x251825),
 	},
 }
 return L

@@ -47,4 +47,4 @@ set(CPM_SOURCE_CACHE "${CMAKE_SOURCE_DIR}/.cpm-cache" CACHE PATH "CPM source cac
 add_subdirectory(thirdparty)
 add_subdirectory(src)
 
-include(${CMAKE_SOURCE_DIR}/cmake/Packaging.cmake)
+#include(${CMAKE_SOURCE_DIR}/cmake/Packaging.cmake)

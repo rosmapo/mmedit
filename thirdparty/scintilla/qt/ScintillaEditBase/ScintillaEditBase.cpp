@@ -342,6 +342,9 @@ void ScintillaEditBase::mousePressEvent(QMouseEvent *event)
 
 	if (event->button() == Qt::RightButton) {
 		sqt->RightButtonDownWithModifiers(pos, TimeOfEvent(time), ModifiersOfKeyboard());
+		// Do NOT accept — let the event propagate to the compositor (Wayfire/Sway)
+		// so mouse gesture plugins can intercept right-button drag gestures.
+		event->ignore();
 	}
 }
 
@@ -357,6 +360,11 @@ void ScintillaEditBase::mouseReleaseEvent(QMouseEvent *event)
 
 	emit textAreaClicked(line, modifiers);
 	emit buttonReleased(event);
+
+	// Propagate right button release so compositor gesture plugins see it
+	if (event->button() == Qt::RightButton) {
+		event->ignore();
+	}
 }
 
 void ScintillaEditBase::mouseDoubleClickEvent(QMouseEvent *event)
@@ -376,6 +384,9 @@ void ScintillaEditBase::mouseMoveEvent(QMouseEvent *event)
 	const KeyMod modifiers = ModifierFlags(shift, ctrl, alt);
 
 	sqt->ButtonMoveWithModifiers(pos, TimeOfEvent(time), modifiers);
+
+	// Propagate to parent so Wayland compositor gesture plugins can track movement
+	QWidget::mouseMoveEvent(event);
 }
 
 void ScintillaEditBase::leaveEvent(QEvent *event)

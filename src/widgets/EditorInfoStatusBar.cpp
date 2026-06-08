@@ -35,17 +35,17 @@ EditorInfoStatusBar::EditorInfoStatusBar(QMainWindow *window) :
     docPos = new StatusLabel(250);
     addPermanentWidget(docPos, 0);
 
-    eolFormat = new StatusLabel(100);
+    eolFormat = new StatusLabel(130);
     addPermanentWidget(eolFormat, 0);
     eolFormat->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(qobject_cast<StatusLabel*>(eolFormat), &StatusLabel::customContextMenuRequested, this, [=](const QPoint &pos) {
         emit customContextMenuRequestedForEOLLabel(eolFormat->mapToGlobal(pos));
     });
 
-    unicodeType = new StatusLabel(125);
+    unicodeType = new StatusLabel(160);
     addPermanentWidget(unicodeType, 0);
 
-    overType = new StatusLabel(25);
+    overType = new StatusLabel(40);
     addPermanentWidget(overType, 0);
 
     MainWindow *w = qobject_cast<MainWindow *>(window);
@@ -149,24 +149,11 @@ void EditorInfoStatusBar::updateEol(ScintillaNext *editor)
 
 void EditorInfoStatusBar::updateEncoding(ScintillaNext *editor)
 {
-    QString text;
-    switch(editor->codePage()) {
-    case 0:
-        text = tr("ANSI");
-        break;
-    case SC_CP_UTF8:
-        switch (editor->bom()) {
-        case ScintillaNext::BomType::None:    text = tr("UTF-8"); break;
-        case ScintillaNext::BomType::Utf8:    text = tr("UTF-8 BOM"); break;
-        case ScintillaNext::BomType::Utf16LE: text = tr("UTF-16LE BOM"); break;
-        case ScintillaNext::BomType::Utf16BE: text = tr("UTF-16BE BOM"); break;
-        }
-        break;
-    default:
-        text = QString::number(editor->codePage());
-        break;
+    // Show the actual charset used for disk I/O
+    QString text = editor->charset();
+    if (text.isEmpty()) {
+        text = tr("UTF-8");
     }
-
     unicodeType->setText(text);
 }
 

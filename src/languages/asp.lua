@@ -15,45 +15,45 @@ L.keywords = {
 L.styles = {
 	["DEFAULT"] = {
 		id = 81,
-		fgColor = rgb(0x8000FF),
-		bgColor = rgb(0xC4F9FD),
+		fgColor = rgb(0xC586C0),
+		bgColor = rgb(0x1E2D2D),
 	},
 	["COMMENTLINE"] = {
 		id = 82,
-		fgColor = rgb(0x008000),
-		bgColor = rgb(0xC4F9FD),
+		fgColor = rgb(0x6A9955),
+		bgColor = rgb(0x1E2D2D),
 	},
 	["NUMBER"] = {
 		id = 83,
-		fgColor = rgb(0xFF0000),
-		bgColor = rgb(0xC4F9FD),
+		fgColor = rgb(0xF44747),
+		bgColor = rgb(0x1E2D2D),
 	},
 	["WORD"] = {
 		id = 84,
-		fgColor = rgb(0x000080),
-		bgColor = rgb(0xC4F9FD),
+		fgColor = rgb(0x569CD6),
+		bgColor = rgb(0x1E2D2D),
 		fontStyle = 1,
 	},
 	["STRING"] = {
 		id = 85,
-		fgColor = rgb(0x808080),
-		bgColor = rgb(0xC4F9FD),
+		fgColor = rgb(0x858585),
+		bgColor = rgb(0x1E2D2D),
 	},
 	["IDENTIFIER"] = {
 		id = 86,
-		fgColor = rgb(0x000000),
-		bgColor = rgb(0xC4F9FD),
+		fgColor = rgb(0xD4D4D4),
+		bgColor = rgb(0x1E2D2D),
 	},
 	["ASPSYMBOL"] = {
 		id = 15,
-		fgColor = rgb(0x000000),
-		bgColor = rgb(0xFFFF00),
+		fgColor = rgb(0xD4D4D4),
+		bgColor = rgb(0x2D2D00),
 		fontStyle = 1,
 	},
 	["SCRIPTTYPE"] = {
 		id = 16,
-		fgColor = rgb(0x000000),
-		bgColor = rgb(0xFFC000),
+		fgColor = rgb(0xD4D4D4),
+		bgColor = rgb(0x2D2000),
 	},
 }
 return L

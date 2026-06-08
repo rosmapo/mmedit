@@ -52,8 +52,10 @@ function SetStyle(L)
     if L.styles then
         for _, style in pairs(L.styles) do
             editor.StyleFore[style.id] = style.fgColor
-            editor.StyleBack[style.id] = style.bgColor
-
+            -- Skip white background (default) so STYLE_DEFAULT bg propagates
+            if style.bgColor ~= 0xFFFFFF then
+                editor.StyleBack[style.id] = style.bgColor
+            end
             if style.fontStyle then
                 editor.StyleBold[style.id] = (style.fontStyle & 1 == 1)
                 editor.StyleItalic[style.id] = (style.fontStyle & 2 == 2)
@@ -89,6 +91,16 @@ function SetLanguage(languageName)
 
     editor.MarginWidthN[2] = L.disableFoldMargin and 0 or 16
 
+    -- Reset STYLE_DEFAULT to dark theme before applying language styles
+    -- clearDocumentStyle() resets Scintilla to its defaults (white bg, black text)
+    editor.StyleFore[32] = 0xD4D4D4  -- STYLE_DEFAULT (id=32): light grey text
+    editor.StyleBack[32] = 0x1E1E1E  -- STYLE_DEFAULT (id=32): dark background
+    editor:StyleClearAll()            -- propagate STYLE_DEFAULT to all 256 styles
+
+    -- Restore line number margin colors (StyleClearAll overwrites them)
+    editor.StyleFore[33] = 0x858585  -- STYLE_LINENUMBER fg: muted grey
+    editor.StyleBack[33] = 0x2B2B2B  -- STYLE_LINENUMBER bg: slightly lighter than editor
+
     SetStyle(L)
 
     if L.additionalLanguages then
@@ -96,7 +108,6 @@ function SetLanguage(languageName)
             SetStyle(languages[language])
         end
     end
-
 
     editor.Property["fold"] = "1"
     editor.Property["fold.compact"] = "0"

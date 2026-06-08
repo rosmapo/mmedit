@@ -18,61 +18,61 @@ L.keywords = {
 L.styles = {
 	["DEFAULT"] = {
 		id = 0,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["COMMENTLINE"] = {
 		id = 1,
-		fgColor = rgb(0x008000),
+		fgColor = rgb(0x6A9955),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["NUMBER"] = {
 		id = 2,
-		fgColor = rgb(0xFF8000),
+		fgColor = rgb(0xCE9178),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["FUNCTION WORD"] = {
 		id = 3,
-		fgColor = rgb(0x0000FF),
+		fgColor = rgb(0x569CD6),
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 1,
 	},
 	["FUNCTION WORD2"] = {
 		id = 4,
-		fgColor = rgb(0x0000FF),
+		fgColor = rgb(0x569CD6),
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 1,
 	},
 	["SYMBOL"] = {
 		id = 5,
-		fgColor = rgb(0x000080),
+		fgColor = rgb(0x569CD6),
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 1,
 	},
 	["STRING"] = {
 		id = 6,
-		fgColor = rgb(0x808080),
+		fgColor = rgb(0x858585),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["IDENTIFIER"] = {
 		id = 9,
-		fgColor = rgb(0x000000),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["OPERATOR"] = {
 		id = 10,
-		fgColor = rgb(0x0080C0),
+		fgColor = rgb(0x4FC1FF),
 		bgColor = rgb(0xFFFFFF),
 		fontStyle = 1,
 	},
 	["SPECIAL"] = {
 		id = 11,
-		fgColor = rgb(0x800000),
+		fgColor = rgb(0xFFA0A0),
 		bgColor = rgb(0xFFFFFF),
 	},
 	["COMMENT"] = {
 		id = 12,
-		fgColor = rgb(0x808080),
+		fgColor = rgb(0x858585),
 		bgColor = rgb(0xFFFFFF),
 	},
 }

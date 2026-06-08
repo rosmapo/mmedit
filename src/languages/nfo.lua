@@ -12,7 +12,7 @@ L.keywords = {
 L.styles = {
 	["DEFAULT"] = {
 		id = 32,
-		fgColor = rgb(0x2E2E2E),
+		fgColor = rgb(0xD4D4D4),
 		bgColor = rgb(0xFFFFFF),
 	},
 }
