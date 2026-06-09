@@ -128,6 +128,8 @@ qt_add_executable(NotepadNext
 	dialogs/ColumnEditorDialog.cpp
 	dialogs/ColumnEditorDialog.h
 	dialogs/ColumnEditorDialog.ui
+	dialogs/ColorPickerDialog.cpp
+	dialogs/ColorPickerDialog.h
 	dialogs/FindReplaceDialog.cpp
 	dialogs/FindReplaceDialog.h
 	dialogs/FindReplaceDialog.ui

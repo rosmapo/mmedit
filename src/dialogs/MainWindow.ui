@@ -319,8 +319,14 @@
     <addaction name="separator"/>
     <addaction name="actionSplitHorizontal"/>
     <addaction name="actionSplitVertical"/>
-    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
     <addaction name="actionHexViewer"/>
+    <addaction name="separator"/>
+    <addaction name="actionColorPicker"/>
    </widget>
    <widget class="QMenu" name="menuLanguage">
     <property name="title">
@@ -408,6 +414,7 @@
    <addaction name="menuEncodings"/>
    <addaction name="menuLanguage"/>
    <addaction name="menuSettings"/>
+   <addaction name="menuTools"/>
    <addaction name="menuMacro"/>
    <addaction name="menuHelp"/>
   </widget>
@@ -1673,6 +1680,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+Down</string>
+   </property>
+  </action>
+  <action name="actionColorPicker">
+   <property name="text">
+    <string>Color Picker</string>
    </property>
   </action>
  </widget>
