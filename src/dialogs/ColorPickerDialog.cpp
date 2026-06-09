@@ -100,24 +100,27 @@ ColorPickerDialog::ColorPickerDialog(QWidget *parent)
     alphaRow->addWidget(m_alphaSpin);
     mainLayout->addLayout(alphaRow);
 
-    // ── Code rows ────────────────────────────────────────────────────────────
+    // ── Code rows – RGB vľavo, HEX vpravo (jeden riadok) ────────────────────
     auto *grid = new QGridLayout;
     grid->setSpacing(4);
-    grid->setColumnStretch(1, 1);
 
-    grid->addWidget(new QLabel(tr("HEX:"), this), 0, 0);
-    m_hexEdit = new QLineEdit(this);
-    m_hexEdit->setPlaceholderText("#RRGGBB");
-    grid->addWidget(m_hexEdit, 0, 1);
-    auto *hexInsert = new QPushButton(tr("Insert"), this);
-    grid->addWidget(hexInsert, 0, 2);
-
-    grid->addWidget(new QLabel(tr("RGB:"), this), 1, 0);
+    grid->addWidget(new QLabel(tr("RGB:"), this), 0, 0);
     m_rgbEdit = new QLineEdit(this);
     m_rgbEdit->setPlaceholderText("rgb(r, g, b)");
-    grid->addWidget(m_rgbEdit, 1, 1);
+    grid->addWidget(m_rgbEdit, 0, 1);
     auto *rgbInsert = new QPushButton(tr("Insert"), this);
-    grid->addWidget(rgbInsert, 1, 2);
+    grid->addWidget(rgbInsert, 0, 2);
+
+    grid->addWidget(new QLabel(tr("HEX:"), this), 0, 3);
+    m_hexEdit = new QLineEdit(this);
+    m_hexEdit->setPlaceholderText("#RRGGBB");
+    grid->addWidget(m_hexEdit, 0, 4);
+    auto *hexInsert = new QPushButton(tr("Insert"), this);
+    grid->addWidget(hexInsert, 0, 5);
+
+    // Obe edit polia sa rovnomerne roztiahnu
+    grid->setColumnStretch(1, 1);
+    grid->setColumnStretch(4, 1);
 
     mainLayout->addLayout(grid);
 
