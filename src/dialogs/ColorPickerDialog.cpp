@@ -11,7 +11,8 @@
 #include <QFrame>
 #include <QSlider>
 #include <QSpinBox>
-#include <QClipboard>
+#include <QPainter>
+#include <QPixmap>
 #include <QApplication>
 #include <QRegularExpression>
 #include <QSettings>
@@ -32,16 +33,57 @@ ColorPickerDialog::ColorPickerDialog(QWidget *parent)
     mainLayout->setSpacing(6);
     mainLayout->setContentsMargins(10, 10, 10, 10);
 
-    // ── Palette (no alpha channel widget, no eye-dropper) ────────────────────
+    // ── Embedded QColorDialog ────────────────────────────────────────────────
     m_picker = new QColorDialog(this);
     m_picker->setWindowFlags(Qt::Widget);
     m_picker->setOptions(QColorDialog::NoButtons | QColorDialog::DontUseNativeDialog);
+
+    // Skryjeme eye-dropper tlačidlo
     for (auto *btn : m_picker->findChildren<QPushButton *>()) {
         const QString t = btn->text().simplified().toLower();
         if (t.contains("pick") || t.contains("screen") || t.contains("dropper"))
             btn->hide();
     }
+
+    // Skryjeme pravý panel (HSV/RGB spinboxy) – je to druhý QWidget na úrovni
+    // priameho potomka, ktorý obsahuje QLabel "Hue:" ako vnorený widget.
+    // Spoľahlivejší prístup: skryjeme všetky QLabel+QSpinBox skupiny vpravo
+    // tým, že nájdeme kontajner obsahujúci label "Hue:".
+    for (auto *lbl : m_picker->findChildren<QLabel *>()) {
+        const QString t = lbl->text().simplified().toLower();
+        if (t == "hue:" || t == "hue") {
+            // Rodič tohto labelu je pravý panel – skryjeme ho
+            if (QWidget *rightPanel = lbl->parentWidget())
+                rightPanel->hide();
+            break;
+        }
+    }
+
     mainLayout->addWidget(m_picker);
+
+    // ── Checkerboard pixmap pre náhľad ───────────────────────────────────────
+    QPixmap checkerPm(16, 16);
+    checkerPm.fill(Qt::white);
+    {
+        QPainter pt(&checkerPm);
+        pt.fillRect(0, 0, 8, 8, QColor(204, 204, 204));
+        pt.fillRect(8, 8, 8, 8, QColor(204, 204, 204));
+    }
+
+    // ── Preview – plná šírka, vyššia, so šachovnicovým pozadím ──────────────
+    auto *previewContainer = new QWidget(this);
+    previewContainer->setFixedHeight(32);
+    QPalette previewPal = previewContainer->palette();
+    previewPal.setBrush(QPalette::Window, QBrush(checkerPm));
+    previewContainer->setPalette(previewPal);
+    previewContainer->setAutoFillBackground(true);
+
+    auto *previewInner = new QVBoxLayout(previewContainer);
+    previewInner->setContentsMargins(0, 0, 0, 0);
+    m_preview = new QFrame(previewContainer);
+    m_preview->setFrameShape(QFrame::NoFrame);
+    previewInner->addWidget(m_preview);
+    mainLayout->addWidget(previewContainer);
 
     // ── Alpha row ────────────────────────────────────────────────────────────
     auto *alphaRow = new QHBoxLayout;
@@ -54,14 +96,9 @@ ColorPickerDialog::ColorPickerDialog(QWidget *parent)
     m_alphaSpin->setRange(0, 255);
     m_alphaSpin->setValue(255);
     m_alphaSpin->setFixedWidth(55);
+    m_alphaSpin->setButtonSymbols(QAbstractSpinBox::NoButtons);
     alphaRow->addWidget(m_alphaSpin);
     mainLayout->addLayout(alphaRow);
-
-    // ── Preview strip ────────────────────────────────────────────────────────
-    m_preview = new QFrame(this);
-    m_preview->setFixedHeight(20);
-    m_preview->setFrameShape(QFrame::StyledPanel);
-    mainLayout->addWidget(m_preview);
 
     // ── Code rows ────────────────────────────────────────────────────────────
     auto *grid = new QGridLayout;
@@ -70,23 +107,17 @@ ColorPickerDialog::ColorPickerDialog(QWidget *parent)
 
     grid->addWidget(new QLabel(tr("HEX:"), this), 0, 0);
     m_hexEdit = new QLineEdit(this);
-    m_hexEdit->setMinimumWidth(130);
     m_hexEdit->setPlaceholderText("#RRGGBB");
     grid->addWidget(m_hexEdit, 0, 1);
     auto *hexInsert = new QPushButton(tr("Insert"), this);
-    auto *hexCopy   = new QPushButton(tr("Copy"),   this);
     grid->addWidget(hexInsert, 0, 2);
-    grid->addWidget(hexCopy,   0, 3);
 
     grid->addWidget(new QLabel(tr("RGB:"), this), 1, 0);
     m_rgbEdit = new QLineEdit(this);
-    m_rgbEdit->setMinimumWidth(130);
     m_rgbEdit->setPlaceholderText("rgb(r, g, b)");
     grid->addWidget(m_rgbEdit, 1, 1);
     auto *rgbInsert = new QPushButton(tr("Insert"), this);
-    auto *rgbCopy   = new QPushButton(tr("Copy"),   this);
     grid->addWidget(rgbInsert, 1, 2);
-    grid->addWidget(rgbCopy,   1, 3);
 
     mainLayout->addLayout(grid);
 
@@ -107,9 +138,7 @@ ColorPickerDialog::ColorPickerDialog(QWidget *parent)
     connect(m_rgbEdit, &QLineEdit::editingFinished, this, &ColorPickerDialog::onRgbEdited);
 
     connect(hexInsert, &QPushButton::clicked, this, [this] { insertText(m_hexEdit->text()); });
-    connect(hexCopy,   &QPushButton::clicked, this, [this] { QApplication::clipboard()->setText(m_hexEdit->text()); });
     connect(rgbInsert, &QPushButton::clicked, this, [this] { insertText(m_rgbEdit->text()); });
-    connect(rgbCopy,   &QPushButton::clicked, this, [this] { QApplication::clipboard()->setText(m_rgbEdit->text()); });
     connect(closeBtn,  &QPushButton::clicked, this, &QDialog::close);
 
     m_color = Qt::white;
