@@ -1743,6 +1743,26 @@ bool MainWindow::saveFile(ScintillaNext *editor)
         return saveFileWithElevation(editor, filePath);
     }
 
+    if (app->getSettings()->trimTrailingWhitespaceOnSave()) {
+        const int lineCount = editor->lineCount();
+        editor->beginUndoAction();
+        for (int line = 0; line < lineCount; ++line) {
+            const int lineStart = editor->positionFromLine(line);
+            const int lineEnd   = editor->lineEndPosition(line);
+            int pos = lineEnd;
+            while (pos > lineStart) {
+                const char ch = static_cast<char>(editor->charAt(pos - 1));
+                if (ch != ' ' && ch != '\t')
+                    break;
+                --pos;
+            }
+            if (pos == lineEnd) continue;
+            editor->setTargetRange(pos, lineEnd);
+            editor->replaceTarget(0, "");
+        }
+        editor->endUndoAction();
+    }
+
     QFileDevice::FileError error = editor->save();
     if (error == QFileDevice::NoError) {
         return true;

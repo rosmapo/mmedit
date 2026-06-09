@@ -1,6 +1,4 @@
 qt_add_executable(NotepadNext
-	WIN32
-	MACOSX_BUNDLE
 	ActionUtils.h
 	ApplicationSettings.h
 	ByteArrayUtils.h
@@ -188,10 +186,6 @@ qt_add_executable(NotepadNext
 	widgets/TabsQuickActionsBar.h
 )
 
-set_target_properties(NotepadNext PROPERTIES
-    MACOSX_BUNDLE_INFO_PLIST ${CMAKE_SOURCE_DIR}/deploy/macos/info.plist
-)
-
 file(GLOB TS_FILES
 	${CMAKE_SOURCE_DIR}/i18n/*.ts
 )
@@ -212,20 +206,6 @@ target_include_directories(NotepadNext
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-if(WIN32)
-	configure_file(
-		"${CMAKE_SOURCE_DIR}/deploy/windows/version.rc.in"
-		"${CMAKE_BINARY_DIR}/version.rc"
-		@ONLY
-	)
-	target_sources(NotepadNext PRIVATE "${CMAKE_BINARY_DIR}/version.rc")
-	configure_file(
-		"${CMAKE_SOURCE_DIR}/icon/NotepadNext.ico"
-		"${CMAKE_BINARY_DIR}/NotepadNext.ico"
-		COPYONLY
-	)
-endif()
-
 target_link_libraries(NotepadNext
     PRIVATE
         Qt6::Core
@@ -234,7 +214,6 @@ target_link_libraries(NotepadNext
         Qt6::Network
         Qt6::PrintSupport
         qtadvanceddocking-qt6
-        QSimpleUpdater
         SingleApplication::SingleApplication
         editorconfig-core-qt
         lua
@@ -246,7 +225,6 @@ target_link_libraries(NotepadNext
 target_compile_definitions(NotepadNext
     PRIVATE
         ADS_STATIC
-        QSIMPLEUPDATER_STATIC
         QAPPLICATION_CLASS=QApplication
         APP_VERSION="${PROJECT_VERSION}"
         APP_COPYRIGHT="${APP_COPYRIGHT}"

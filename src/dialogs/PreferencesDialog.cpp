@@ -106,6 +106,7 @@ PreferencesDialog::PreferencesDialog(ApplicationSettings *settings, QWidget *par
 
     // ── Indentation settings ──────────────────────────────────────────────
     MapSettingToCheckBox(ui->checkBoxExpandTabs, &ApplicationSettings::expandTabs, &ApplicationSettings::setExpandTabs, &ApplicationSettings::expandTabsChanged);
+    MapSettingToCheckBox(ui->checkBoxTrimTrailingOnSave, &ApplicationSettings::trimTrailingWhitespaceOnSave, &ApplicationSettings::setTrimTrailingWhitespaceOnSave, &ApplicationSettings::trimTrailingWhitespaceOnSaveChanged);
 
     ui->spbTabWidth->setValue(settings->tabWidth());
     connect(ui->spbTabWidth, QOverload<int>::of(&QSpinBox::valueChanged), settings, &ApplicationSettings::setTabWidth);

@@ -9,14 +9,6 @@ CPMAddPackage(
         "BUILD_EXAMPLES OFF"
 )
 
-CPMAddPackage(
-    NAME QSimpleUpdater
-    GITHUB_REPOSITORY alex-spataru/QSimpleUpdater
-    GIT_TAG 8e7017f7fbdc2b4b1a26ed1eef9ebcba6a50639c
-    OPTIONS
-        "QSIMPLE_UPDATER_BUILD_TESTS OFF"
-)
-
 set(QAPPLICATION_CLASS QApplication CACHE STRING "Inheritance class for SingleApplication" FORCE)
 CPMAddPackage(
     NAME SingleApplication
