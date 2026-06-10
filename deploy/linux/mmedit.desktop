@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=Qt;TextEditor;Utility;
+Exec=mmedit %f
+Icon=mmedit
+MimeType=text/plain;
+StartupNotify=true
+Type=Application
+Terminal=false
+
+Name=mmedit
+Name[pt_BR]=Editor de Texto Notepad Next
+
+GenericName=Text Editor
+GenericName[pt_BR]=Editor de Texto
+
+Comment=A personalreimplementation of Notepad++
+
+Keywords=notepad;mmedit;text;editor;manager;IDE;programming tool;source code;tabs;
+Keywords[pt_BR]=notepad;next;bloco de notas;próximo;editor;texto;Ambiente de Desenvolvimento Integrado;IDE;ferramenta de programação;exibição de texto colorido;código-fonte;abas;guias;

@@ -39,6 +39,7 @@
 #include <QRegularExpression>
 #include <QInputDialog>
 #include "ColorPickerDialog.h"
+#include "WordCountDialog.h"
 #include <QPrintPreviewDialog>
 #include <QPrinter>
 #include <QDirIterator>
@@ -1015,11 +1016,6 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     languageActionGroup = new QActionGroup(this);
     languageActionGroup->setExclusive(true);
 
-    connect(ui->actionOpenLanguagesFolder, &QAction::triggered, this, [=, this]() {
-        const QString langDir = QFileInfo(app->getSettings()->fileName()).dir().path() + "/languages";
-        QDesktopServices::openUrl(QUrl::fromLocalFile(langDir));
-    });
-
     connect(ui->actionPreferences, &QAction::triggered, this, [=, this] {
         PreferencesDialog *pd = findChild<PreferencesDialog *>(QString(), Qt::FindDirectChildrenOnly);
 
@@ -1145,7 +1141,7 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         QMessageBox::about(this, QString(),
                             QStringLiteral("<h3>%1 v%2 %3</h3>"
                                     "<p>%4</p>"
-                                    "<p><a href=\"https://github.com/dail8859/NotepadNext\">Notepad Next Home Page</a></p>"
+                                    "<p><a href=\\\"https://github.com/rosmapo/mmedit\\\">mmedit Home Page</a></p>"
                                     R"(<p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p> <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</p> <p>You should have received a copy of the GNU General Public License along with this program. If not, see &lt;<a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>&gt;.</p>)")
                                 .arg(QApplication::applicationDisplayName(), APP_VERSION, APP_DISTRIBUTION, QStringLiteral(APP_COPYRIGHT).toHtmlEscaped()));
     });
@@ -1155,6 +1151,14 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     // Keep the dialog's editor reference in sync with the active editor.
     connect(this, &MainWindow::editorActivated, colorPickerDlg,
             &ColorPickerDialog::setEditor);
+    auto *wordCountDlg = new WordCountDialog(this);
+    connect(ui->actionWordCount, &QAction::triggered, this, [=, this]() {
+        wordCountDlg->setEditor(currentEditor());
+        wordCountDlg->show();
+        wordCountDlg->raise();
+        wordCountDlg->activateWindow();
+    });
+
     connect(ui->actionColorPicker, &QAction::triggered, this, [=, this]() {
         colorPickerDlg->setEditor(currentEditor());
         colorPickerDlg->show();
@@ -1299,8 +1303,10 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     FolderAsWorkspaceDock *fawDock = new FolderAsWorkspaceDock(this);
     fawDock->hide();
     addDockWidget(Qt::LeftDockWidgetArea, fawDock);
+    fawDock->toggleViewAction()->setObjectName("actionFolderAsWorkspace");
     ui->menuView->addAction(fawDock->toggleViewAction());
     connect(fawDock, &FolderAsWorkspaceDock::fileDoubleClicked, this, &MainWindow::openFile);
+    applyCustomShortcuts();
 
     FileListDock *fileListDock = new FileListDock(this);
     fileListDock->hide();
@@ -1337,6 +1343,14 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         // Don't 'hide' it, else the actions won't be enabled
         ui->menuBar->setMaximumHeight(showMenuBar ? QWIDGETSIZE_MAX : 0);
     });
+    ui->actionToggleMenuBar->setChecked(app->getSettings()->showMenuBar());
+	ui->menuBar->setMaximumHeight(app->getSettings()->showMenuBar() ? QWIDGETSIZE_MAX : 0);
+    connect(app->getSettings(), &ApplicationSettings::showMenuBarChanged, this, [this](bool show) {
+        ui->actionToggleMenuBar->setChecked(show);
+    });
+    connect(ui->actionToggleMenuBar, &QAction::triggered, this, [this, app](bool checked) {
+        app->getSettings()->setShowMenuBar(checked);
+    });
     connect(app->getSettings(), &ApplicationSettings::showToolBarChanged, ui->mainToolBar, &QToolBar::setVisible);
     connect(app->getSettings(), &ApplicationSettings::showStatusBarChanged, ui->statusBar, &QStatusBar::setVisible);
     connect(ui->statusBar, &EditorInfoStatusBar::customContextMenuRequestedForEOLLabel, this, [this](const QPoint &pos){
@@ -1366,7 +1380,7 @@ void MainWindow::applyCustomShortcuts()
     settings->beginGroup("Shortcuts");
 
     for (const QString &actionName : settings->childKeys()) {
-        QAction *action = findChild<QAction *>(QStringLiteral("action") + actionName, Qt::FindDirectChildrenOnly);
+        QAction *action = findChild<QAction *>(QStringLiteral("action") + actionName);
 
         if (!action) {
             qWarning() << "CustomShortcut: Cannot find action" << actionName;

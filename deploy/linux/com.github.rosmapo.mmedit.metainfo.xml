@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2022 dail8859 -->
+<!-- https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html -->
+<component type="desktop-application">
+    <id>com.github.rosmapo.mmedit</id>
+    <developer_name>rosmapo</developer_name>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-3.0</project_license>
+    <content_rating type="oars-1.1" />
+
+    <name>mmedit</name>
+    
+    <summary>A Linux reimplementation of Notepad++</summary>
+    <description>
+        <p>mmedit is a Linux-focused fork of NotepadNext, a reimplementation of Notepad++.</p>
+    </description>
+
+    <url type="homepage">https://github.com/rosmapo/mmedit</url>
+    <url type="bugtracker">https://github.com/rosmapo/mmedit/issues</url>
+    
+    <screenshots>
+        <screenshot type="default">
+            <image type="source">https://raw.githubusercontent.com/rosmapo/mmedit/master/doc/screenshot_linux.png</image>
+        </screenshot>
+    </screenshots>
+
+    <launchable type="desktop-id">com.github.rosmapo.mmedit.desktop</launchable>
+    <releases>
+        <release version="v0.14" date="2026-04-27" />
+    </releases>
+</component>

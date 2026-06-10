@@ -1,4 +1,4 @@
-qt_add_executable(NotepadNext
+qt_add_executable(mmedit
 	ActionUtils.h
 	ApplicationSettings.h
 	ByteArrayUtils.h
@@ -126,6 +126,8 @@ qt_add_executable(NotepadNext
 	dialogs/ColumnEditorDialog.cpp
 	dialogs/ColumnEditorDialog.h
 	dialogs/ColumnEditorDialog.ui
+	dialogs/WordCountDialog.cpp
+	dialogs/WordCountDialog.h
 	dialogs/ColorPickerDialog.cpp
 	dialogs/ColorPickerDialog.h
 	dialogs/FindReplaceDialog.cpp
@@ -191,13 +193,13 @@ file(GLOB TS_FILES
 )
 
 find_package(Qt6 REQUIRED COMPONENTS LinguistTools)
-qt_add_translations(NotepadNext
+qt_add_translations(mmedit
     TS_FILES ${TS_FILES}
     RESOURCE_PREFIX "/i18n"
 )
 
 
-target_include_directories(NotepadNext
+target_include_directories(mmedit
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/decorators
         ${CMAKE_CURRENT_SOURCE_DIR}/dialogs
@@ -206,7 +208,7 @@ target_include_directories(NotepadNext
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(NotepadNext
+target_link_libraries(mmedit
     PRIVATE
         Qt6::Core
         Qt6::Gui
@@ -222,7 +224,7 @@ target_link_libraries(NotepadNext
         uchardet
 )
 
-target_compile_definitions(NotepadNext
+target_compile_definitions(mmedit
     PRIVATE
         ADS_STATIC
         QAPPLICATION_CLASS=QApplication

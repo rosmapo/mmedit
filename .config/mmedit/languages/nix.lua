@@ -1,0 +1,108 @@
+local L = {}
+
+L.lexer = "nix"
+
+L.singleLineComment = "# "
+
+L.extensions = {
+    "nix"
+}
+
+L.keywords = {
+    [0] = "assert else if in inherit let or rec then with",
+    [1] = "false null true",
+    [2] = "abort add addDrvOutputDependencies all any attrNames attrValues baseNameOf bitAnd bitOr bitXor break builtins catAttrs ceil compareVersions concatLists concatMap concatStringsSep convertHash currentSystem currentTime deepSeq derivation dirOf div elem elemAt fetchClosure fetchGit fetchTarball fetchTree fetchurl filter filterSource findFile flakeRefToString floor foldl' fromJSON fromTOML functionArgs genList genericClosure getAttr getContext getEnv getFlake groupBy hasAttr hasContext hashFile hashString head import intersectAttrs isAttrs isBool isFloat isFunction isInt isList isNull isPath isString langVersion length lessThan listToAttrs map mapAttrs match mul nixPath nixVersion outputOf parseDrvName parseFlakeRef partition path pathExists placeholder readDir readFile readFileType removeAttrs replaceStrings seq sort split splitVersion storeDir storePath stringLength sub substring tail throw toFile toJSON toPath toString toXML trace traceVerbose tryEval typeOf unsafeDiscardOutputDependency unsafeDiscardStringContext warn zipAttrsWith",
+    [3] = "runCommand",
+}
+
+L.styles = {
+    ["DEFAULT"] = {
+        id = 0,
+        fgColor = rgb(0xD4D4D4),
+        bgColor = rgb(0x1F1F1F),
+    },
+    ["COMMENT LINE"] = {
+        id = 1,
+        fgColor = rgb(0x6A9955),
+        bgColor = rgb(0x1F1F1F),
+    },
+    ["COMMENT BLOCK"] = {
+        id = 2,
+        fgColor = rgb(0x4EC9B0),
+        bgColor = rgb(0x1F1F1F),
+    },
+    ["STRING"] = {
+        id = 3,
+        fgColor = rgb(0x858585),
+        bgColor = rgb(0x1F1F1F),
+    },
+    ["STRING MULTILINE"] = {
+        id = 4,
+        fgColor = rgb(0x858585),
+        bgColor = rgb(0x1F1F1F),
+    },
+    ["ESCAPECHAR"] = {
+        id = 5,
+        fgColor = rgb(0x858585),
+        bgColor = rgb(0x1F1F1F),
+        fontStyle = 1,
+    },
+    ["IDENTIFIER"] = {
+        id = 6,
+        fgColor = rgb(0xD4D4D4),
+        bgColor = rgb(0x1F1F1F),
+    },
+    ["OPERATOR"] = {
+        id = 7,
+        fgColor = rgb(0x569CD6),
+        bgColor = rgb(0x1F1F1F),
+        fontStyle = 1,
+    },
+    ["OPERATOR_STRING"] = {
+        id = 8,
+        fgColor = rgb(0x858585),
+        bgColor = rgb(0x1F1F1F),
+        fontStyle = 1,
+    },
+    ["NUMBER"] = {
+        id = 9,
+        fgColor = rgb(0xCE9178),
+        bgColor = rgb(0x1F1F1F),
+    },
+    ["KEY"] = {
+        id = 10,
+        fgColor = rgb(0xC586C0),
+        bgColor = rgb(0x1F1F1F),
+    },
+    ["PATH"] = {
+        id = 11,
+        fgColor = rgb(0xD4D4D4),
+        bgColor = rgb(0x1F1F1F),
+    },
+    ["KEYWORD1"] = {
+        id = 12,
+        fgColor = rgb(0x569CD6),
+        bgColor = rgb(0x1F1F1F),
+        fontStyle = 1,
+    },
+    ["KEYWORD2"] = {
+        id = 13,
+        fgColor = rgb(0x569CD6),
+        bgColor = rgb(0x1F1F1F),
+        fontStyle = 1,
+    },
+    ["KEYWORD3"] = {
+        id = 14,
+        fgColor = rgb(0x569CD6),
+        bgColor = rgb(0x1F1F1F),
+        fontStyle = 1,
+    },
+    ["KEYWORD4"] = {
+        id = 15,
+        fgColor = rgb(0xC586C0),
+        bgColor = rgb(0x1F1F1F),
+        fontStyle = 1,
+    }
+}
+
+return L

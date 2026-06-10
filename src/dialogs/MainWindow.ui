@@ -14,7 +14,7 @@
    <bool>true</bool>
   </property>
   <property name="windowTitle">
-   <string>Notepad Next[*]</string>
+   <string>mmedit[*]</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="pushExitFullScreen">
@@ -307,6 +307,7 @@
      <addaction name="actionUnfoldLevel9"/>
     </widget>
     <addaction name="actionFullScreen"/>
+    <addaction name="actionToggleMenuBar"/>
     <addaction name="separator"/>
     <addaction name="menuShowSymbol"/>
     <addaction name="menuZoom"/>
@@ -327,6 +328,7 @@
     <addaction name="actionHexViewer"/>
     <addaction name="separator"/>
     <addaction name="actionColorPicker"/>
+    <addaction name="actionWordCount"/>
    </widget>
    <widget class="QMenu" name="menuLanguage">
     <property name="title">
@@ -339,7 +341,6 @@
     </property>
     <addaction name="actionPreferences"/>
     <addaction name="separator"/>
-    <addaction name="actionOpenLanguagesFolder"/>
    </widget>
    <widget class="QMenu" name="menuMacro">
     <property name="title">
@@ -877,7 +878,7 @@
      <normaloff>:/icons/newfile.png</normaloff>:/icons/newfile.png</iconset>
    </property>
    <property name="text">
-    <string>About Notepad Next</string>
+    <string>About mmedit</string>
    </property>
    <property name="menuRole">
     <enum>QAction::AboutRole</enum>
@@ -1020,6 +1021,17 @@
    </property>
    <property name="shortcut">
     <string>F11</string>
+   </property>
+  </action>
+  <action name="actionToggleMenuBar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Toggle Menu Bar</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+M</string>
    </property>
   </action>
   <action name="actionMacroRecording">
@@ -1178,11 +1190,6 @@
    </property>
    <property name="text">
     <string>Edit Macros...</string>
-   </property>
-  </action>
-  <action name="actionOpenLanguagesFolder">
-   <property name="text">
-    <string>Open Languages Folder</string>
    </property>
   </action>
   <action name="actionHexViewer">
@@ -1680,6 +1687,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+Down</string>
+   </property>
+  </action>
+  <action name="actionWordCount">
+   <property name="text">
+    <string>Word Count</string>
    </property>
   </action>
   <action name="actionColorPicker">

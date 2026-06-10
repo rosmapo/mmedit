@@ -48,4 +48,4 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: MMEdit-Linux-Qt${{ matrix.qt_version }}-AppImage
-          path: ${{ github.workspace }}/build/NotepadNext*.AppImage
+          path: ${{ github.workspace }}/build/mmedit*.AppImage
