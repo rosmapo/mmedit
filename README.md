@@ -1,6 +1,6 @@
-# MMEdit
+# mmedit
 
-MMEdit is a Linux-focused fork of NotepadNext.
+mmedit is a Linux-focused fork of NotepadNext.
 
 The project is based on the original NotepadNext source code and includes custom modifications, fixes and Linux-specific improvements.
 
