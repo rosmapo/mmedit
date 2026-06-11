@@ -19,62 +19,62 @@ L.styles = {
 	["DEFAULT"] = {
 		id = 0,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["COMMENT"] = {
 		id = 1,
 		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["NUMBER"] = {
 		id = 2,
 		fgColor = rgb(0x4EC9B0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["KEYWORD1"] = {
 		id = 3,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["STRING"] = {
 		id = 4,
 		fgColor = rgb(0xC586C0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["OPERATOR"] = {
 		id = 6,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["IDENTIFIER"] = {
 		id = 7,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["KEYWORD2"] = {
 		id = 10,
 		fgColor = rgb(0xD7BA7D),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["KEYWORD3"] = {
 		id = 11,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["KEYWORD4"] = {
 		id = 12,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["CONSTANT"] = {
 		id = 13,
 		fgColor = rgb(0x4EC9B0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["LABEL"] = {
 		id = 15,
 		fgColor = rgb(0xD7BA7D),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["ERROR"] = {
 		id = 16,
@@ -84,12 +84,12 @@ L.styles = {
 	["HEXNUMBER"] = {
 		id = 17,
 		fgColor = rgb(0x4EC9B0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["BINNUMBER"] = {
 		id = 18,
 		fgColor = rgb(0x4EC9B0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 }
 return L

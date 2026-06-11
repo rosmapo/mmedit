@@ -30,7 +30,7 @@ L.styles = {
 	["DEFAULT"] = {
 		id = 0,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["ERROR"] = {
 		id = 1,
@@ -40,34 +40,34 @@ L.styles = {
 	["INSTRUCTION WORD"] = {
 		id = 4,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["NUMBER"] = {
 		id = 3,
 		fgColor = rgb(0xF44747),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["STRING"] = {
 		id = 5,
 		fgColor = rgb(0xD7BA7D),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["CHARACTER"] = {
 		id = 6,
 		fgColor = rgb(0xD7BA7D),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["OPERATOR"] = {
 		id = 7,
-		fgColor = rgb(0xFFE0A0),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xca84f9),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["IDENTIFIER"] = {
 		id = 8,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["SCALAR"] = {
 		id = 9,
@@ -78,7 +78,7 @@ L.styles = {
 	["COMMENT LINE"] = {
 		id = 2,
 		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["PARAM"] = {
 		id = 10,

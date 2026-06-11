@@ -19,12 +19,12 @@ L.styles = {
 	["WHITESPACE"] = {
 		id = 0,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["COMMENT"] = {
 		id = 1,
 		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["TASK START/END"] = {
 		id = 2,
@@ -34,19 +34,19 @@ L.styles = {
 	["SECTION KEYWORDS"] = {
 		id = 3,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["KEYWORDS"] = {
 		id = 4,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["MODIFICATORS"] = {
 		id = 5,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 2,
 	},
 	["ASTERISK"] = {
@@ -58,12 +58,12 @@ L.styles = {
 	["NUMBER"] = {
 		id = 7,
 		fgColor = rgb(0x4EC9B0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["DOUBLE QUOTED STRING"] = {
 		id = 8,
 		fgColor = rgb(0xC586C0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["ENVIRONMENT VARIABLE"] = {
 		id = 9,

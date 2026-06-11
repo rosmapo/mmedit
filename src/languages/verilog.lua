@@ -20,69 +20,69 @@ L.styles = {
 	["DEFAULT"] = {
 		id = 0,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["IDENTIFIER"] = {
 		id = 11,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["TAGNAME"] = {
 		id = 2,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["INSTRUCTION WORD"] = {
 		id = 5,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["KEYWORD"] = {
 		id = 7,
 		fgColor = rgb(0xC586C0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["OPERATOR"] = {
 		id = 10,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["NUMBER"] = {
 		id = 4,
 		fgColor = rgb(0xCE9178),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["PREPROCESSOR"] = {
 		id = 9,
 		fgColor = rgb(0xFFE0A0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["STRING"] = {
 		id = 6,
 		fgColor = rgb(0x858585),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["COMMENT"] = {
 		id = 1,
 		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["COMMENT LINE"] = {
 		id = 2,
 		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["COMMENT LINE BANG"] = {
 		id = 3,
 		fgColor = rgb(0x4EC9B0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["USER"] = {
 		id = 19,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 }
 return L

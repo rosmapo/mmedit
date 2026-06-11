@@ -20,12 +20,12 @@ L.styles = {
 	["DEFAULT"] = {
 		id = 0,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["COMMENTLINE"] = {
 		id = 1,
 		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["STRING DOUBLE QUOTE"] = {
 		id = 2,
@@ -45,12 +45,12 @@ L.styles = {
 	["FUNCTION"] = {
 		id = 5,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["VARIABLE"] = {
 		id = 6,
 		fgColor = rgb(0xCE9178),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["LABEL"] = {
 		id = 7,
@@ -66,24 +66,24 @@ L.styles = {
 	["SECTION"] = {
 		id = 9,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["SUBSECTION"] = {
 		id = 10,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["IF DEFINE"] = {
 		id = 11,
 		fgColor = rgb(0xD7BA7D),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["MACRO"] = {
 		id = 12,
 		fgColor = rgb(0xFFA0A0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["STRING VAR"] = {
@@ -94,30 +94,30 @@ L.styles = {
 	["NUMBER"] = {
 		id = 14,
 		fgColor = rgb(0xF44747),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["SECTION GROUP"] = {
 		id = 15,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["PAGE EX"] = {
 		id = 16,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["FUNCTION DEFINITIONS"] = {
 		id = 17,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["COMMENT"] = {
 		id = 18,
 		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 }
 return L

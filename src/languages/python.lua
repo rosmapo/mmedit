@@ -30,103 +30,103 @@ L.keywords = {
 L.styles = {
 	["DEFAULT"] = {
 		id = 0,
-		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xD4D4D4), -- Hlavná svetlosivá
+		bgColor = rgb(0x1E1E1E),
 	},
 	["COMMENTLINE"] = {
 		id = 1,
-		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0x6A9955), -- Klasické zelené komentáre (#)
+		bgColor = rgb(0x1E1E1E),
 	},
 	["NUMBER"] = {
 		id = 2,
-		fgColor = rgb(0xF44747),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xB5CEA8), -- Svetlozelená pre čísla
+		bgColor = rgb(0x1E1E1E),
 	},
 	["STRING"] = {
 		id = 3,
-		fgColor = rgb(0x858585),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xCE9178), -- Tradičná oranžovo-hnedá pre stringy
+		bgColor = rgb(0x1E1E1E),
 	},
 	["CHARACTER"] = {
 		id = 4,
-		fgColor = rgb(0x858585),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xCE9178),
+		bgColor = rgb(0x1E1E1E),
 	},
 	["KEYWORDS"] = {
 		id = 5,
-		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0x569CD6), -- Modrá pre riadiace kľúčové slová (if, for, return...)
+		bgColor = rgb(0x1E1E1E),
 		fontStyle = 1,
 	},
 	["BUILTINS"] = {
 		id = 14,
-		fgColor = rgb(0xC586C0),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0x4EC9B0), -- Tyrkysová pre zabudované Python funkcie/výnimky (print, len, ValueError...)
+		bgColor = rgb(0x1E1E1E),
 		fontStyle = 1,
 	},
 	["TRIPLE"] = {
 		id = 6,
-		fgColor = rgb(0xCE9178),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xCE9178), -- Viacriadkové stringy (Docstringy)
+		bgColor = rgb(0x1E1E1E),
 	},
 	["TRIPLEDOUBLE"] = {
 		id = 7,
 		fgColor = rgb(0xCE9178),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1E1E1E),
 	},
 	["CLASSNAME"] = {
 		id = 8,
-		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0x4EC9B0), -- Tyrkysová pre názvy tried za kľúčovým slovom class
+		bgColor = rgb(0x1E1E1E),
 		fontStyle = 1,
 	},
 	["DEFNAME"] = {
 		id = 9,
-		fgColor = rgb(0xC586C0),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xDCDCAA), -- Žltá pre názvy funkcií pri definícii (def funkcia:)
+		bgColor = rgb(0x1E1E1E),
 	},
 	["OPERATOR"] = {
 		id = 10,
-		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xD4D4D4), -- Štandardná sivobiela pre operátory (+, ==, *, ...)
+		bgColor = rgb(0x1E1E1E),
 		fontStyle = 1,
 	},
 	["IDENTIFIER"] = {
 		id = 11,
-		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0x9CDCFE), -- Svetlomodrá pre premenné a argumenty
+		bgColor = rgb(0x1E1E1E),
 	},
 	["COMMENTBLOCK"] = {
 		id = 12,
 		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1E1E1E),
 	},
 	["DECORATOR"] = {
 		id = 15,
-		fgColor = rgb(0xCE9178),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xDCDCAA), -- Žltkastá pre dekorátory (@staticmethod...)
+		bgColor = rgb(0x1E1E1E),
 		fontStyle = 2,
 	},
 	["F STRING"] = {
 		id = 16,
-		fgColor = rgb(0x858585),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xCE9178), -- F-stringy vo VS Code majú rovnakú farbu ako bežné stringy
+		bgColor = rgb(0x1E1E1E),
 	},
 	["F CHARACTER"] = {
 		id = 17,
-		fgColor = rgb(0x858585),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xCE9178),
+		bgColor = rgb(0x1E1E1E),
 	},
 	["F TRIPLE"] = {
 		id = 18,
 		fgColor = rgb(0xCE9178),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1E1E1E),
 	},
 	["F TRIPLEDOUBLE"] = {
 		id = 19,
 		fgColor = rgb(0xCE9178),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1E1E1E),
 	},
 }
 return L

@@ -14,74 +14,74 @@ L.keywords = {
 L.styles = {
 	["DEFAULT"] = {
 		id = 0,
-		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xD4D4D4), -- Základná svetlosivá
+		bgColor = rgb(0x1E1E1E),
 	},
 	["TAG"] = {
 		id = 1,
-		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0x569CD6), -- Modrá pre HTML tagy (div, body, span...)
+		bgColor = rgb(0x1E1E1E),
 	},
 	["CLASS"] = {
 		id = 2,
-		fgColor = rgb(0xF44747),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xDCDCAA), -- Žltkastá pre CSS triedy (.class)
+		bgColor = rgb(0x1E1E1E),
 	},
 	["PSEUDOCLASS"] = {
 		id = 3,
-		fgColor = rgb(0xCE9178),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xDCDCAA), -- Žltkastá pre pseudo-triedy (:hover, ::before)
+		bgColor = rgb(0x1E1E1E),
 		fontStyle = 1,
 	},
 	["UNKNOWN_PSEUDOCLASS"] = {
 		id = 4,
-		fgColor = rgb(0xF44747),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xF44747), -- Výstražná červená pre neznáme pseudo-triedy
+		bgColor = rgb(0x1E1E1E),
 	},
 	["OPERATOR"] = {
 		id = 5,
-		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xD4D4D4), -- Sivobiela pre zložené zátvorky a dvojbodky
+		bgColor = rgb(0x1E1E1E),
 		fontStyle = 1,
 	},
 	["IDENTIFIER"] = {
 		id = 6,
-		fgColor = rgb(0x9CDCFE),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0x9CDCFE), -- Svetlomodrá pre názvy CSS vlastností (margin, color...)
+		bgColor = rgb(0x1E1E1E),
 		fontStyle = 1,
 	},
 	["UNKNOWN_IDENTIFIER"] = {
 		id = 7,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1E1E1E),
 	},
 	["VALUE"] = {
 		id = 8,
-		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xCE9178), -- Oranžovo-hnedá pre hodnoty (napr. block, 10px, solid)
+		bgColor = rgb(0x1E1E1E),
 		fontStyle = 1,
 	},
 	["COMMENT"] = {
 		id = 9,
-		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0x6A9955), -- Tradičná VS Code zelená pre komentáre
+		bgColor = rgb(0x1E1E1E),
 	},
 	["ID"] = {
 		id = 10,
-		fgColor = rgb(0x4FC1FF),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xDCDCAA), -- Žltkastá pre ID selektory (#id)
+		bgColor = rgb(0x1E1E1E),
 		fontStyle = 1,
 	},
 	["IMPORTANT"] = {
 		id = 11,
-		fgColor = rgb(0xF44747),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0x569CD6), -- Modrá pre kľúčové slová ako !important
+		bgColor = rgb(0x1E1E1E),
 		fontStyle = 1,
 	},
 	["DIRECTIVE"] = {
 		id = 12,
-		fgColor = rgb(0x4FC1FF),
-		bgColor = rgb(0xFFFFFF),
+		fgColor = rgb(0xC586C0), -- Fialová pre direktívy (@media, @import...)
+		bgColor = rgb(0x1E1E1E),
 	},
 }
 return L

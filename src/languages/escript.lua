@@ -19,62 +19,62 @@ L.styles = {
 	["DEFAULT"] = {
 		id = 0,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["COMMENT"] = {
 		id = 1,
 		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["LINE COMMENT"] = {
 		id = 2,
 		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["DOC COMMENT"] = {
 		id = 3,
 		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["NUMBER"] = {
 		id = 4,
 		fgColor = rgb(0x4EC9B0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["KEYWORD"] = {
 		id = 5,
 		fgColor = rgb(0xF44747),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["DOUBLE QUOTED STRING"] = {
 		id = 6,
 		fgColor = rgb(0xCE9178),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["OPERATORS"] = {
 		id = 7,
 		fgColor = rgb(0xF44747),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["IDENTIFIERS"] = {
 		id = 8,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["BRACES"] = {
 		id = 9,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["KEYWORDS2"] = {
 		id = 10,
 		fgColor = rgb(0xC586C0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["KEYWORDS3"] = {
 		id = 11,
 		fgColor = rgb(0xC586C0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 }
 return L

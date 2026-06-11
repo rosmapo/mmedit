@@ -94,9 +94,6 @@ bool NotepadNextApplication::init()
 
     settings = new ApplicationSettings(this);
 
-    // Export embedded language files to user config dir if not already present
-    // This allows users to customize syntax highlighting per-language
-    exportLanguageFilesIfNeeded();
 
     if (parser.isSet("reset-settings")) {
         QFileInfo original(settings->fileName());
@@ -460,41 +457,6 @@ void NotepadNextApplication::loadSettings()
 void NotepadNextApplication::saveSettings()
 {
     getSettings()->setValue("App/RecentFilesList", recentFilesListManager->fileList());
-}
-
-void NotepadNextApplication::exportLanguageFilesIfNeeded()
-{
-    const QString configDir = QFileInfo(settings->fileName()).dir().path();
-    const QString langDir = configDir + "/languages";
-
-    QDir d(langDir);
-    if (!d.exists()) {
-        d.mkpath(langDir);
-    }
-
-    // Copy all embedded language lua files to the user config directory
-    // Only copy if the file doesn't already exist (don't overwrite user changes)
-    QDir resourceDir(":/languages");
-    const QStringList entries = resourceDir.entryList(QStringList() << "*.lua", QDir::Files);
-
-    int copied = 0;
-    for (const QString &fileName : entries) {
-        const QString destPath = langDir + "/" + fileName;
-        if (!QFile::exists(destPath)) {
-            QFile src(":/languages/" + fileName);
-            if (src.copy(destPath)) {
-                // Make the copy writable (Qt resources are read-only)
-                QFile::setPermissions(destPath,
-                    QFile::ReadOwner | QFile::WriteOwner |
-                    QFile::ReadGroup | QFile::ReadOther);
-                copied++;
-            }
-        }
-    }
-
-    if (copied > 0) {
-        qInfo("Exported %d language files to %s", copied, qUtf8Printable(langDir));
-    }
 }
 
 void NotepadNextApplication::saveSession()

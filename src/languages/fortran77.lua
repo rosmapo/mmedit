@@ -18,67 +18,67 @@ L.styles = {
 	["DEFAULT"] = {
 		id = 0,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["COMMENT"] = {
 		id = 1,
 		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["NUMBER"] = {
 		id = 2,
 		fgColor = rgb(0xCE9178),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["STRING"] = {
 		id = 3,
 		fgColor = rgb(0x858585),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["STRING2"] = {
 		id = 4,
 		fgColor = rgb(0x858585),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["OPERATOR"] = {
 		id = 6,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["IDENTIFIER"] = {
 		id = 7,
 		fgColor = rgb(0xD4D4D4),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["INSTRUCTION WORD"] = {
 		id = 8,
 		fgColor = rgb(0x569CD6),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["FUNCTION1"] = {
 		id = 9,
 		fgColor = rgb(0xC586C0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["FUNCTION2"] = {
 		id = 10,
 		fgColor = rgb(0x4FC1FF),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 		fontStyle = 1,
 	},
 	["PREPROCESSOR"] = {
 		id = 11,
 		fgColor = rgb(0xFFA0A0),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["OPERATOR2"] = {
 		id = 12,
 		fgColor = rgb(0x858585),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 	["LABEL"] = {
 		id = 13,
@@ -89,7 +89,7 @@ L.styles = {
 	["CONTINUATION"] = {
 		id = 14,
 		fgColor = rgb(0x6A9955),
-		bgColor = rgb(0xFFFFFF),
+		bgColor = rgb(0x1F1F1F),
 	},
 }
 return L

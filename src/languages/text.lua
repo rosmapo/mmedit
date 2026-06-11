@@ -15,7 +15,7 @@ L.styles = {
     ["DEFAULT"] = {
         id = 0,
         fgColor = rgb(0xD4D4D4),
-        bgColor = rgb(0xFFFFFF),
+        bgColor = rgb(0x1F1F1F),
         fontStyle = 0,
     },
 }
