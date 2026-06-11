@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 
 project(mmedit
-    VERSION 0.26
+    VERSION 0.27
     DESCRIPTION "Personal text editor"
     LANGUAGES CXX
 )
@@ -40,4 +40,4 @@ set(CPM_SOURCE_CACHE "${CMAKE_SOURCE_DIR}/.cpm-cache" CACHE PATH "CPM source cac
 add_subdirectory(thirdparty)
 add_subdirectory(src)
 
-#include(${CMAKE_SOURCE_DIR}/cmake/Packaging.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/Packaging.cmake)

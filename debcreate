@@ -1,0 +1,12 @@
+#!/bin/bash
+rm -rf build
+mkdir build
+cd build
+cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build .
+cpack -G DEB
+VERSION=$(grep -oP '^\s+VERSION\s+\K[0-9]+\.[0-9]+(\.[0-9]+)?' ../CMakeLists.txt)
+rm -f ../mmedit-${VERSION}.deb
+mv mmedit-*-Linux-mmedit.deb ../mmedit-${VERSION}.deb
+cd ..
+rm -rf build
