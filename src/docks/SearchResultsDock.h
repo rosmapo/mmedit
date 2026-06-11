@@ -43,7 +43,6 @@ public:
     void newFileEntry(ScintillaNext *editor) override;
     void newResultsEntry(const QString line, int lineNumber, int startPositionFromBeginning, int endPositionFromBeginning, int hitCount=1) override;
     void completeSearch() override;
-    bool copySelectedResultText();
 
 public slots:
     void collapseAll() const;
@@ -60,12 +59,8 @@ private slots:
 signals:
     void searchResultActivated(ScintillaNext *editor, int lineNumber, int startPositionFromBeginning, int endPositionFromBeginning);
 
-protected:
-    bool eventFilter(QObject *obj, QEvent *event) override;
-
 private:
     void updateSearchStatus();
-    void clearResultTextSelections();
     Ui::SearchResultsDock *ui;
 
     QString searchTerm;

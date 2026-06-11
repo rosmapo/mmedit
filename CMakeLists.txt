@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 
 project(mmedit
-    VERSION 0.25
+    VERSION 0.26
     DESCRIPTION "Personal text editor"
     LANGUAGES CXX
 )

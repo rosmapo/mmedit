@@ -492,15 +492,7 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     connectEditorAction(ui->actionUndo, &ScintillaNext::undo);
     connectEditorAction(ui->actionRedo, &ScintillaNext::redo);
     connectEditorAction(ui->actionCut, &ScintillaNext::cutAllowLine);
-    connect(ui->actionCopy, &QAction::triggered, this, [this]() {
-        SearchResultsDock *searchResultsDock = findChild<SearchResultsDock *>();
-        if (searchResultsDock != Q_NULLPTR && searchResultsDock->copySelectedResultText()) {
-            return;
-        }
-        if (auto* editor = currentEditor()) {
-            editor->copyAllowLine();
-        }
-    });
+    connectEditorAction(ui->actionCopy, &ScintillaNext::copyAllowLine);
     connectEditorAction(ui->actionDelete, &ScintillaNext::clear);
     connectEditorAction(ui->actionPaste, &ScintillaNext::paste);
     connectEditorAction(ui->actionSelectAll, &ScintillaNext::selectAll);
