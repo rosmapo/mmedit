@@ -789,6 +789,6 @@ void FindReplaceDialog::copyMarkedText()
 
 void FindReplaceDialog::showMessage(const QString &message, const QString &color)
 {
-    statusBar->setStyleSheet(QStringLiteral("color: %1").arg(color == "green" ? "#4EC94E" : color == "red" ? "#FF6B6B" : color));
+    statusBar->setStyleSheet(QStringLiteral("color: %1").arg(color == "green" ? "#FFFF7F" : color == "red" ? "#FF6B6B" : color));
     statusBar->showMessage(message);
 }
