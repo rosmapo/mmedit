@@ -42,6 +42,7 @@
 #include <QInputDialog>
 #include "ColorPickerDialog.h"
 #include "WordCountDialog.h"
+#include "ShortcutEditorDialog.h"
 #include <QPrintPreviewDialog>
 #include <QPrinter>
 #include <QDirIterator>
@@ -1021,6 +1022,8 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         pd->raise();
         pd->activateWindow();
     });
+
+    connect(ui->actionShortcutEditor, &QAction::triggered, this, &MainWindow::openShortcutEditor);
 
     // The macro manager has already loaded any saved macros, so it might have some already
     ui->actionRunMacroMultipleTimes->setEnabled(macroManager.availableMacros().size() > 0);
@@ -2800,4 +2803,34 @@ void MainWindow::languageMenuTriggered()
     QVariant v = act->data();
 
     setLanguage(editor, v.toString());
+}
+
+void MainWindow::openShortcutEditor()
+{
+    // Collect all QActions from menus (skip separators and the editor action itself)
+    QList<QAction *> actions;
+    for (QAction *a : findChildren<QAction *>()) {
+        if (!a->objectName().startsWith(QStringLiteral("action"))) continue;
+        if (a->objectName() == QStringLiteral("actionShortcutEditor")) continue;
+        if (a->isSeparator()) continue;
+        actions.append(a);
+    }
+
+    ShortcutEditorDialog dlg(actions, this);
+    if (dlg.exec() != QDialog::Accepted) return;
+
+    // Persist changed shortcuts to ApplicationSettings
+    ApplicationSettings *settings = app->getSettings();
+    settings->beginGroup(QStringLiteral("Shortcuts"));
+    // Remove old custom shortcuts so resets are properly reflected
+    settings->remove(QString());
+
+    const auto changed = dlg.changedShortcuts();
+    for (auto it = changed.cbegin(); it != changed.cend(); ++it) {
+        settings->setValue(it.key(), it.value().toString());
+    }
+    settings->endGroup();
+
+    // Apply the new shortcuts immediately
+    applyCustomShortcuts();
 }

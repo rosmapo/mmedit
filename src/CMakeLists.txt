@@ -130,6 +130,8 @@ qt_add_executable(mmedit
 	dialogs/WordCountDialog.h
 	dialogs/ColorPickerDialog.cpp
 	dialogs/ColorPickerDialog.h
+	dialogs/ShortcutEditorDialog.cpp
+	dialogs/ShortcutEditorDialog.h
 	dialogs/FindReplaceDialog.cpp
 	dialogs/FindReplaceDialog.h
 	dialogs/FindReplaceDialog.ui

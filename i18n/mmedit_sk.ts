@@ -850,6 +850,11 @@
       <translation>Nastavenia</translation>
     </message>
     <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1712"/>
+      <source>Shortcut Editor</source>
+      <translation>Klávesové skratky</translation>
+    </message>
+    <message>
       <location filename="../src/dialogs/MainWindow.ui" line="326"/>
       <source>Macro</source>
       <translation>Makro</translation>
@@ -1383,8 +1388,8 @@
     </message>
     <message>
       <location filename="../src/dialogs/MainWindow.ui" line="1015"/>
-      <source>Select Next Instance</source>
-      <translation>Vybrať nasledujúci blok</translation>
+      <source>Add to Selection Next Instance</source>
+      <translation>Pridať do výberu ďalší výskyt</translation>
     </message>
     <message>
       <location filename="../src/dialogs/MainWindow.ui" line="1018"/>

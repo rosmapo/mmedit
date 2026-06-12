@@ -43,6 +43,7 @@ class ZoomEventWatcher;
 class Converter;
 class DefaultDirectoryManager;
 class TabsQuickActionsBar;
+class ShortcutEditorDialog;
 
 class MainWindow : public QMainWindow
 {
@@ -144,6 +145,7 @@ private slots:
     void languageMenuTriggered();
     void checkForUpdatesFinished(QString url);
     void activateEditor(ScintillaNext *editor);
+    void openShortcutEditor();
 
 private:
     Ui::MainWindow *ui = Q_NULLPTR;
