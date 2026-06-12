@@ -2586,4 +2586,12 @@ dddd d. MMMM yyyy    →  Štvrtok 5. jún 2025</translation>
       <translation>Riadky:</translation>
     </message>
   </context>
+  <context>
+    <name>MarkdownPreviewDock</name>
+    <message>
+      <location filename="../src/docks/MarkdownPreviewDock.cpp" line="1"/>
+      <source>Markdown Preview</source>
+      <translation>Náhľad Markdown</translation>
+    </message>
+  </context>
 </TS>

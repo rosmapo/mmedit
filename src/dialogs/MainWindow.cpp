@@ -42,6 +42,7 @@
 #include <QInputDialog>
 #include "ColorPickerDialog.h"
 #include "WordCountDialog.h"
+#include "MarkdownPreviewDock.h"
 #include "ShortcutEditorDialog.h"
 #include <QPrintPreviewDialog>
 #include <QPrinter>
@@ -1345,6 +1346,16 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     ui->menuView->addAction(fawDock->toggleViewAction());
     connect(fawDock, &FolderAsWorkspaceDock::fileDoubleClicked, this, &MainWindow::openFile);
     applyCustomShortcuts();
+
+    MarkdownPreviewDock *mdPreviewDock = new MarkdownPreviewDock(this);
+    mdPreviewDock->hide();
+    addDockWidget(Qt::RightDockWidgetArea, mdPreviewDock);
+    mdPreviewDock->toggleViewAction()->setObjectName("actionMarkdownPreview");
+    ui->menuTools->addAction(mdPreviewDock->toggleViewAction());
+    connect(this, &MainWindow::editorActivated, mdPreviewDock, &MarkdownPreviewDock::setEditor);
+    connect(mdPreviewDock, &QDockWidget::visibilityChanged, mdPreviewDock, [mdPreviewDock](bool visible) {
+        if (visible) mdPreviewDock->updatePreview();
+    });
 
     FileListDock *fileListDock = new FileListDock(this);
     fileListDock->hide();

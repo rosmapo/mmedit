@@ -162,6 +162,8 @@ qt_add_executable(mmedit
 	docks/FolderAsWorkspaceDock.cpp
 	docks/FolderAsWorkspaceDock.h
 	docks/FolderAsWorkspaceDock.ui
+	docks/MarkdownPreviewDock.cpp
+	docks/MarkdownPreviewDock.h
 
 
 

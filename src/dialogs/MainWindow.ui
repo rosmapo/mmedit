@@ -1710,6 +1710,14 @@
     <string>Ctrl+Alt+Down</string>
    </property>
   </action>
+  <action name="actionMarkdownPreview">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Markdown Preview</string>
+   </property>
+  </action>
   <action name="actionInsertDateTime">
    <property name="text">
     <string>Insert Date/Time</string>
