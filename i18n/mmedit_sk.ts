@@ -2191,6 +2191,11 @@
       <source>No updates are available at this time.</source>
       <translation>V tejto chvíli nie sú k dispozícii žiadne aktualizácie.</translation>
     </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1"/>
+      <source>Insert Date/Time</source>
+      <translation>Vložiť dátum/čas</translation>
+    </message>
   </context>
   <context>
     <name>PreferencesDialog</name>
@@ -2369,6 +2374,49 @@
       <location filename="../src/dialogs/PreferencesDialog.ui" line="330"/>
       <source>Trim trailing whitespace on save</source>
       <translation>Odstrániť koncové medzery pri ukladaní</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
+      <source>Insert Date/Time</source>
+      <translation>Vložiť dátum/čas</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
+      <source>Format:</source>
+      <translation>Formát:</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
+      <source>Format tokens:
+d / dd    – day (1 or 01)
+M / MM    – month (1 or 01)
+yyyy      – 4-digit year
+yy        – 2-digit year
+h / hh    – hour 0-23 (1 or 01)
+m / mm    – minute (1 or 01)
+s / ss    – second (1 or 01)
+dddd      – full day name
+MMMM      – full month name
+
+Examples:
+dd.MM.yyyy HH:mm:ss  →  05.06.2025 14:30:00
+yyyy-MM-dd           →  2025-06-05
+dddd d. MMMM yyyy    →  Thursday 5. June 2025</source>
+      <translation>Tokeny formátu:
+d / dd    – deň (1 alebo 01)
+M / MM    – mesiac (1 alebo 01)
+yyyy      – 4-ciferný rok
+yy        – 2-ciferný rok
+h / hh    – hodina 0-23 (1 alebo 01)
+m / mm    – minúta (1 alebo 01)
+s / ss    – sekunda (1 alebo 01)
+dddd      – celý názov dňa
+MMMM      – celý názov mesiaca
+
+Príklady:
+dd.MM.yyyy HH:mm:ss  →  05.06.2025 14:30:00
+yyyy-MM-dd           →  2025-06-05
+dddd d. MMMM yyyy    →  Štvrtok 5. jún 2025</translation>
     </message>
   </context>
   <context>

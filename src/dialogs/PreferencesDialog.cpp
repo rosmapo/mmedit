@@ -112,6 +112,13 @@ PreferencesDialog::PreferencesDialog(ApplicationSettings *settings, QWidget *par
     connect(ui->spbTabWidth, QOverload<int>::of(&QSpinBox::valueChanged), settings, &ApplicationSettings::setTabWidth);
     connect(settings, &ApplicationSettings::tabWidthChanged, ui->spbTabWidth, &QSpinBox::setValue);
 
+    // ── Date/Time format ─────────────────────────────────────────────────
+    ui->txtDateTimeFormat->setText(settings->dateTimeFormat());
+    connect(ui->txtDateTimeFormat, &QLineEdit::editingFinished, this, [=]() {
+        settings->setDateTimeFormat(ui->txtDateTimeFormat->text());
+    });
+    connect(settings, &ApplicationSettings::dateTimeFormatChanged, ui->txtDateTimeFormat, &QLineEdit::setText);
+
     QButtonGroup *buttonGroup = new QButtonGroup(this);
     buttonGroup->addButton(ui->radioFollowCurrentDirectory, ApplicationSettings::FollowCurrentDocument);
     buttonGroup->addButton(ui->radioLastUsedDirectory, ApplicationSettings::RememberLastUsed);

@@ -329,6 +329,8 @@
     <addaction name="separator"/>
     <addaction name="actionColorPicker"/>
     <addaction name="actionWordCount"/>
+    <addaction name="separator"/>
+    <addaction name="actionInsertDateTime"/>
    </widget>
    <widget class="QMenu" name="menuLanguage">
     <property name="title">
@@ -1687,6 +1689,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+Down</string>
+   </property>
+  </action>
+  <action name="actionInsertDateTime">
+   <property name="text">
+    <string>Insert Date/Time</string>
    </property>
   </action>
   <action name="actionWordCount">

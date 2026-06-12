@@ -35,6 +35,8 @@
 #include <QDesktopServices>
 #include <QWindow>
 #include <QPushButton>
+#include <QDateTime>
+#include <QLocale>
 #include <QTimer>
 #include <QRegularExpression>
 #include <QInputDialog>
@@ -1149,6 +1151,13 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         wordCountDlg->show();
         wordCountDlg->raise();
         wordCountDlg->activateWindow();
+    });
+
+    connect(ui->actionInsertDateTime, &QAction::triggered, this, [=, this]() {
+        ScintillaNext *editor = currentEditor();
+        if (!editor) return;
+        const QString text = QLocale().toString(QDateTime::currentDateTime(), app->getSettings()->dateTimeFormat());
+        editor->replaceSel(text.toUtf8().constData());
     });
 
     connect(ui->actionColorPicker, &QAction::triggered, this, [=, this]() {

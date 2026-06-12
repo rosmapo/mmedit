@@ -123,4 +123,5 @@ public:
     DEFINE_SETTING(ExpandTabs, expandTabs, bool)
     DEFINE_SETTING(TabWidth, tabWidth, int)
     DEFINE_SETTING(TrimTrailingWhitespaceOnSave, trimTrailingWhitespaceOnSave, bool)
+    DEFINE_SETTING(DateTimeFormat, dateTimeFormat, QString)
 };
