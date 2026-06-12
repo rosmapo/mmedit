@@ -132,6 +132,8 @@
      </property>
      <addaction name="actionUpperCase"/>
      <addaction name="actionLowerCase"/>
+     <addaction name="actionTitleCase"/>
+     <addaction name="actionSentenceCase"/>
     </widget>
     <widget class="QMenu" name="menuLine_Operations">
      <property name="title">
@@ -764,6 +766,22 @@
    </property>
    <property name="toolTip">
     <string>Convert text to lower case</string>
+   </property>
+  </action>
+  <action name="actionTitleCase">
+   <property name="text">
+    <string>Title Case</string>
+   </property>
+   <property name="toolTip">
+    <string>Convert text to title case</string>
+   </property>
+  </action>
+  <action name="actionSentenceCase">
+   <property name="text">
+    <string>Sentence case</string>
+   </property>
+   <property name="toolTip">
+    <string>Convert text to sentence case</string>
    </property>
   </action>
   <action name="actionDuplicateCurrentLine">

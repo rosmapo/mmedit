@@ -418,6 +418,40 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     connectEditorAction(ui->actionUpperCase, &ScintillaNext::upperCase);
     connectEditorAction(ui->actionLowerCase, &ScintillaNext::lowerCase);
 
+    connect(ui->actionTitleCase, &QAction::triggered, this, [this]() {
+        ScintillaNext *editor = currentEditor();
+        if (!editor) return;
+        QString text = QString::fromUtf8(editor->getSelText());
+        if (text.endsWith(QLatin1Char(' '))) text.chop(1);
+        bool nextUpper = true;
+        for (QChar &c : text) {
+            if (c.isSpace() || c == QLatin1Char('-') || c == QLatin1Char('_')) {
+                nextUpper = true;
+            } else {
+                c = nextUpper ? c.toUpper() : c.toLower();
+                nextUpper = false;
+            }
+        }
+        editor->replaceSel(text.toUtf8().constData());
+    });
+
+    connect(ui->actionSentenceCase, &QAction::triggered, this, [this]() {
+        ScintillaNext *editor = currentEditor();
+        if (!editor) return;
+        QString text = QString::fromUtf8(editor->getSelText());
+        if (text.endsWith(QLatin1Char(' '))) text.chop(1);
+        bool nextUpper = true;
+        for (QChar &c : text) {
+            if (c == QLatin1Char('.') || c == QLatin1Char('!') || c == QLatin1Char('?')) {
+                nextUpper = true;
+            } else if (!c.isSpace()) {
+                c = nextUpper ? c.toUpper() : c.toLower();
+                nextUpper = false;
+            }
+        }
+        editor->replaceSel(text.toUtf8().constData());
+    });
+
     connectEditorAction(ui->actionDuplicateCurrentLine, &ScintillaNext::lineDuplicate);
     connectEditorAction(ui->actionMoveSelectedLinesUp, &ScintillaNext::moveSelectedLinesUp);
     connectEditorAction(ui->actionMoveSelectedLinesDown, &ScintillaNext::moveSelectedLinesDown);
@@ -2213,6 +2247,8 @@ void MainWindow::updateContentBasedUi(ScintillaNext *editor)
 
     ui->actionLowerCase->setEnabled(hasAnySelections);
     ui->actionUpperCase->setEnabled(hasAnySelections);
+    ui->actionTitleCase->setEnabled(hasAnySelections);
+    ui->actionSentenceCase->setEnabled(hasAnySelections);
 
     ui->actionBase64Encode->setEnabled(hasAnySelections);
     ui->actionURLEncode->setEnabled(hasAnySelections);

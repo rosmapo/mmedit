@@ -1126,6 +1126,26 @@
       <translation>Previesť text na malé písmená</translation>
     </message>
     <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1"/>
+      <source>Title Case</source>
+      <translation>Prvé Písmeno Veľké</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1"/>
+      <source>Convert text to title case</source>
+      <translation>Previesť text — každé slovo začína veľkým písmenom</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1"/>
+      <source>Sentence case</source>
+      <translation>Prvé písmeno vety</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1"/>
+      <source>Convert text to sentence case</source>
+      <translation>Previesť text — veľké písmeno na začiatku vety</translation>
+    </message>
+    <message>
       <location filename="../src/dialogs/MainWindow.ui" line="683"/>
       <source>Duplicate Current Line</source>
       <translation>Duplikovať aktuálny riadok</translation>
