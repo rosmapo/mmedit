@@ -67,12 +67,8 @@
 #include "RecentFilesListMenuBuilder.h"
 #include "EditorManager.h"
 
-#include "LuaConsoleDock.h"
-#include "LanguageInspectorDock.h"
-#include "EditorInspectorDock.h"
 #include "FolderAsWorkspaceDock.h"
 #include "SearchResultsDock.h"
-#include "DebugLogDock.h"
 #include "FileListDock.h"
 #include "MinimapPanel.h"
 
@@ -1315,29 +1311,6 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         QProcess::startDetached("cmd", arguments);
     });
 #endif
-
-    EditorInspectorDock *editorInspectorDock = new EditorInspectorDock(this);
-    editorInspectorDock->hide();
-    addDockWidget(Qt::RightDockWidgetArea, editorInspectorDock);
-
-    LanguageInspectorDock *languageInspectorDock = new LanguageInspectorDock(this);
-    languageInspectorDock->hide();
-    addDockWidget(Qt::RightDockWidgetArea, languageInspectorDock);
-
-    LuaConsoleDock *luaConsoleDock = new LuaConsoleDock(app->getLuaState(), this);
-    luaConsoleDock->hide();
-    addDockWidget(Qt::BottomDockWidgetArea, luaConsoleDock);
-
-    DebugLogDock *debugLogDock = new DebugLogDock(this);
-    debugLogDock->hide();
-    addDockWidget(Qt::RightDockWidgetArea, debugLogDock);
-
-    ui->menuHelp->insertActions(ui->menuHelp->actions().at(0), {
-                                    luaConsoleDock->toggleViewAction(),
-                                    languageInspectorDock->toggleViewAction(),
-                                    editorInspectorDock->toggleViewAction(),
-                                    debugLogDock->toggleViewAction()
-                                });
 
     FolderAsWorkspaceDock *fawDock = new FolderAsWorkspaceDock(this);
     fawDock->hide();

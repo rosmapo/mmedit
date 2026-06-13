@@ -150,12 +150,6 @@ qt_add_executable(mmedit
 	dialogs/PreferencesDialog.cpp
 	dialogs/PreferencesDialog.h
 	dialogs/PreferencesDialog.ui
-	docks/DebugLogDock.cpp
-	docks/DebugLogDock.h
-	docks/DebugLogDock.ui
-	docks/EditorInspectorDock.cpp
-	docks/EditorInspectorDock.h
-	docks/EditorInspectorDock.ui
 	docks/FileListDock.cpp
 	docks/FileListDock.h
 	docks/FileListDock.ui
@@ -167,12 +161,6 @@ qt_add_executable(mmedit
 
 
 
-	docks/LanguageInspectorDock.cpp
-	docks/LanguageInspectorDock.h
-	docks/LanguageInspectorDock.ui
-	docks/LuaConsoleDock.cpp
-	docks/LuaConsoleDock.h
-	docks/LuaConsoleDock.ui
 	docks/SearchResultsDock.cpp
 	docks/SearchResultsDock.h
 	docks/SearchResultsDock.ui

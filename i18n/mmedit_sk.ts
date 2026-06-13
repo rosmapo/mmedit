@@ -1253,7 +1253,7 @@
     <message>
       <location filename="../src/dialogs/MainWindow.ui" line="784"/>
       <source>About Qt</source>
-      <translation>O Qt</translation>
+      <translation>About Qt</translation>
     </message>
     <message>
       <location filename="../src/dialogs/MainWindow.ui" line="796"/>

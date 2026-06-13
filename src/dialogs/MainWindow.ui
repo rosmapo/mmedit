@@ -327,12 +327,12 @@
     <property name="title">
      <string>Tools</string>
     </property>
-    <addaction name="actionHexViewer"/>
-    <addaction name="separator"/>
     <addaction name="actionColorPicker"/>
-    <addaction name="actionWordCount"/>
     <addaction name="separator"/>
     <addaction name="actionInsertDateTime"/>
+    <addaction name="actionWordCount"/>
+    <addaction name="separator"/>
+    <addaction name="actionHexViewer"/>
    </widget>
    <widget class="QMenu" name="menuLanguage">
     <property name="title">
