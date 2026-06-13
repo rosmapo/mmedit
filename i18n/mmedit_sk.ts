@@ -1980,6 +1980,11 @@
       <translation>Zobraziť/Skryť menu</translation>
     </message>
     <message>
+      <location filename="../src/dialogs/MainWindow.cpp" line="0"/>
+      <source>Spell Check</source>
+      <translation>Kontrola pravopisu</translation>
+    </message>
+    <message>
       <location filename="../src/dialogs/MainWindow.cpp" line="501"/>
       <source>Hex Viewer</source>
       <translation>HEX prezerač</translation>
@@ -2412,6 +2417,21 @@
     </message>
     <message>
       <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
+      <source>Spell Check</source>
+      <translation>Kontrola pravopisu</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
+      <source>Enable Spell Check</source>
+      <translation>Zapnúť kontrolu pravopisu</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
+      <source>Language:</source>
+      <translation>Jazyk:</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
       <source>Format:</source>
       <translation>Formát:</translation>
     </message>
@@ -2597,6 +2617,24 @@ dddd d. MMMM yyyy    →  Štvrtok 5. jún 2025</translation>
       <location filename="../src/docks/MarkdownPreviewDock.cpp" line="1"/>
       <source>Markdown Preview</source>
       <translation>Náhľad Markdown</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1"/>
+      <source>Spell Check</source>
+      <translation>Kontrola pravopisu</translation>
+    </message>
+  </context>
+  <context>
+    <name>MainWindow</name>
+    <message>
+      <location filename="../src/dialogs/MainWindow.cpp" line="2659"/>
+      <source>(no suggestions)</source>
+      <translation>(žiadne návrhy)</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.cpp" line="2683"/>
+      <source>Add "%1" to dictionary</source>
+      <translation>Pridať "%1" do slovníka</translation>
     </message>
   </context>
 </TS>

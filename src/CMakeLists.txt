@@ -123,6 +123,8 @@ qt_add_executable(mmedit
 	decorators/SurroundSelection.h
 	decorators/URLFinder.cpp
 	decorators/URLFinder.h
+	decorators/SpellChecker.cpp
+	decorators/SpellChecker.h
 	dialogs/ColumnEditorDialog.cpp
 	dialogs/ColumnEditorDialog.h
 	dialogs/ColumnEditorDialog.ui
@@ -214,6 +216,7 @@ target_link_libraries(mmedit
         lexilla
         scintilla
         uchardet
+        hunspell-1.7
 )
 
 target_compile_definitions(mmedit

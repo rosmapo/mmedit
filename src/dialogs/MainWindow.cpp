@@ -43,6 +43,7 @@
 #include "ColorPickerDialog.h"
 #include "WordCountDialog.h"
 #include "MarkdownPreviewDock.h"
+#include "SpellChecker.h"
 #include "ShortcutEditorDialog.h"
 #include <QPrintPreviewDialog>
 #include <QPrinter>
@@ -1337,6 +1338,15 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     mdPreviewDock->toggleViewAction()->setObjectName("actionMarkdownPreview");
     ui->menuTools->addAction(mdPreviewDock->toggleViewAction());
     connect(this, &MainWindow::editorActivated, mdPreviewDock, &MarkdownPreviewDock::setEditor);
+
+    // Spell Check
+    connect(ui->actionSpellCheck, &QAction::toggled, this, [=, this](bool checked) {
+        app->getSettings()->setSpellCheckEnabled(checked);
+    });
+    connect(app->getSettings(), &ApplicationSettings::spellCheckEnabledChanged, this, [=, this](bool enabled) {
+        ui->actionSpellCheck->setChecked(enabled);
+    });
+    ui->actionSpellCheck->setChecked(app->getSettings()->spellCheckEnabled());
     connect(mdPreviewDock, &QDockWidget::visibilityChanged, mdPreviewDock, [mdPreviewDock](bool visible) {
         if (visible) mdPreviewDock->updatePreview();
     });
@@ -2636,6 +2646,46 @@ void MainWindow::addEditor(ScintillaNext *editor)
         menu->addSeparator();
         menu->addMenu(ui->menuMarkAllOccurrences);
         menu->addMenu(ui->menuClearMarks);
+
+        // SpellChecker: návrhy + "Add to dictionary"
+        SpellChecker *sc = editor->findChild<SpellChecker *>(
+                               QString(), Qt::FindDirectChildrenOnly);
+        if (sc && sc->isEnabled()) {
+            const QString misspelled = sc->wordAtPosition(contextMenuPos);
+            if (!misspelled.isEmpty() && !sc->spellCheck(misspelled)) {
+                menu->addSeparator();
+                const QStringList suggs = sc->suggestions(misspelled);
+                if (suggs.isEmpty()) {
+                    QAction *noSugg = menu->addAction(tr("(no suggestions)"));
+                    noSugg->setEnabled(false);
+                } else {
+                    for (const QString &s : suggs.mid(0, 8)) {
+                        QAction *a = menu->addAction(s);
+                        connect(a, &QAction::triggered, this,
+                                [editor, s, misspelled, pos = contextMenuPos]() {
+                            const int len = static_cast<int>(editor->length());
+                            const QByteArray raw = editor->getText(len + 1).left(len);
+                            const QByteArray needle = misspelled.toUtf8();
+                            // Hľadaj slovo v okolí kliknutej pozície
+                            int byteStart = qMax(0, pos - (int)needle.size());
+                            const int searchEnd = qMin(raw.size(), pos + (int)needle.size() + 1);
+                            byteStart = raw.indexOf(needle, byteStart);
+                            if (byteStart >= 0 && byteStart < searchEnd) {
+                                editor->setTargetRange(byteStart, byteStart + needle.size());
+                                const QByteArray replacement = s.toUtf8();
+                                editor->replaceTarget(replacement.size(), replacement.constData());
+                            }
+                        });
+                    }
+                }
+                menu->addSeparator();
+                QAction *addAct = menu->addAction(
+                    tr("Add \"%1\" to dictionary").arg(misspelled));
+                connect(addAct, &QAction::triggered, this, [sc, misspelled]() {
+                    sc->addToUserDict(misspelled);
+                });
+            }
+        }
 
         menu->popup(QCursor::pos());
     });

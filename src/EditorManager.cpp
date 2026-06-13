@@ -34,6 +34,7 @@
 #include "AutoIndentation.h"
 #include "AutoCompletion.h"
 #include "URLFinder.h"
+#include "SpellChecker.h"
 #include "BookMarkDecorator.h"
 #include "HTMLAutoCompleteDecorator.h"
 
@@ -159,7 +160,7 @@ EditorManager::EditorManager(ApplicationSettings *settings, QObject *parent)
 
     connect(settings, &ApplicationSettings::highlightCurrentLineChanged, this, [=](bool b) {
         for (auto &editor : getEditors()) {
-            editor->setElementColour(SC_ELEMENT_CARET_LINE_BACK, b ? 0xFF151515 : 0xFF1E1E1E);
+            editor->setElementColour(SC_ELEMENT_CARET_LINE_BACK, b ? 0xFF2A2A3A : 0xFF1E1E1E);
         }
     });
 
@@ -280,7 +281,7 @@ void EditorManager::setupEditor(ScintillaNext *editor)
     editor->setElementColour(SC_ELEMENT_SELECTION_INACTIVE_BACK, 0xFF4A4A4A); // dark theme
     editor->setElementColour(SC_ELEMENT_CARET, 0xFFFFFFFF);           // dark theme: white caret
     editor->setElementColour(SC_ELEMENT_CARET_ADDITIONAL, 0xFFFFFFFF); // dark theme: white multi-caret
-    editor->setElementColour(SC_ELEMENT_CARET_LINE_BACK, settings->highlightCurrentLine() ? 0xFF151515 : 0xFF1E1E1E);
+    editor->setElementColour(SC_ELEMENT_CARET_LINE_BACK, settings->highlightCurrentLine() ? 0xFF2A2A3A : 0xFF1E1E1E);
     editor->setElementColour(SC_ELEMENT_WHITE_SPACE, 0xFFE5C100); // vivid yellow – visible on dark bg
     // SC_ELEMENT_WHITE_SPACE_BACK
     // SC_ELEMENT_HOT_SPOT_ACTIVE
@@ -377,6 +378,28 @@ void EditorManager::setupEditor(ScintillaNext *editor)
     bm->setEnabled(true);
 
     new HTMLAutoCompleteDecorator(editor);
+
+    SpellChecker *sc = new SpellChecker(editor);
+    if (settings->spellCheckEnabled()) {
+        sc->loadDictionary(settings->spellCheckLanguage());
+        sc->setEnabled(true);
+    }
+
+    connect(settings, &ApplicationSettings::spellCheckEnabledChanged, sc, [=](bool enabled) {
+        if (enabled) {
+            sc->loadDictionary(settings->spellCheckLanguage());
+            sc->setEnabled(true);
+        } else {
+            sc->setEnabled(false);
+        }
+    });
+
+    connect(settings, &ApplicationSettings::spellCheckLanguageChanged, sc, [=](const QString &lang) {
+        if (settings->spellCheckEnabled()) {
+            sc->loadDictionary(lang);
+            sc->check();
+        }
+    });
 }
 
 void EditorManager::purgeOldEditorPointers()

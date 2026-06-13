@@ -332,6 +332,8 @@
     <addaction name="actionInsertDateTime"/>
     <addaction name="actionWordCount"/>
     <addaction name="separator"/>
+    <addaction name="actionSpellCheck"/>
+    <addaction name="separator"/>
     <addaction name="actionHexViewer"/>
    </widget>
    <widget class="QMenu" name="menuLanguage">
@@ -1708,6 +1710,14 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+Down</string>
+   </property>
+  </action>
+  <action name="actionSpellCheck">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Spell Check</string>
    </property>
   </action>
   <action name="actionMarkdownPreview">

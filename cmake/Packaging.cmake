@@ -29,7 +29,7 @@ set(CPACK_DEBIAN_PACKAGE_DEPENDS
      libqt6widgets6 (>= 6.2) | libqt6widgets6t64 (>= 6.2), \
      libqt6network6 (>= 6.2) | libqt6network6t64 (>= 6.2), \
      libqt6printsupport6 (>= 6.2) | libqt6printsupport6t64 (>= 6.2), \
-     libqt6core5compat6 (>= 6.2), libgl1"
+     libqt6core5compat6 (>= 6.2), libhunspell-1.7-0, libgl1"
 )
 set(CPACK_DEBIAN_MMEDIT_PACKAGE_FILE_NAME "mmedit-${PROJECT_VERSION}")
 set(CPACK_DEBIAN_MMEDIT_PACKAGE_NAME "mmedit")

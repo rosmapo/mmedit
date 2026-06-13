@@ -48,8 +48,15 @@ public:
         QFont font = m_label->font();
         font.setPixelSize(size == FadingIndicator::LargeText ? 30 : 18);
         m_label->setFont(font);
-        QPalette pal = palette();
-        pal.setColor(QPalette::WindowText, pal.color(QPalette::Window));
+
+        // Use fixed, high-contrast colors instead of deriving them from the
+        // parent's palette. Some color schemes/themes (e.g. dark themes)
+        // can end up with QPalette::Window and QPalette::WindowText being
+        // the same or very similar colors, which made both the indicator's
+        // background "pill" and its text the same color - resulting in an
+        // empty/invisible-text indicator.
+        QPalette pal = m_label->palette();
+        pal.setColor(QPalette::WindowText, Qt::white);
         m_label->setPalette(pal);
         auto layout = new QHBoxLayout;
         setLayout(layout);
@@ -101,7 +108,10 @@ protected:
         if (!m_pixmap.isNull()) {
             p.drawPixmap(rect(), m_pixmap);
         } else {
-            p.setBrush(palette().color(QPalette::WindowText));
+            // Fixed dark, semi-transparent pill so the (now fixed white)
+            // label text always has good contrast, regardless of the
+            // parent widget's color scheme/theme.
+            p.setBrush(QColor(60, 60, 60, 220));
             p.setPen(Qt::NoPen);
             p.drawRoundedRect(rect(), 15, 15);
         }

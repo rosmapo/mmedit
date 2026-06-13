@@ -24,6 +24,7 @@
 #include "ScintillaNext.h"
 
 #include <QButtonGroup>
+#include <QDir>
 #include <QFileDialog>
 #include <QMessageBox>
 
@@ -104,6 +105,33 @@ PreferencesDialog::PreferencesDialog(ApplicationSettings *settings, QWidget *par
     MapSettingToCheckBox(ui->checkBoxShowLineNumbers, &ApplicationSettings::showLineNumbers, &ApplicationSettings::setShowLineNumbers, &ApplicationSettings::showLineNumbersChanged);
     MapSettingToCheckBox(ui->checkBoxAutoCompletion, &ApplicationSettings::autoCompletion, &ApplicationSettings::setAutoCompletion, &ApplicationSettings::autoCompletionChanged);
     MapSettingToCheckBox(ui->checkBoxHighlightCurrentLine, &ApplicationSettings::highlightCurrentLine, &ApplicationSettings::setHighlightCurrentLine, &ApplicationSettings::highlightCurrentLineChanged);
+
+    // ── Spell Check ───────────────────────────────────────────────────────
+    {
+        // Populate language combo from installed hunspell dictionaries
+        const QStringList paths = {
+            QStringLiteral("/usr/share/hunspell"),
+            QStringLiteral("/usr/share/myspell/dicts"),
+            QStringLiteral("/usr/local/share/hunspell"),
+        };
+        QStringList langs;
+        for (const QString &path : paths) {
+            for (const QFileInfo &fi : QDir(path).entryInfoList(QStringList() << QStringLiteral("*.aff"), QDir::Files)) {
+                const QString lang = fi.completeBaseName();
+                if (!langs.contains(lang)) langs << lang;
+            }
+        }
+        langs.sort();
+        ui->comboBoxSpellLang->addItems(langs);
+
+        int idx = ui->comboBoxSpellLang->findText(settings->spellCheckLanguage());
+        if (idx >= 0) ui->comboBoxSpellLang->setCurrentIndex(idx);
+
+        connect(ui->comboBoxSpellLang, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=](int i) {
+            settings->setSpellCheckLanguage(ui->comboBoxSpellLang->itemText(i));
+        });
+    }
+    MapSettingToCheckBox(ui->checkBoxSpellCheck, &ApplicationSettings::spellCheckEnabled, &ApplicationSettings::setSpellCheckEnabled, &ApplicationSettings::spellCheckEnabledChanged);
 
     // ── Indentation settings ──────────────────────────────────────────────
     MapSettingToCheckBox(ui->checkBoxExpandTabs, &ApplicationSettings::expandTabs, &ApplicationSettings::setExpandTabs, &ApplicationSettings::expandTabsChanged);

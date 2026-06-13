@@ -370,6 +370,36 @@ dddd d. MMMM yyyy    →  Thursday 5. June 2025</string>
         </widget>
        </item>
               <item>
+        <widget class="QGroupBox" name="groupBoxSpellCheck">
+         <property name="title">
+          <string>Spell Check</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayoutSpell">
+          <item>
+           <widget class="QCheckBox" name="checkBoxSpellCheck">
+            <property name="text">
+             <string>Enable Spell Check</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayoutSpellLang">
+            <item>
+             <widget class="QLabel" name="labelSpellLang">
+              <property name="text">
+               <string>Language:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBoxSpellLang"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+              <item>
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
