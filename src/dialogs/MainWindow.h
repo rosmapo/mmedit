@@ -172,6 +172,8 @@ private:
     }
     void applyStyleSheet();
     void applyCustomShortcuts();
+    void captureDefaultShortcuts();
+    void recordDefaultShortcut(QAction *action);
     void initUpdateCheck();
     ScintillaNext *getInitialEditor();
     void openFileList(const QStringList &fileNames);
@@ -202,6 +204,13 @@ private:
     int zoomLevel = 0;
     int contextMenuPos = 0;
     QMenu *buildMenu(QStringList actionNames);
+
+    // actionKey (objectName with leading "action" stripped) -> the
+    // application's built-in default QKeySequence for that action, i.e.
+    // the shortcut it has *before* any [Shortcuts] entries from
+    // ApplicationSettings are applied. Used by the Shortcut Editor's
+    // "Reset to default" / "Reset ALL to defaults" buttons.
+    QMap<QString, QKeySequence> m_defaultShortcuts;
 };
 
 #endif // MAINWINDOW_H

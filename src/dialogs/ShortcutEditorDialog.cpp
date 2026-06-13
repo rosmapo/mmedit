@@ -30,7 +30,9 @@ static QString keyFromObjectName(const QString &objectName)
 }
 
 // ---------------------------------------------------------------------------
-ShortcutEditorDialog::ShortcutEditorDialog(QList<QAction *> actions, QWidget *parent)
+ShortcutEditorDialog::ShortcutEditorDialog(QList<QAction *> actions,
+                                             const QMap<QString, QKeySequence> &defaultShortcuts,
+                                             QWidget *parent)
     : QDialog(parent)
     , m_actions(actions)
 {
@@ -44,6 +46,17 @@ ShortcutEditorDialog::ShortcutEditorDialog(QList<QAction *> actions, QWidget *pa
         const QKeySequence ks = a->shortcut();
         m_originals[key] = ks;
         m_current[key]   = ks;
+    }
+
+    // "Reset to default" / "Reset ALL to defaults" should restore the
+    // application's built-in default shortcut, not just the value that was
+    // loaded from the config when the dialog was opened. Use the supplied
+    // defaults where available, and fall back to the dialog-open value for
+    // any action the caller didn't provide a default for.
+    m_defaults = defaultShortcuts;
+    for (auto it = m_originals.cbegin(); it != m_originals.cend(); ++it) {
+        if (!m_defaults.contains(it.key()))
+            m_defaults[it.key()] = it.value();
     }
 
     buildUi();
@@ -272,11 +285,11 @@ void ShortcutEditorDialog::resetToDefault()
 {
     if (m_selectedRow < 0) return;
     const QString key  = m_table->item(m_selectedRow, 0)->data(Qt::UserRole).toString();
-    const QKeySequence orig = m_originals.value(key);
+    const QKeySequence def = m_defaults.value(key);
     m_updating = true;
-    m_seqEdit->setKeySequence(orig);
+    m_seqEdit->setKeySequence(def);
     m_updating = false;
-    onKeySequenceChanged(orig);
+    onKeySequenceChanged(def);
 }
 
 // ---------------------------------------------------------------------------
@@ -289,7 +302,7 @@ void ShortcutEditorDialog::resetAllToDefault()
 
     if (reply != QMessageBox::Yes) return;
 
-    m_current = m_originals;
+    m_current = m_defaults;
     populateTable(m_filterEdit->text());
     m_seqEdit->setKeySequence(QKeySequence());
     m_conflictLbl->clear();

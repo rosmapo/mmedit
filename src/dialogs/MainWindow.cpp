@@ -209,6 +209,13 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         });
     }
 
+    // Snapshot every action's "designer"/code default shortcut *before* any
+    // custom shortcuts from the config are applied. A few actions get their
+    // real default shortcut assigned by code further below (actionExit,
+    // actionNextTab/actionPreviousTab, actionAboutNotepadNext); those are
+    // re-recorded right after that code runs.
+    captureDefaultShortcuts();
+
     applyCustomShortcuts();
 
     qInfo("setupUi Completed");
@@ -303,6 +310,7 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
 #else
     ui->actionExit->setShortcut(QKeySequence::Quit);
 #endif
+    recordDefaultShortcut(ui->actionExit);
 
     connect(ui->actionOpenFolderasWorkspace, &QAction::triggered, this, &MainWindow::openFolderAsWorkspaceDialog);
 
@@ -889,6 +897,7 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     // The action needs added to the window so it can be triggered via the keyboard
     addAction(ui->actionNextTab);
     ui->actionNextTab->setShortcuts(ui->actionNextTab->shortcuts() << QKeySequence(Qt::CTRL | Qt::Key_PageDown));
+    recordDefaultShortcut(ui->actionNextTab);
     connect(ui->actionNextTab, &QAction::triggered, this, [this]() {
         int index = dockedEditor->currentDockArea()->currentIndex();
         int total = dockedEditor->currentDockArea()->dockWidgetsCount();
@@ -900,6 +909,7 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     // The action needs added to the window so it can be triggered via the keyboard
     addAction(ui->actionPreviousTab);
     ui->actionPreviousTab->setShortcuts(ui->actionPreviousTab->shortcuts() << QKeySequence(Qt::CTRL | Qt::Key_PageUp));
+    recordDefaultShortcut(ui->actionPreviousTab);
     connect(ui->actionPreviousTab, &QAction::triggered, this, [this]() {
         int index = dockedEditor->currentDockArea()->currentIndex();
         int total = dockedEditor->currentDockArea()->dockWidgetsCount();
@@ -1165,6 +1175,7 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     connect(ui->actionAboutQt, &QAction::triggered, &QApplication::aboutQt);
 
     ui->actionAboutNotepadNext->setShortcut(QKeySequence::HelpContents);
+    recordDefaultShortcut(ui->actionAboutNotepadNext);
     connect(ui->actionAboutNotepadNext, &QAction::triggered, this, [this]() {
         QMessageBox::about(this, QString(),
                             QStringLiteral("<h3>%1 v%2 %3</h3>"
@@ -1394,6 +1405,33 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::recordDefaultShortcut(QAction *action)
+{
+    if (!action) return;
+
+    const QString objName = action->objectName();
+    if (objName.isEmpty()) return;
+
+    // Mirror ShortcutEditorDialog's actionKey()/keyFromObjectName() logic so
+    // the keys line up: strip a leading "action" prefix.
+    const QString key = objName.startsWith(QStringLiteral("action"))
+                             ? objName.mid(6)
+                             : objName;
+    if (key.isEmpty()) return;
+
+    m_defaultShortcuts[key] = action->shortcut();
+}
+
+void MainWindow::captureDefaultShortcuts()
+{
+    for (QAction *action : findChildren<QAction *>()) {
+        if (!action->objectName().startsWith(QStringLiteral("action"))) continue;
+        if (action->isSeparator()) continue;
+
+        recordDefaultShortcut(action);
+    }
 }
 
 void MainWindow::applyCustomShortcuts()
@@ -2836,18 +2874,24 @@ void MainWindow::openShortcutEditor()
         actions.append(a);
     }
 
-    ShortcutEditorDialog dlg(actions, this);
+    ShortcutEditorDialog dlg(actions, m_defaultShortcuts, this);
     if (dlg.exec() != QDialog::Accepted) return;
 
     // Persist changed shortcuts to ApplicationSettings
     ApplicationSettings *settings = app->getSettings();
     settings->beginGroup(QStringLiteral("Shortcuts"));
-    // Remove old custom shortcuts so resets are properly reflected
-    settings->remove(QString());
 
+    // Only touch keys that actually changed in this session. Previously this
+    // cleared the entire group with settings->remove(QString()) before
+    // rewriting it, which meant that simply opening the dialog and clicking
+    // OK without changing anything (an empty "changed" map) wiped out every
+    // previously saved custom shortcut.
     const auto changed = dlg.changedShortcuts();
     for (auto it = changed.cbegin(); it != changed.cend(); ++it) {
-        settings->setValue(it.key(), it.value().toString());
+        if (it.value().isEmpty())
+            settings->remove(it.key());
+        else
+            settings->setValue(it.key(), it.value().toString());
     }
     settings->endGroup();
 
