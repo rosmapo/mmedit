@@ -1,5 +1,6 @@
 * { font-size: 12pt; font-family: "Segoe UI"; }
 QMenuBar { font-size: 12pt; }
+QTreeView { font-size: 13pt; }
 
 /* Zmena oranžovej na modrú */
 ads--CDockWidgetTab[activeTab="true"] { border-top: 4px solid #4a9eff; }
