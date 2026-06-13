@@ -2315,6 +2315,11 @@
       <translation>Zobraziť čísla riadkov</translation>
     </message>
     <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
+      <source>Highlight Current Line</source>
+      <translation>Zvýrazniť aktuálny riadok</translation>
+    </message>
+    <message>
       <location filename="../src/dialogs/PreferencesDialog.ui" line="214"/>
       <location filename="../src/dialogs/PreferencesDialog.cpp" line="122"/>
       <source>Default Directory</source>

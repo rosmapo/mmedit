@@ -124,4 +124,5 @@ public:
     DEFINE_SETTING(TabWidth, tabWidth, int)
     DEFINE_SETTING(TrimTrailingWhitespaceOnSave, trimTrailingWhitespaceOnSave, bool)
     DEFINE_SETTING(DateTimeFormat, dateTimeFormat, QString)
+    DEFINE_SETTING(HighlightCurrentLine, highlightCurrentLine, bool)
 };

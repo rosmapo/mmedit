@@ -157,6 +157,12 @@ EditorManager::EditorManager(ApplicationSettings *settings, QObject *parent)
         }
     });
 
+    connect(settings, &ApplicationSettings::highlightCurrentLineChanged, this, [=](bool b) {
+        for (auto &editor : getEditors()) {
+            editor->setElementColour(SC_ELEMENT_CARET_LINE_BACK, b ? 0xFF151515 : 0xFF1E1E1E);
+        }
+    });
+
 }
 
 ScintillaNext *EditorManager::createEditor(const QString &name)
@@ -258,6 +264,7 @@ void EditorManager::setupEditor(ScintillaNext *editor)
 
     editor->setCaretLineVisible(true);
     editor->setCaretLineVisibleAlways(true);
+    editor->setCaretLineBack(settings->highlightCurrentLine() ? 0x2A2A3A : 0x1E1E1E);
     editor->setCaretWidth(2);
 
     editor->setEdgeColour(0x555555); // dark theme
@@ -273,7 +280,7 @@ void EditorManager::setupEditor(ScintillaNext *editor)
     editor->setElementColour(SC_ELEMENT_SELECTION_INACTIVE_BACK, 0xFF4A4A4A); // dark theme
     editor->setElementColour(SC_ELEMENT_CARET, 0xFFFFFFFF);           // dark theme: white caret
     editor->setElementColour(SC_ELEMENT_CARET_ADDITIONAL, 0xFFFFFFFF); // dark theme: white multi-caret
-    editor->setElementColour(SC_ELEMENT_CARET_LINE_BACK, 0xFF1E1E1E); // same as bg = no visible highlight
+    editor->setElementColour(SC_ELEMENT_CARET_LINE_BACK, settings->highlightCurrentLine() ? 0xFF151515 : 0xFF1E1E1E);
     editor->setElementColour(SC_ELEMENT_WHITE_SPACE, 0xFFE5C100); // vivid yellow – visible on dark bg
     // SC_ELEMENT_WHITE_SPACE_BACK
     // SC_ELEMENT_HOT_SPOT_ACTIVE

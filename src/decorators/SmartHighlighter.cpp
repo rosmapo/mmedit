@@ -30,9 +30,9 @@ SmartHighlighter::SmartHighlighter(ScintillaNext *editor) :
     indicator = editor->allocateIndicator("smart_highlighter");
 
     editor->indicSetFore(indicator, 0x00FF00);
-    editor->indicSetStyle(indicator, INDIC_ROUNDBOX);
-    editor->indicSetOutlineAlpha(indicator, 150);
-    editor->indicSetAlpha(indicator, 100);
+    editor->indicSetStyle(indicator, INDIC_STRAIGHTBOX);
+    editor->indicSetOutlineAlpha(indicator, 200);
+    editor->indicSetAlpha(indicator, 0);
     editor->indicSetUnder(indicator, true);
 }
 

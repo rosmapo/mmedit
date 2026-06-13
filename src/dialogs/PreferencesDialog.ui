@@ -216,6 +216,13 @@
         </widget>
 </item>
        <item>
+        <widget class="QCheckBox" name="checkBoxHighlightCurrentLine">
+         <property name="text">
+          <string>Highlight Current Line</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QGroupBox" name="groupBoxTabs">
          <property name="title">
           <string>Indentation</string>
