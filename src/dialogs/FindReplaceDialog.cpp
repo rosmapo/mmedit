@@ -789,6 +789,20 @@ void FindReplaceDialog::copyMarkedText()
 
 void FindReplaceDialog::showMessage(const QString &message, const QString &color)
 {
-    statusBar->setStyleSheet(QStringLiteral("color: %1").arg(color == "green" ? "#4EC94E" : color == "red" ? "#FF6B6B" : color == "blue" ? "#6AB0F5" : color));
+    // Detekuj či je téma tmavá alebo svetlá podľa jasu pozadia okna
+    const QColor bg = palette().color(QPalette::Window);
+    const bool dark = bg.lightness() < 128;
+
+    QString resolved;
+    if (color == "green")
+        resolved = dark ? "#4EC94E" : "#1a7a1a";
+    else if (color == "red")
+        resolved = dark ? "#FF6B6B" : "#b30000";
+    else if (color == "blue")
+        resolved = dark ? "#6AB0F5" : "#0055cc";
+    else
+        resolved = color;
+
+    statusBar->setStyleSheet(QStringLiteral("color: %1").arg(resolved));
     statusBar->showMessage(message);
 }

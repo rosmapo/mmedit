@@ -39,6 +39,7 @@ public:
 
     ScintillaNext *getEditorByFilePath(const QString &filePath);
 
+    void applyEditorColors(ScintillaNext *editor, bool dark) const;
     void manageEditor(ScintillaNext *editor);
 
 signals:

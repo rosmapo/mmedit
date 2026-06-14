@@ -182,6 +182,7 @@ private:
     void showSaveErrorMessage(ScintillaNext *editor, QFileDevice::FileError error);
     bool saveFileWithElevation(ScintillaNext *editor, const QString &filePath);
     void showEditorZoomLevelIndicator();
+    void applyDarkModeToAllEditors();
 
     enum class UserSaveAction { SaveAll, DiscardAll, Cancel };
     UserSaveAction promptForSave(const QVector<ScintillaNext *> &editors);

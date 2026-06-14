@@ -1396,6 +1396,15 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     });
     connect(app->getSettings(), &ApplicationSettings::showToolBarChanged, ui->mainToolBar, &QToolBar::setVisible);
     connect(app->getSettings(), &ApplicationSettings::showStatusBarChanged, ui->statusBar, &QStatusBar::setVisible);
+
+    ui->actionDarkMode->setChecked(app->getSettings()->darkMode());
+    connect(app->getSettings(), &ApplicationSettings::darkModeChanged, this, [this](bool dark) {
+        ui->actionDarkMode->setChecked(dark);
+        applyDarkModeToAllEditors();
+    });
+    connect(ui->actionDarkMode, &QAction::triggered, this, [this, app](bool checked) {
+        app->getSettings()->setDarkMode(checked);
+    });
     connect(ui->statusBar, &EditorInfoStatusBar::customContextMenuRequestedForEOLLabel, this, [this](const QPoint &pos){
         ui->menuEOLConversion->popup(pos);
     });
@@ -2349,6 +2358,15 @@ void MainWindow::setLanguage(ScintillaNext *editor, const QString &languageName)
     qInfo("Language Name: %s", qUtf8Printable(languageName));
 
     app->setEditorLanguage(editor, languageName);
+}
+
+void MainWindow::applyDarkModeToAllEditors()
+{
+    qInfo(Q_FUNC_INFO);
+
+    for (auto *editor : editors()) {
+        app->applyEditorTheme(editor);
+    }
 }
 
 void MainWindow::bringWindowToForeground()

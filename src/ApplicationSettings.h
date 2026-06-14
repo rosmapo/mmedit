@@ -108,6 +108,8 @@ public:
 
     DEFINE_SETTING(Translation, translation, QString)
 
+    DEFINE_SETTING(DarkMode, darkMode, bool)
+
     DEFINE_SETTING(ShowWhitespace, showWhitespace, bool);
     DEFINE_SETTING(ShowEndOfLine, showEndOfLine, bool);
     DEFINE_SETTING(ShowWrapSymbol, showWrapSymbol, bool)

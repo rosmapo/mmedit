@@ -1,28 +1,20 @@
-* { font-size: 12pt; font-family: "Segoe UI"; }
-QMenuBar { font-size: 12pt; }
-QTreeView { font-size: 13pt; }
+/* custom.css – používateľské úpravy pre mmedit
+ * Toto je príklad; upravte podľa potreby.
+ * Farby NIE sú hardcoded – téma pochádza z qt6ct/Kvantum.
+ */
 
-/* Zmena oranžovej na modrú */
+/* Príklad: globálny font (odkomentujte ak chcete) */
+/* * { font-size: 12pt; font-family: "Noto Sans"; } */
+/* QMenuBar { font-size: 12pt; } */
+QTreeView { font-size: 12.5pt; }
+
+
+/* Príklad: vlastná farba akcentu pre aktívny tab */
 ads--CDockWidgetTab[activeTab="true"] { border-top: 4px solid #4a9eff; }
-ads--CDockWidgetTab[focused="true"]   { border-top: 4px solid #82cfff; }
+/* ads--CDockWidgetTab[focused="true"]   { border-top: 4px solid #82cfff; } */
 #QuickFindWidget                      { border-bottom: 3px solid #4a9eff; }
 
-/* Úplné skrytie vertikálneho posúvača */
-/*QScrollBar:vertical {
-/*    width: 0px;
-/*    background: transparent;
-/*}
-
-/* Skrytie sub-elementov posúvača pre istotu */
-QScrollBar::handle:vertical,
-QScrollBar::add-line:vertical,
-QScrollBar::sub-line:vertical {
-    height: 0px;
-    background: transparent;
-    border: none;
-}
-
-/* Skrytie close button na záložke */
+/* Skrytie close button na záložke (odkomentujte ak chcete) */
 #tabCloseButton,
 #tabCloseButton:hover,
 #tabCloseButton:pressed {
@@ -37,3 +29,4 @@ QScrollBar::sub-line:vertical {
     padding: 0px;
     margin: 0px;
 }
+

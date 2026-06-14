@@ -1,75 +1,71 @@
-QStatusBar {
-    border-top: 1px solid #1e1e1e;
-    background: #2b2b2b;
-    color: #aaaaaa;
-}
+/*
+ * npp.css – minimálny stylesheet pre mmedit.
+ * Používa Qt palette() farby, takže rešpektuje qt6ct/Kvantum tému.
+ * Hardcoded farby sú zámerne vynechané.
+ */
 
-QStatusBar::item {
-    border: none;
-}
-
-QStatusBar QLabel {
-    color: #aaaaaa;
-    padding: 0px 4px;
-}
-
-/* --- Taby dokumentov --- */
-ads--CDockWidgetTab ads--CElidingLabel {
-    color: #aaaaaa;
-}
+/* --- ADS taby dokumentov --- */
+/* Bez explicitného CSS by ADS zobrazoval prázdne biele taby ignorujúc tému. */
+/* Používame palette() referencie, ktoré Qt6 správne interpoluje zo systémovej palety. */
 
 ads--CDockWidgetTab {
-    background: #3c3c3c;
+    background: palette(button);
     margin-top: 2px;
-    border-left: 1px solid #555555;
-    border-top: 2px solid #555555;
-    border-right: 2px solid #1e1e1e;
+    border-left: 1px solid palette(mid);
+    border-top: 2px solid palette(mid);
+    border-right: 1px solid palette(shadow);
     padding: 2px 2px 0px 2px;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
 }
 
-ads--CDockWidgetTab[activeTab="true"]
-{
-    background: #2b2b2b;
-    border-top: 4px solid #0078d4;
+ads--CDockWidgetTab ads--CElidingLabel {
+    color: palette(button-text);
+}
+
+ads--CDockWidgetTab[activeTab="true"] {
+    background: palette(window);
+    border-top: 4px solid palette(highlight);
     padding-bottom: 2px;
     margin-top: 1px;
 }
 
 ads--CDockWidgetTab[activeTab="true"] ads--CElidingLabel {
-    color: #d4d4d4;
+    color: palette(window-text);
 }
 
-ads--CDockWidgetTab[focused="true"]
-{
-    background: #2b2b2b;
-    border-top: 4px solid #ff8c00;
+ads--CDockWidgetTab[focused="true"] {
+    background: palette(window);
+    border-top: 4px solid palette(highlight);
     padding-bottom: 2px;
     margin-top: 1px;
 }
 
 ads--CDockWidgetTab[focused="true"] ads--CElidingLabel {
-    color: #d4d4d4;
+    color: palette(window-text);
 }
 
 ads--CDockWidgetTab:hover[activeTab="false"] {
-    background: #484848;
+    background: palette(midlight);
 }
 
-ads--CDockAreaTitleBar
-{
-    background: #3c3c3c;
-    border-bottom: 1px solid #1e1e1e;
-    padding-bottom: 0px;
+/* Neaktívny tab – text musí byť čitateľný na palette(button) pozadí */
+ads--CDockWidgetTab[activeTab="false"] ads--CElidingLabel {
+    color: palette(button-text);
 }
 
 ads--CDockWidgetTab[activeTab="false"] QLabel {
-    color: #888888;
+    color: palette(button-text);
 }
 
-#tabCloseButton
-{
+ads--CDockAreaTitleBar {
+    background: palette(button);
+    border-bottom: 1px solid palette(shadow);
+    padding-bottom: 0px;
+}
+
+/* --- Tab close button --- */
+#tabCloseButton {
     background: transparent;
     margin-bottom: 1px;
     margin-left: 2px;
@@ -79,26 +75,34 @@ ads--CDockWidgetTab[activeTab="false"] QLabel {
     max-height: 16px;
     min-width: 14px;
     min-height: 14px;
-    color: #888888;
+    color: palette(button-text);
     qproperty-iconSize: 12px;
 }
 
-#tabCloseButton:hover
-{
-    border: 1px solid #666666;
+#tabCloseButton:hover {
+    border: 1px solid palette(mid);
     border-radius: 2px;
-    background-color: #c0392b;
-    color: #ffffff;
+    background-color: palette(highlight);
+    color: palette(highlighted-text);
 }
 
-#tabCloseButton:pressed
-{
-    background: #e74c3c;
+#tabCloseButton:pressed {
+    background: palette(dark);
 }
 
+/* --- QuickFind widget --- */
 #QuickFindWidget {
-    border-left: 1px solid #555555;
-    border-right: 1px solid #555555;
-    border-bottom: 3px solid #0078d4;
-    background: #3c3c3c;
+    border-left: 1px solid palette(mid);
+    border-right: 1px solid palette(mid);
+    border-bottom: 3px solid palette(highlight);
+    background: palette(window);
+}
+
+/* --- Status bar --- */
+QStatusBar {
+    border-top: 1px solid palette(shadow);
+}
+
+QStatusBar::item {
+    border: none;
 }

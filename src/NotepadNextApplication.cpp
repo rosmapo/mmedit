@@ -153,6 +153,7 @@ bool NotepadNextApplication::init()
     mad->setEnabled(true);
 
     luaState->executeFile(":/scripts/init.lua");
+    luaState->setVariable("dark_mode", getSettings()->darkMode());
     LuaExtension::Instance().Initialise(luaState->L, Q_NULLPTR);
 
     createNewWindow();
@@ -296,8 +297,35 @@ void NotepadNextApplication::setEditorLanguage(ScintillaNext *editor, const QStr
 
     getLuaState()->setVariable("skip_tabs", skipTabs);
     getLuaState()->setVariable("skip_tabwidth", skipTabWidth);
+    getLuaState()->setVariable("dark_mode", getSettings()->darkMode());
 
     getLuaState()->execute("SetLanguage(languageName)");
+}
+
+void NotepadNextApplication::applyEditorTheme(ScintillaNext *editor) const
+{
+    LuaExtension::Instance().setEditor(editor);
+
+    const bool dark = getSettings()->darkMode();
+    getLuaState()->setVariable("dark_mode", dark);
+
+    // Re-running SetLanguage() is the simplest way to get every style
+    // (and STYLE_DEFAULT/line number margin via ApplyTheme()) remapped
+    // to the new theme's palette.
+    getLuaState()->setVariable("languageName", editor->languageName);
+
+    bool skipTabs = editor->QObject::property("nn_skip_usetabs").isValid();
+    bool skipTabWidth = editor->QObject::property("nn_skip_tabwidth").isValid();
+
+    getLuaState()->setVariable("skip_tabs", skipTabs);
+    getLuaState()->setVariable("skip_tabwidth", skipTabWidth);
+
+    getLuaState()->execute("SetLanguage(languageName)");
+
+    // Lua's SetLanguage() only covers Scintilla style slots 0-255.
+    // Fold margin, element colors, markers and base styles are outside
+    // that system and must be updated separately on every theme switch.
+    getEditorManager()->applyEditorColors(editor, dark);
 }
 
 QString NotepadNextApplication::detectLanguage(ScintillaNext *editor) const
@@ -511,3 +539,4 @@ QStringList NotepadNextApplication::debugInfo() const
 
     return info;
 }
+

@@ -348,6 +348,7 @@
     <addaction name="actionPreferences"/>
     <addaction name="actionShortcutEditor"/>
     <addaction name="separator"/>
+    <addaction name="actionDarkMode"/>
    </widget>
    <widget class="QMenu" name="menuMacro">
     <property name="title">
@@ -1055,6 +1056,14 @@
    </property>
    <property name="shortcut">
     <string>Alt+M</string>
+   </property>
+  </action>
+  <action name="actionDarkMode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Dark Mode</string>
    </property>
   </action>
   <action name="actionMacroRecording">

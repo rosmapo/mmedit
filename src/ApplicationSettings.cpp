@@ -70,6 +70,8 @@ CREATE_SETTING(App, DefaultDirectory, defaultDirectory, QString, QString())
 
 CREATE_SETTING(App, Translation, translation, QString, QStringLiteral(""))
 
+CREATE_SETTING(App, DarkMode, darkMode, bool, true)
+
 CREATE_SETTING(Editor, ShowWhitespace, showWhitespace, bool, false);
 CREATE_SETTING(Editor, ShowEndOfLine, showEndOfLine, bool, false);
 CREATE_SETTING(Editor, ShowWrapSymbol, showWrapSymbol, bool, false);

@@ -24,8 +24,14 @@ protected:
         QRect vr = panel->viewportRect();
         if (!vr.isValid() || vr.height() < 2) return;
         QPainter p(this);
-        p.fillRect(vr, QColor(255, 255, 255, 45));
-        p.setPen(QColor(255, 255, 255, 140));
+        // Použiť highlight farbu z palety – funguje pre dark aj light tému
+        QColor hl = palette().color(QPalette::Highlight);
+        QColor fill = hl;
+        fill.setAlpha(55);
+        QColor border = hl;
+        border.setAlpha(180);
+        p.fillRect(vr, fill);
+        p.setPen(border);
         p.drawLine(0, vr.top(),    width()-1, vr.top());
         p.drawLine(0, vr.bottom(), width()-1, vr.bottom());
     }

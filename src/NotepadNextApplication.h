@@ -59,6 +59,7 @@ public:
 
     QStringList getLanguages() const;
     void setEditorLanguage(ScintillaNext *editor, const QString &languageName) const;
+    void applyEditorTheme(ScintillaNext *editor) const;
 
     QString detectLanguage(ScintillaNext *editor) const;
     QString detectLanguageFromExtension(const QString &extension) const;
