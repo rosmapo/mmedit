@@ -16,6 +16,7 @@ class MinimapPanel : public QWidget
 public:
     explicit MinimapPanel(QWidget *parent = nullptr);
     void setEditor(ScintillaNext *editor);
+    void refreshStyles();
 
     QSize sizeHint() const override { return QSize(120, 0); }
     QSize minimumSizeHint() const override { return QSize(80, 0); }

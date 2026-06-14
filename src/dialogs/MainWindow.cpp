@@ -1283,7 +1283,7 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         mb.exec();
     });
 
-    tabsQuickActionsBar = new TabsQuickActionsBar(ui->menuBar);
+    tabsQuickActionsBar = new TabsQuickActionsBar(TabsQuickActionsBar::ShowTabsMenu, ui->menuBar);
     ui->menuBar->setCornerWidget(tabsQuickActionsBar, Qt::TopRightCorner);
     connect(tabsQuickActionsBar, &TabsQuickActionsBar::createNewTabClicked, this, &MainWindow::newFile);
     connect(tabsQuickActionsBar, &TabsQuickActionsBar::closeCurrentTabClicked, this, &MainWindow::closeCurrentFile);
@@ -1398,9 +1398,10 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     connect(app->getSettings(), &ApplicationSettings::showStatusBarChanged, ui->statusBar, &QStatusBar::setVisible);
 
     ui->actionDarkMode->setChecked(app->getSettings()->darkMode());
-    connect(app->getSettings(), &ApplicationSettings::darkModeChanged, this, [this](bool dark) {
+    connect(app->getSettings(), &ApplicationSettings::darkModeChanged, this, [this, minimapPanel](bool dark) {
         ui->actionDarkMode->setChecked(dark);
         applyDarkModeToAllEditors();
+        minimapPanel->refreshStyles();
     });
     connect(ui->actionDarkMode, &QAction::triggered, this, [this, app](bool checked) {
         app->getSettings()->setDarkMode(checked);

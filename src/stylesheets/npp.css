@@ -5,9 +5,6 @@
  */
 
 /* --- ADS taby dokumentov --- */
-/* Bez explicitného CSS by ADS zobrazoval prázdne biele taby ignorujúc tému. */
-/* Používame palette() referencie, ktoré Qt6 správne interpoluje zo systémovej palety. */
-
 ads--CDockWidgetTab {
     background: palette(button);
     margin-top: 2px;
@@ -49,7 +46,6 @@ ads--CDockWidgetTab:hover[activeTab="false"] {
     background: palette(midlight);
 }
 
-/* Neaktívny tab – text musí byť čitateľný na palette(button) pozadí */
 ads--CDockWidgetTab[activeTab="false"] ads--CElidingLabel {
     color: palette(button-text);
 }
@@ -62,6 +58,26 @@ ads--CDockAreaTitleBar {
     background: palette(button);
     border-bottom: 1px solid palette(shadow);
     padding-bottom: 0px;
+}
+
+/* --- TabsQuickActionsBar – tlačidlo zoznamu záložiek --- */
+TabsQuickActionsBar QToolButton {
+    background: transparent;
+    border: none;
+    padding: 0px 4px;
+    color: palette(button-text);
+    font-size: 13px;
+    qproperty-iconSize: 14px;
+}
+
+TabsQuickActionsBar QToolButton:hover {
+    background: palette(midlight);
+    border: 1px solid palette(mid);
+    border-radius: 2px;
+}
+
+TabsQuickActionsBar QToolButton:pressed {
+    background: palette(dark);
 }
 
 /* --- Tab close button --- */

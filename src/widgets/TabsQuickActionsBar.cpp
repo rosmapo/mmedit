@@ -26,30 +26,21 @@
 
 #include "TabsQuickActionsBar.h"
 
-namespace
-{
-    constexpr QLatin1StringView IconPlusPath(":/icons/plus.svg");
-    constexpr QLatin1StringView IconListPath(":/icons/list_with_icons.svg");
-    constexpr QLatin1StringView IconCrossPath(":/icons/cross.svg");
-}
-
 TabsQuickActionsBar::TabsQuickActionsBar(const Buttons &visibileButtons, QWidget *parent)
     : QToolBar(parent)
 {
-    createNewTabAction = addAction(QIcon(IconPlusPath), "");
+    createNewTabAction = addAction(QIcon(), "");
     createNewTabAction->setToolTip(tr("Create a new file"));
 
-    showTabsMenuAction = addAction(QIcon(IconListPath), "");
+    showTabsMenuAction = addAction(QIcon(), "▾");
     showTabsMenuAction->setToolTip(tr("Show opened files list"));
 
     const auto tabsMenu = new QMenu(this);
     showTabsMenuAction->setMenu(tabsMenu);
 
-    closeCurrentTabAction = addAction(QIcon(IconCrossPath), "");
+    closeCurrentTabAction = addAction(QIcon(), "");
     closeCurrentTabAction->setToolTip(tr("Close the current file"));
 
-    const auto iconSize = qApp->style()->pixelMetric(QStyle::PM_SmallIconSize);
-    setIconSize({ iconSize, iconSize });
     setStyleSheet(
         "QToolBar { padding: 0px; margin: 0px; }"
         "QToolButton::menu-indicator { image: none; }"

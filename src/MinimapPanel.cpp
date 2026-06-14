@@ -128,6 +128,11 @@ void MinimapPanel::syncStyles()
     map->colourise(0, -1);
 }
 
+void MinimapPanel::refreshStyles()
+{
+    syncStyles();
+}
+
 void MinimapPanel::syncFromEditor()
 {
     if (!mainEditor || syncing) return;
