@@ -24,7 +24,6 @@ protected:
         QRect vr = panel->viewportRect();
         if (!vr.isValid() || vr.height() < 2) return;
         QPainter p(this);
-        // Použiť highlight farbu z palety – funguje pre dark aj light tému
         QColor hl = palette().color(QPalette::Highlight);
         QColor fill = hl;
         fill.setAlpha(55);
@@ -138,21 +137,25 @@ void MinimapPanel::syncFromEditor()
     if (!mainEditor || syncing) return;
     syncing = true;
 
+    int tl            = (int)mainEditor->lineCount();
     int editorFirst   = (int)mainEditor->firstVisibleLine();
     int editorVisible = (int)mainEditor->linesOnScreen();
     int mapVisible    = (int)map->linesOnScreen();
-    int tl            = (int)mainEditor->lineCount();
 
-    // Center map around editor's visible area
-    int mapFirst = editorFirst + editorVisible / 2 - mapVisible / 2;
-    mapFirst = qBound(0, mapFirst, qMax(0, tl - mapVisible));
+    // Proporcionálny scroll: rovnaký pomer ako editor voči celému dokumentu
+    int mapFirst = 0;
+    if (tl > mapVisible) {
+        double ratio = (double)editorFirst / qMax(1, tl - editorVisible);
+        mapFirst = (int)(ratio * qMax(0, tl - mapVisible));
+        mapFirst = qBound(0, mapFirst, qMax(0, tl - mapVisible));
+    }
     map->setFirstVisibleLine(mapFirst);
 
     overlay->update();
     syncing = false;
 }
 
-// ── Viewport rect — relative to map scroll position ──────────────────────────
+// ── Viewport rect — relatívne k scroll pozícii minimapy ──────────────────────
 QRect MinimapPanel::viewportRect() const
 {
     if (!mainEditor) return QRect();
@@ -161,7 +164,7 @@ QRect MinimapPanel::viewportRect() const
     int mapVisible    = (int)map->linesOnScreen();
     int editorFirst   = (int)mainEditor->firstVisibleLine();
     int editorVisible = (int)mainEditor->linesOnScreen();
-    int h = height();
+    int h             = height();
     if (mapVisible <= 0) return QRect();
 
     double lineH = (double)h / mapVisible;
