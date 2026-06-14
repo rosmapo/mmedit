@@ -855,6 +855,11 @@
       <translation>Klávesové skratky</translation>
     </message>
     <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1066"/>
+      <source>Dark Mode</source>
+      <translation>Tmavá téma</translation>
+    </message>
+    <message>
       <location filename="../src/dialogs/MainWindow.ui" line="326"/>
       <source>Macro</source>
       <translation>Makro</translation>
