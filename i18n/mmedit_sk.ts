@@ -1151,6 +1151,16 @@
       <translation>Previesť text — veľké písmeno na začiatku vety</translation>
     </message>
     <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1"/>
+      <source>iNVERT cASE</source>
+      <translation>iNVERTOVAŤ vEĽKOSŤ</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1"/>
+      <source>Invert case of each character</source>
+      <translation>Invertovať veľkosť každého znaku</translation>
+    </message>
+    <message>
       <location filename="../src/dialogs/MainWindow.ui" line="683"/>
       <source>Duplicate Current Line</source>
       <translation>Duplikovať aktuálny riadok</translation>

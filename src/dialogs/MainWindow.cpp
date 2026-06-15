@@ -507,6 +507,19 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         editor->replaceSel(text.toUtf8().constData());
     });
 
+    connect(ui->actionInvertCase, &QAction::triggered, this, [this]() {
+        ScintillaNext *editor = currentEditor();
+        if (!editor) return;
+        QString text = QString::fromUtf8(editor->getSelText());
+        for (QChar &c : text) {
+            if (c.isUpper())
+                c = c.toLower();
+            else if (c.isLower())
+                c = c.toUpper();
+        }
+        editor->replaceSel(text.toUtf8().constData());
+    });
+
     connectEditorAction(ui->actionDuplicateCurrentLine, &ScintillaNext::lineDuplicate);
     connectEditorAction(ui->actionMoveSelectedLinesUp, &ScintillaNext::moveSelectedLinesUp);
     connectEditorAction(ui->actionMoveSelectedLinesDown, &ScintillaNext::moveSelectedLinesDown);
@@ -1415,7 +1428,17 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     minimapDock->setMaximumWidth(130);
     minimapDock->setMinimumWidth(80);
     addDockWidget(Qt::RightDockWidgetArea, minimapDock);
-    ui->menuView->addAction(minimapDock->toggleViewAction());
+    QAction *actionToggleMinimap = new QAction(tr("Toggle Minimap"), this);
+	actionToggleMinimap->setObjectName("actionToggleMinimap");
+	actionToggleMinimap->setCheckable(true);
+	actionToggleMinimap->setChecked(!minimapDock->isHidden());
+	actionToggleMinimap->setShortcut(QKeySequence(Qt::Key_F12));
+	actionToggleMinimap->setShortcutContext(Qt::WindowShortcut);
+	connect(actionToggleMinimap, &QAction::triggered, minimapDock, &QDockWidget::setVisible);
+	connect(minimapDock, &QDockWidget::visibilityChanged, actionToggleMinimap, &QAction::setChecked);
+	addAction(actionToggleMinimap);           // registruje skratku na okno
+	ui->menuView->addAction(actionToggleMinimap);
+	recordDefaultShortcut(actionToggleMinimap); // zapíše default pre editor skratiek
 
     // Connect minimap to editor switching
     connect(dockedEditor, &DockedEditor::editorActivated, this, [minimapPanel](ScintillaNext *editor) {
@@ -2340,6 +2363,7 @@ void MainWindow::updateContentBasedUi(ScintillaNext *editor)
     ui->actionUpperCase->setEnabled(hasAnySelections);
     ui->actionTitleCase->setEnabled(hasAnySelections);
     ui->actionSentenceCase->setEnabled(hasAnySelections);
+	ui->actionInvertCase->setEnabled(hasAnySelections);
 
     ui->actionBase64Encode->setEnabled(hasAnySelections);
     ui->actionURLEncode->setEnabled(hasAnySelections);

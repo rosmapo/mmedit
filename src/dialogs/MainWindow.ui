@@ -134,6 +134,7 @@
      <addaction name="actionLowerCase"/>
      <addaction name="actionTitleCase"/>
      <addaction name="actionSentenceCase"/>
+     <addaction name="actionInvertCase"/>
     </widget>
     <widget class="QMenu" name="menuLine_Operations">
      <property name="title">
@@ -879,6 +880,14 @@
    </property>
    <property name="toolTip">
     <string>Convert text to sentence case</string>
+   </property>
+  </action>
+  <action name="actionInvertCase">
+   <property name="text">
+    <string>iNVERT cASE</string>
+   </property>
+   <property name="toolTip">
+    <string>Invert case of each character</string>
    </property>
   </action>
   <action name="actionDuplicateCurrentLine">
