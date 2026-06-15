@@ -14,6 +14,13 @@ ads--CDockWidgetTab[activeTab="true"] { border-top: 4px solid #4a9eff; }
 /* ads--CDockWidgetTab[focused="true"]   { border-top: 4px solid #82cfff; } */
 #QuickFindWidget                      { border-bottom: 3px solid #4a9eff; }
 
+/* Úplné skrytie vertikálneho posúvača
+QScrollBar:vertical {
+    width: 0px;
+    background: transparent;
+}
+*/
+
 /* Skrytie close button na záložke (odkomentujte ak chcete) */
 #tabCloseButton,
 #tabCloseButton:hover,
