@@ -387,12 +387,59 @@
      <addaction name="actionEncSetUTF16LEno"/>
      <addaction name="actionEncSetUTF16BEno"/>
      <addaction name="separator"/>
-     <addaction name="actionEncSetISO88591"/>
-     <addaction name="actionEncSetISO88592"/>
-     <addaction name="actionEncSetWin1250"/>
-     <addaction name="actionEncSetWin1251"/>
-     <addaction name="actionEncSetWin1252"/>
-     <addaction name="actionEncSetKOI8R"/>
+     <widget class="QMenu" name="menuSetEncWestern">
+      <property name="title"><string>Western Europe</string></property>
+      <addaction name="actionEncSetISO88591"/>
+      <addaction name="actionEncSetISO885915"/>
+      <addaction name="actionEncSetWin1252"/>
+     </widget>
+     <widget class="QMenu" name="menuSetEncCentral">
+      <property name="title"><string>Central Europe</string></property>
+      <addaction name="actionEncSetISO88592"/>
+      <addaction name="actionEncSetISO885916"/>
+      <addaction name="actionEncSetWin1250"/>
+     </widget>
+     <widget class="QMenu" name="menuSetEncBaltic">
+      <property name="title"><string>Baltic</string></property>
+      <addaction name="actionEncSetISO88594"/>
+      <addaction name="actionEncSetISO885913"/>
+      <addaction name="actionEncSetWin1257"/>
+     </widget>
+     <widget class="QMenu" name="menuSetEncCyrillic">
+      <property name="title"><string>Cyrillic</string></property>
+      <addaction name="actionEncSetISO88595"/>
+      <addaction name="actionEncSetKOI8R"/>
+      <addaction name="actionEncSetKOI8U"/>
+      <addaction name="actionEncSetWin1251"/>
+     </widget>
+     <widget class="QMenu" name="menuSetEncGreek">
+      <property name="title"><string>Greek</string></property>
+      <addaction name="actionEncSetISO88597"/>
+      <addaction name="actionEncSetWin1253"/>
+     </widget>
+     <widget class="QMenu" name="menuSetEncTurkish">
+      <property name="title"><string>Turkish</string></property>
+      <addaction name="actionEncSetISO88599"/>
+      <addaction name="actionEncSetWin1254"/>
+     </widget>
+     <widget class="QMenu" name="menuSetEncHebrew">
+      <property name="title"><string>Hebrew</string></property>
+      <addaction name="actionEncSetISO88598"/>
+      <addaction name="actionEncSetWin1255"/>
+     </widget>
+     <widget class="QMenu" name="menuSetEncArabic">
+      <property name="title"><string>Arabic</string></property>
+      <addaction name="actionEncSetISO88596"/>
+      <addaction name="actionEncSetWin1256"/>
+     </widget>
+     <addaction name="menuSetEncWestern"/>
+     <addaction name="menuSetEncCentral"/>
+     <addaction name="menuSetEncBaltic"/>
+     <addaction name="menuSetEncCyrillic"/>
+     <addaction name="menuSetEncGreek"/>
+     <addaction name="menuSetEncTurkish"/>
+     <addaction name="menuSetEncHebrew"/>
+     <addaction name="menuSetEncArabic"/>
     </widget>
     <widget class="QMenu" name="menuConvertEncoding">
      <property name="title">
@@ -405,12 +452,59 @@
      <addaction name="actionEncConvUTF16LEno"/>
      <addaction name="actionEncConvUTF16BEno"/>
      <addaction name="separator"/>
-     <addaction name="actionEncConvISO88591"/>
-     <addaction name="actionEncConvISO88592"/>
-     <addaction name="actionEncConvWin1250"/>
-     <addaction name="actionEncConvWin1251"/>
-     <addaction name="actionEncConvWin1252"/>
-     <addaction name="actionEncConvKOI8R"/>
+     <widget class="QMenu" name="menuConvEncWestern">
+      <property name="title"><string>Western Europe</string></property>
+      <addaction name="actionEncConvISO88591"/>
+      <addaction name="actionEncConvISO885915"/>
+      <addaction name="actionEncConvWin1252"/>
+     </widget>
+     <widget class="QMenu" name="menuConvEncCentral">
+      <property name="title"><string>Central Europe</string></property>
+      <addaction name="actionEncConvISO88592"/>
+      <addaction name="actionEncConvISO885916"/>
+      <addaction name="actionEncConvWin1250"/>
+     </widget>
+     <widget class="QMenu" name="menuConvEncBaltic">
+      <property name="title"><string>Baltic</string></property>
+      <addaction name="actionEncConvISO88594"/>
+      <addaction name="actionEncConvISO885913"/>
+      <addaction name="actionEncConvWin1257"/>
+     </widget>
+     <widget class="QMenu" name="menuConvEncCyrillic">
+      <property name="title"><string>Cyrillic</string></property>
+      <addaction name="actionEncConvISO88595"/>
+      <addaction name="actionEncConvKOI8R"/>
+      <addaction name="actionEncConvKOI8U"/>
+      <addaction name="actionEncConvWin1251"/>
+     </widget>
+     <widget class="QMenu" name="menuConvEncGreek">
+      <property name="title"><string>Greek</string></property>
+      <addaction name="actionEncConvISO88597"/>
+      <addaction name="actionEncConvWin1253"/>
+     </widget>
+     <widget class="QMenu" name="menuConvEncTurkish">
+      <property name="title"><string>Turkish</string></property>
+      <addaction name="actionEncConvISO88599"/>
+      <addaction name="actionEncConvWin1254"/>
+     </widget>
+     <widget class="QMenu" name="menuConvEncHebrew">
+      <property name="title"><string>Hebrew</string></property>
+      <addaction name="actionEncConvISO88598"/>
+      <addaction name="actionEncConvWin1255"/>
+     </widget>
+     <widget class="QMenu" name="menuConvEncArabic">
+      <property name="title"><string>Arabic</string></property>
+      <addaction name="actionEncConvISO88596"/>
+      <addaction name="actionEncConvWin1256"/>
+     </widget>
+     <addaction name="menuConvEncWestern"/>
+     <addaction name="menuConvEncCentral"/>
+     <addaction name="menuConvEncBaltic"/>
+     <addaction name="menuConvEncCyrillic"/>
+     <addaction name="menuConvEncGreek"/>
+     <addaction name="menuConvEncTurkish"/>
+     <addaction name="menuConvEncHebrew"/>
+     <addaction name="menuConvEncArabic"/>
     </widget>
     <addaction name="menuSetEncoding"/>
     <addaction name="menuConvertEncoding"/>
@@ -1246,24 +1340,54 @@
   <action name="actionEncSetUTF16LEno"><property name="text"><string>UTF-16 LE</string></property></action>
   <action name="actionEncSetUTF16BE"><property name="text"><string>UTF-16 BE BOM</string></property></action>
   <action name="actionEncSetUTF16BEno"><property name="text"><string>UTF-16 BE</string></property></action>
-  <action name="actionEncSetISO88591"><property name="text"><string>ISO-8859-1 (Latin-1 Western)</string></property></action>
-  <action name="actionEncSetISO88592"><property name="text"><string>ISO-8859-2 (Latin-2 Central)</string></property></action>
-  <action name="actionEncSetWin1250"><property name="text"><string>Windows-1250 (Central European)</string></property></action>
-  <action name="actionEncSetWin1251"><property name="text"><string>Windows-1251 (Cyrillic)</string></property></action>
-  <action name="actionEncSetWin1252"><property name="text"><string>Windows-1252 (Western European)</string></property></action>
-  <action name="actionEncSetKOI8R"><property name="text"><string>KOI8-R (Russian)</string></property></action>
+  <action name="actionEncSetISO88591"><property name="text"><string>ISO-8859-1</string></property></action>
+  <action name="actionEncSetISO885915"><property name="text"><string>ISO-8859-15</string></property></action>
+  <action name="actionEncSetWin1252"><property name="text"><string>Windows-1252</string></property></action>
+  <action name="actionEncSetISO88592"><property name="text"><string>ISO-8859-2</string></property></action>
+  <action name="actionEncSetISO885916"><property name="text"><string>ISO-8859-16</string></property></action>
+  <action name="actionEncSetWin1250"><property name="text"><string>Windows-1250</string></property></action>
+  <action name="actionEncSetISO88594"><property name="text"><string>ISO-8859-4</string></property></action>
+  <action name="actionEncSetISO885913"><property name="text"><string>ISO-8859-13</string></property></action>
+  <action name="actionEncSetWin1257"><property name="text"><string>Windows-1257</string></property></action>
+  <action name="actionEncSetISO88595"><property name="text"><string>ISO-8859-5</string></property></action>
+  <action name="actionEncSetKOI8R"><property name="text"><string>KOI8-R</string></property></action>
+  <action name="actionEncSetKOI8U"><property name="text"><string>KOI8-U</string></property></action>
+  <action name="actionEncSetWin1251"><property name="text"><string>Windows-1251</string></property></action>
+  <action name="actionEncSetISO88597"><property name="text"><string>ISO-8859-7</string></property></action>
+  <action name="actionEncSetWin1253"><property name="text"><string>Windows-1253</string></property></action>
+  <action name="actionEncSetISO88599"><property name="text"><string>ISO-8859-9</string></property></action>
+  <action name="actionEncSetWin1254"><property name="text"><string>Windows-1254</string></property></action>
+  <action name="actionEncSetISO88598"><property name="text"><string>ISO-8859-8</string></property></action>
+  <action name="actionEncSetWin1255"><property name="text"><string>Windows-1255</string></property></action>
+  <action name="actionEncSetISO88596"><property name="text"><string>ISO-8859-6</string></property></action>
+  <action name="actionEncSetWin1256"><property name="text"><string>Windows-1256</string></property></action>
   <action name="actionEncConvUTF8"><property name="text"><string>UTF-8</string></property></action>
   <action name="actionEncConvUTF8BOM"><property name="text"><string>UTF-8 BOM</string></property></action>
   <action name="actionEncConvUTF16LE"><property name="text"><string>UTF-16 LE BOM</string></property></action>
   <action name="actionEncConvUTF16LEno"><property name="text"><string>UTF-16 LE</string></property></action>
   <action name="actionEncConvUTF16BE"><property name="text"><string>UTF-16 BE BOM</string></property></action>
   <action name="actionEncConvUTF16BEno"><property name="text"><string>UTF-16 BE</string></property></action>
-  <action name="actionEncConvISO88591"><property name="text"><string>ISO-8859-1 (Latin-1 Western)</string></property></action>
-  <action name="actionEncConvISO88592"><property name="text"><string>ISO-8859-2 (Latin-2 Central)</string></property></action>
-  <action name="actionEncConvWin1250"><property name="text"><string>Windows-1250 (Central European)</string></property></action>
-  <action name="actionEncConvWin1251"><property name="text"><string>Windows-1251 (Cyrillic)</string></property></action>
-  <action name="actionEncConvWin1252"><property name="text"><string>Windows-1252 (Western European)</string></property></action>
-  <action name="actionEncConvKOI8R"><property name="text"><string>KOI8-R (Russian)</string></property></action>
+  <action name="actionEncConvISO88591"><property name="text"><string>ISO-8859-1</string></property></action>
+  <action name="actionEncConvISO885915"><property name="text"><string>ISO-8859-15</string></property></action>
+  <action name="actionEncConvWin1252"><property name="text"><string>Windows-1252</string></property></action>
+  <action name="actionEncConvISO88592"><property name="text"><string>ISO-8859-2</string></property></action>
+  <action name="actionEncConvISO885916"><property name="text"><string>ISO-8859-16</string></property></action>
+  <action name="actionEncConvWin1250"><property name="text"><string>Windows-1250</string></property></action>
+  <action name="actionEncConvISO88594"><property name="text"><string>ISO-8859-4</string></property></action>
+  <action name="actionEncConvISO885913"><property name="text"><string>ISO-8859-13</string></property></action>
+  <action name="actionEncConvWin1257"><property name="text"><string>Windows-1257</string></property></action>
+  <action name="actionEncConvISO88595"><property name="text"><string>ISO-8859-5</string></property></action>
+  <action name="actionEncConvKOI8R"><property name="text"><string>KOI8-R</string></property></action>
+  <action name="actionEncConvKOI8U"><property name="text"><string>KOI8-U</string></property></action>
+  <action name="actionEncConvWin1251"><property name="text"><string>Windows-1251</string></property></action>
+  <action name="actionEncConvISO88597"><property name="text"><string>ISO-8859-7</string></property></action>
+  <action name="actionEncConvWin1253"><property name="text"><string>Windows-1253</string></property></action>
+  <action name="actionEncConvISO88599"><property name="text"><string>ISO-8859-9</string></property></action>
+  <action name="actionEncConvWin1254"><property name="text"><string>Windows-1254</string></property></action>
+  <action name="actionEncConvISO88598"><property name="text"><string>ISO-8859-8</string></property></action>
+  <action name="actionEncConvWin1255"><property name="text"><string>Windows-1255</string></property></action>
+  <action name="actionEncConvISO88596"><property name="text"><string>ISO-8859-6</string></property></action>
+  <action name="actionEncConvWin1256"><property name="text"><string>Windows-1256</string></property></action>
   <action name="actionColumnMode">
    <property name="text">
     <string>Column Mode...</string>

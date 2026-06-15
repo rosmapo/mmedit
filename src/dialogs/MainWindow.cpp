@@ -113,18 +113,41 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
 
     // Helper: map action name to charset string
     auto actionToCharset = [](const QString &name) -> QString {
-        if (name == "actionEncSetUTF8"    || name == "actionEncConvUTF8")    return "UTF-8";
-        if (name == "actionEncSetUTF8BOM" || name == "actionEncConvUTF8BOM") return "UTF-8 BOM";
-        if (name == "actionEncSetUTF16LE" || name == "actionEncConvUTF16LE") return "UTF-16 LE BOM";
-        if (name == "actionEncSetUTF16BE" || name == "actionEncConvUTF16BE") return "UTF-16 BE BOM";
-        if (name == "actionEncSetUTF16LEno" || name == "actionEncConvUTF16LEno") return "UTF-16 LE";
-        if (name == "actionEncSetUTF16BEno" || name == "actionEncConvUTF16BEno") return "UTF-16 BE";
-        if (name == "actionEncSetISO88591"|| name == "actionEncConvISO88591") return "ISO-8859-1";
-        if (name == "actionEncSetISO88592"|| name == "actionEncConvISO88592") return "ISO-8859-2";
-        if (name == "actionEncSetWin1250" || name == "actionEncConvWin1250")  return "Windows-1250";
-        if (name == "actionEncSetWin1251" || name == "actionEncConvWin1251")  return "Windows-1251";
-        if (name == "actionEncSetWin1252" || name == "actionEncConvWin1252")  return "Windows-1252";
-        if (name == "actionEncSetKOI8R"   || name == "actionEncConvKOI8R")   return "KOI8-R";
+        if (name == "actionEncSetUTF8"       || name == "actionEncConvUTF8")       return "UTF-8";
+        if (name == "actionEncSetUTF8BOM"    || name == "actionEncConvUTF8BOM")    return "UTF-8 BOM";
+        if (name == "actionEncSetUTF16LE"    || name == "actionEncConvUTF16LE")    return "UTF-16 LE BOM";
+        if (name == "actionEncSetUTF16BE"    || name == "actionEncConvUTF16BE")    return "UTF-16 BE BOM";
+        if (name == "actionEncSetUTF16LEno"  || name == "actionEncConvUTF16LEno")  return "UTF-16 LE";
+        if (name == "actionEncSetUTF16BEno"  || name == "actionEncConvUTF16BEno")  return "UTF-16 BE";
+        // Western Europe
+        if (name == "actionEncSetISO88591"   || name == "actionEncConvISO88591")   return "ISO-8859-1";
+        if (name == "actionEncSetISO885915"  || name == "actionEncConvISO885915")  return "ISO-8859-15";
+        if (name == "actionEncSetWin1252"    || name == "actionEncConvWin1252")    return "Windows-1252";
+        // Central Europe
+        if (name == "actionEncSetISO88592"   || name == "actionEncConvISO88592")   return "ISO-8859-2";
+        if (name == "actionEncSetISO885916"  || name == "actionEncConvISO885916")  return "ISO-8859-16";
+        if (name == "actionEncSetWin1250"    || name == "actionEncConvWin1250")    return "Windows-1250";
+        // Baltic
+        if (name == "actionEncSetISO88594"   || name == "actionEncConvISO88594")   return "ISO-8859-4";
+        if (name == "actionEncSetISO885913"  || name == "actionEncConvISO885913")  return "ISO-8859-13";
+        if (name == "actionEncSetWin1257"    || name == "actionEncConvWin1257")    return "Windows-1257";
+        // Cyrillic
+        if (name == "actionEncSetISO88595"   || name == "actionEncConvISO88595")   return "ISO-8859-5";
+        if (name == "actionEncSetKOI8R"      || name == "actionEncConvKOI8R")      return "KOI8-R";
+        if (name == "actionEncSetKOI8U"      || name == "actionEncConvKOI8U")      return "KOI8-U";
+        if (name == "actionEncSetWin1251"    || name == "actionEncConvWin1251")    return "Windows-1251";
+        // Greek
+        if (name == "actionEncSetISO88597"   || name == "actionEncConvISO88597")   return "ISO-8859-7";
+        if (name == "actionEncSetWin1253"    || name == "actionEncConvWin1253")    return "Windows-1253";
+        // Turkish
+        if (name == "actionEncSetISO88599"   || name == "actionEncConvISO88599")   return "ISO-8859-9";
+        if (name == "actionEncSetWin1254"    || name == "actionEncConvWin1254")    return "Windows-1254";
+        // Hebrew
+        if (name == "actionEncSetISO88598"   || name == "actionEncConvISO88598")   return "ISO-8859-8";
+        if (name == "actionEncSetWin1255"    || name == "actionEncConvWin1255")    return "Windows-1255";
+        // Arabic
+        if (name == "actionEncSetISO88596"   || name == "actionEncConvISO88596")   return "ISO-8859-6";
+        if (name == "actionEncSetWin1256"    || name == "actionEncConvWin1256")    return "Windows-1256";
         return "UTF-8";
     };
 
@@ -133,9 +156,22 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         ui->actionEncSetUTF8, ui->actionEncSetUTF8BOM,
         ui->actionEncSetUTF16LE, ui->actionEncSetUTF16BE,
         ui->actionEncSetUTF16LEno, ui->actionEncSetUTF16BEno,
-        ui->actionEncSetISO88591, ui->actionEncSetISO88592,
-        ui->actionEncSetWin1250, ui->actionEncSetWin1251,
-        ui->actionEncSetWin1252, ui->actionEncSetKOI8R
+        // Western Europe
+        ui->actionEncSetISO88591, ui->actionEncSetISO885915, ui->actionEncSetWin1252,
+        // Central Europe
+        ui->actionEncSetISO88592, ui->actionEncSetISO885916, ui->actionEncSetWin1250,
+        // Baltic
+        ui->actionEncSetISO88594, ui->actionEncSetISO885913, ui->actionEncSetWin1257,
+        // Cyrillic
+        ui->actionEncSetISO88595, ui->actionEncSetKOI8R, ui->actionEncSetKOI8U, ui->actionEncSetWin1251,
+        // Greek
+        ui->actionEncSetISO88597, ui->actionEncSetWin1253,
+        // Turkish
+        ui->actionEncSetISO88599, ui->actionEncSetWin1254,
+        // Hebrew
+        ui->actionEncSetISO88598, ui->actionEncSetWin1255,
+        // Arabic
+        ui->actionEncSetISO88596, ui->actionEncSetWin1256
     };
     for (QAction *action : setEncActions) {
         connect(action, &QAction::triggered, this, [=, this]() {
@@ -177,9 +213,22 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         ui->actionEncConvUTF8, ui->actionEncConvUTF8BOM,
         ui->actionEncConvUTF16LE, ui->actionEncConvUTF16BE,
         ui->actionEncConvUTF16LEno, ui->actionEncConvUTF16BEno,
-        ui->actionEncConvISO88591, ui->actionEncConvISO88592,
-        ui->actionEncConvWin1250, ui->actionEncConvWin1251,
-        ui->actionEncConvWin1252, ui->actionEncConvKOI8R
+        // Western Europe
+        ui->actionEncConvISO88591, ui->actionEncConvISO885915, ui->actionEncConvWin1252,
+        // Central Europe
+        ui->actionEncConvISO88592, ui->actionEncConvISO885916, ui->actionEncConvWin1250,
+        // Baltic
+        ui->actionEncConvISO88594, ui->actionEncConvISO885913, ui->actionEncConvWin1257,
+        // Cyrillic
+        ui->actionEncConvISO88595, ui->actionEncConvKOI8R, ui->actionEncConvKOI8U, ui->actionEncConvWin1251,
+        // Greek
+        ui->actionEncConvISO88597, ui->actionEncConvWin1253,
+        // Turkish
+        ui->actionEncConvISO88599, ui->actionEncConvWin1254,
+        // Hebrew
+        ui->actionEncConvISO88598, ui->actionEncConvWin1255,
+        // Arabic
+        ui->actionEncConvISO88596, ui->actionEncConvWin1256
     };
     for (QAction *action : convEncActions) {
         connect(action, &QAction::triggered, this, [=, this]() {

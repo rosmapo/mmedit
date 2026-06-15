@@ -2231,6 +2231,216 @@
       <source>Insert Date/Time</source>
       <translation>Vložiť dátum/čas</translation>
     </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="391"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="456"/>
+      <source>Western Europe</source>
+      <translation>Západná Európa</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="397"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="462"/>
+      <source>Central Europe</source>
+      <translation>Stredná Európa</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="403"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="468"/>
+      <source>Baltic</source>
+      <translation>Pobaltie</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="409"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="474"/>
+      <source>Cyrillic</source>
+      <translation>Cyrilika</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="416"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="481"/>
+      <source>Greek</source>
+      <translation>Gréčtina</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="421"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="486"/>
+      <source>Turkish</source>
+      <translation>Turečtina</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="426"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="491"/>
+      <source>Hebrew</source>
+      <translation>Hebrejčina</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="431"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="496"/>
+      <source>Arabic</source>
+      <translation>Arabčina</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1337"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1364"/>
+      <source>UTF-8</source>
+      <translation>UTF-8</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1338"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1365"/>
+      <source>UTF-8 BOM</source>
+      <translation>UTF-8 BOM</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1339"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1366"/>
+      <source>UTF-16 LE BOM</source>
+      <translation>UTF-16 LE BOM</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1340"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1367"/>
+      <source>UTF-16 LE</source>
+      <translation>UTF-16 LE</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1341"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1368"/>
+      <source>UTF-16 BE BOM</source>
+      <translation>UTF-16 BE BOM</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1342"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1369"/>
+      <source>UTF-16 BE</source>
+      <translation>UTF-16 BE</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1343"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1370"/>
+      <source>ISO-8859-1</source>
+      <translation>ISO-8859-1</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1344"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1371"/>
+      <source>ISO-8859-15</source>
+      <translation>ISO-8859-15</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1345"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1372"/>
+      <source>Windows-1252</source>
+      <translation>Windows-1252</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1346"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1373"/>
+      <source>ISO-8859-2</source>
+      <translation>ISO-8859-2</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1347"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1374"/>
+      <source>ISO-8859-16</source>
+      <translation>ISO-8859-16</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1348"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1375"/>
+      <source>Windows-1250</source>
+      <translation>Windows-1250</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1349"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1376"/>
+      <source>ISO-8859-4</source>
+      <translation>ISO-8859-4</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1350"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1377"/>
+      <source>ISO-8859-13</source>
+      <translation>ISO-8859-13</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1351"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1378"/>
+      <source>Windows-1257</source>
+      <translation>Windows-1257</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1352"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1379"/>
+      <source>ISO-8859-5</source>
+      <translation>ISO-8859-5</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1353"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1380"/>
+      <source>KOI8-R</source>
+      <translation>KOI8-R</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1354"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1381"/>
+      <source>KOI8-U</source>
+      <translation>KOI8-U</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1355"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1382"/>
+      <source>Windows-1251</source>
+      <translation>Windows-1251</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1356"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1383"/>
+      <source>ISO-8859-7</source>
+      <translation>ISO-8859-7</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1357"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1384"/>
+      <source>Windows-1253</source>
+      <translation>Windows-1253</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1358"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1385"/>
+      <source>ISO-8859-9</source>
+      <translation>ISO-8859-9</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1359"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1386"/>
+      <source>Windows-1254</source>
+      <translation>Windows-1254</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1360"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1387"/>
+      <source>ISO-8859-8</source>
+      <translation>ISO-8859-8</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1361"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1388"/>
+      <source>Windows-1255</source>
+      <translation>Windows-1255</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1362"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1389"/>
+      <source>ISO-8859-6</source>
+      <translation>ISO-8859-6</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1363"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1390"/>
+      <source>Windows-1256</source>
+      <translation>Windows-1256</translation>
+    </message>
   </context>
   <context>
     <name>PreferencesDialog</name>
