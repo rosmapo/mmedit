@@ -767,7 +767,7 @@
     <message>
       <location filename="../src/dialogs/MainWindow.ui" line="124"/>
       <source>Convert Case</source>
-      <translation>Konverzia veľkosti písma</translation>
+      <translation>Zmena veľkosti písmen</translation>
     </message>
     <message>
       <location filename="../src/dialogs/MainWindow.ui" line="131"/>
