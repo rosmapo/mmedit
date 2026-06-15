@@ -597,9 +597,74 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     connectEditorAction(ui->actionUndo, &ScintillaNext::undo);
     connectEditorAction(ui->actionRedo, &ScintillaNext::redo);
     connectEditorAction(ui->actionCut, &ScintillaNext::cutAllowLine);
-    connectEditorAction(ui->actionCopy, &ScintillaNext::copyAllowLine);
+
+    // Custom Copy: if multiple selections exist, join each selection with a
+    // newline so that pasting into a new file places each fragment on its own
+    // line (consistent with VS Code, Sublime Text, etc.).
+    connect(ui->actionCopy, &QAction::triggered, this, [this]() {
+        ScintillaNext *editor = currentEditor();
+        if (!editor) return;
+        const int numSelections = editor->selections();
+        if (numSelections <= 1) {
+            // Single selection (or no selection) — use the default behaviour.
+            editor->copyAllowLine();
+            return;
+        }
+        // Collect each selected range's text in document order.
+        QStringList parts;
+        parts.reserve(numSelections);
+        for (int i = 0; i < numSelections; ++i) {
+            const int start = editor->selectionNStart(i);
+            const int end   = editor->selectionNEnd(i);
+            if (start == end) continue; // skip empty carets
+            parts << QString::fromUtf8(QByteArray(editor->textRange(start, end)));
+        }
+        if (parts.isEmpty()) {
+            editor->copyAllowLine();
+            return;
+        }
+        // Determine the EOL string used by this document so we insert the
+        // correct line ending (CRLF on Windows docs, LF elsewhere).
+        const QString eol = QString::fromUtf8(editor->eolString());
+        QApplication::clipboard()->setText(parts.join(eol));
+    });
+
     connectEditorAction(ui->actionDelete, &ScintillaNext::clear);
-    connectEditorAction(ui->actionPaste, &ScintillaNext::paste);
+
+    // Custom Paste: when the clipboard text contains embedded newlines that
+    // were produced by our multi-selection copy above, and the target editor
+    // has a matching number of selections, distribute one fragment per caret.
+    // Otherwise fall back to the normal paste behaviour.
+    connect(ui->actionPaste, &QAction::triggered, this, [this]() {
+        ScintillaNext *editor = currentEditor();
+        if (!editor) return;
+        const QString clipText = QApplication::clipboard()->text();
+        const int numSelections = editor->selections();
+        if (numSelections <= 1 || clipText.isEmpty()) {
+            editor->paste();
+            return;
+        }
+        // Split by any EOL variant so we handle CRLF / LF / CR uniformly.
+        const QStringList lines = clipText.split(QRegularExpression(QStringLiteral("\\r\\n|\\r|\\n")));
+        if (lines.size() != numSelections) {
+            // Fragment count doesn't match caret count — use normal paste.
+            editor->paste();
+            return;
+        }
+        // Replace each selection with the corresponding fragment.
+        // Work from the last selection to the first so earlier positions
+        // remain valid after each insertion.
+        const UndoAction ua(editor);
+        for (int i = numSelections - 1; i >= 0; --i) {
+            const int start = editor->selectionNStart(i);
+            const int end   = editor->selectionNEnd(i);
+            const QByteArray bytes = lines[i].toUtf8();
+            editor->setTargetRange(start, end);
+            editor->replaceTarget(bytes.size(), bytes.constData());
+        }
+        // Clear multi-selection: place the caret after the last inserted text.
+        editor->clearSelections();
+    });
     connectEditorAction(ui->actionSelectAll, &ScintillaNext::selectAll);
     connect(ui->actionSelectNext, &QAction::triggered, this, [this]() {
         ScintillaNext *editor = currentEditor();
