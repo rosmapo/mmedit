@@ -448,6 +448,16 @@
       <translation>Kopírovať označený text</translation>
     </message>
     <message>
+      <location filename="../src/dialogs/FindReplaceDialog.ui" line="475"/>
+      <source>&amp;Bookmark line</source>
+      <translation>&amp;Pridať záložku na riadok</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/FindReplaceDialog.ui" line="482"/>
+      <source>&amp;Purge for each search</source>
+      <translation>&amp;Vyčistiť pred kazdým hľadaním</translation>
+    </message>
+    <message>
       <location filename="../src/dialogs/FindReplaceDialog.cpp" line="60"/>
       <source>Replace</source>
       <translation>Nahradiť</translation>
