@@ -80,14 +80,8 @@ void MarkerAppDecorator::mark(ScintillaNext *editor, int i)
     int indicator = editor->allocateIndicator(QStringLiteral("marker_%1").arg(i));
     editor->setIndicatorCurrent(indicator);
 
-    const QByteArray selText = editor->get_text_range(selectionStart, selectionEnd);
-    const int flags = isWholeWord ? SCFIND_WHOLEWORD : 0;
-
-    editor->setSearchFlags(flags);
-    editor->forEachMatch(selText, [&](int start, int end) {
-        editor->indicatorFillRange(start, end - start);
-        return end;
-    });
+    // Mark only the current selection (or word under cursor), not all occurrences
+    editor->indicatorFillRange(selectionStart, selectionEnd - selectionStart);
 }
 
 void MarkerAppDecorator::clear(ScintillaNext *editor, int i)
@@ -102,4 +96,44 @@ void MarkerAppDecorator::clearAll(ScintillaNext *editor)
     for (int i = 0; i < marker_colors.size(); i++) {
         clear(editor, i);
     }
+}
+
+QVector<QPair<int, int>> MarkerAppDecorator::markedRanges(ScintillaNext *editor, int i) const
+{
+    QVector<QPair<int, int>> ranges;
+
+    int indicator = editor->allocateIndicator(QString("marker_%1").arg(i));
+
+    const int docLength = editor->length();
+    int pos = 0;
+
+    while (pos < docLength) {
+        const int rangeEnd = editor->indicatorEnd(indicator, pos);
+
+        // indicatorEnd() returns the position itself if there is nothing
+        // left to report, which would otherwise loop forever
+        if (rangeEnd <= pos) {
+            break;
+        }
+
+        if (editor->indicatorValueAt(indicator, pos) != 0) {
+            ranges.append(qMakePair(pos, rangeEnd));
+        }
+
+        pos = rangeEnd;
+    }
+
+    return ranges;
+}
+
+QStringList MarkerAppDecorator::markedText(ScintillaNext *editor, int i) const
+{
+    QStringList result;
+
+    for (const auto &range : markedRanges(editor, i)) {
+        const QByteArray text = editor->get_text_range(range.first, range.second);
+        result.append(QString::fromUtf8(text));
+    }
+
+    return result;
 }

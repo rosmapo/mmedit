@@ -20,6 +20,9 @@
 
 #include "ApplicationDecorator.h"
 
+#include <QPair>
+#include <QVector>
+
 class MarkerAppDecorator : public ApplicationDecorator
 {
     Q_OBJECT
@@ -32,4 +35,12 @@ public:
     void mark(ScintillaNext *editor, int i);
     void clear(ScintillaNext *editor, int i);
     void clearAll(ScintillaNext *editor);
+
+    // Returns the [start, end) document positions of every range currently
+    // marked with marker style "i" (0-2), in document order.
+    QVector<QPair<int, int>> markedRanges(ScintillaNext *editor, int i) const;
+
+    // Convenience: returns the actual text content for each marked range
+    // of marker style "i" (0-2), in document order.
+    QStringList markedText(ScintillaNext *editor, int i) const;
 };

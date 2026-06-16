@@ -228,7 +228,7 @@
     </widget>
     <widget class="QMenu" name="menuMarkAllOccurrences">
      <property name="title">
-      <string>Mark All Occurrences</string>
+      <string>Mark Text</string>
      </property>
      <addaction name="actionMarkStyle1"/>
      <addaction name="actionMarkStyle2"/>
@@ -243,6 +243,16 @@
      <addaction name="actionClearStyle3"/>
      <addaction name="actionClearAllStyles"/>
     </widget>
+    <widget class="QMenu" name="menuCopyMarkedText">
+     <property name="title">
+      <string>Copy Marked Text</string>
+     </property>
+     <addaction name="actionCopyMarkedStyle1"/>
+     <addaction name="actionCopyMarkedStyle2"/>
+     <addaction name="actionCopyMarkedStyle3"/>
+     <addaction name="separator"/>
+     <addaction name="actionCopyAllMarkedStyles"/>
+    </widget>
     <addaction name="actionFind"/>
     <addaction name="actionFindInFiles"/>
     <addaction name="actionFindNext"/>
@@ -254,6 +264,7 @@
     <addaction name="separator"/>
     <addaction name="menuMarkAllOccurrences"/>
     <addaction name="menuClearMarks"/>
+    <addaction name="menuCopyMarkedText"/>
     <addaction name="separator"/>
     <addaction name="menuBookmark"/>
    </widget>
@@ -1785,6 +1796,38 @@
    </property>
    <property name="toolTip">
     <string>Clear All Styles</string>
+   </property>
+  </action>
+  <action name="actionCopyMarkedStyle1">
+   <property name="text">
+    <string>Copy Marked Style 1</string>
+   </property>
+   <property name="MarkerNumber" stdset="0">
+    <number>0</number>
+   </property>
+  </action>
+  <action name="actionCopyMarkedStyle2">
+   <property name="text">
+    <string>Copy Marked Style 2</string>
+   </property>
+   <property name="MarkerNumber" stdset="0">
+    <number>1</number>
+   </property>
+  </action>
+  <action name="actionCopyMarkedStyle3">
+   <property name="text">
+    <string>Copy Marked Style 3</string>
+   </property>
+   <property name="MarkerNumber" stdset="0">
+    <number>2</number>
+   </property>
+  </action>
+  <action name="actionCopyAllMarkedStyles">
+   <property name="text">
+    <string>Copy All Marked Text</string>
+   </property>
+   <property name="toolTip">
+    <string>Copy All Marked Text (Styles 1-3)</string>
    </property>
   </action>
   <action name="actionRemoveDuplicateLines">

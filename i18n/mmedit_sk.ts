@@ -801,8 +801,8 @@
     </message>
     <message>
       <location filename="../src/dialogs/MainWindow.ui" line="220"/>
-      <source>Mark All Occurrences</source>
-      <translation>Označiť všetky výskyty</translation>
+      <source>Mark Text</source>
+      <translation>Označiť text</translation>
     </message>
     <message>
       <location filename="../src/dialogs/MainWindow.ui" line="228"/>
@@ -1903,6 +1903,37 @@
       <location filename="../src/dialogs/MainWindow.ui" line="1486"/>
       <source>Clear All Styles</source>
       <translation>Vyčistiť všetky štýly</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1490"/>
+      <source>Copy Marked Text</source>
+      <translation>Kopírovať označený text</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1494"/>
+      <source>Copy Marked Style 1</source>
+      <translation>Kopírovať označený štýl 1</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1502"/>
+      <source>Copy Marked Style 2</source>
+      <translation>Kopírovať označený štýl 2</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1510"/>
+      <source>Copy Marked Style 3</source>
+      <translation>Kopírovať označený štýl 3</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1518"/>
+      <location filename="../src/dialogs/MainWindow.ui" line="1521"/>
+      <source>Copy All Marked Text</source>
+      <translation>Kopírovať všetok označený text</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/MainWindow.ui" line="1521"/>
+      <source>Copy All Marked Text (Styles 1-3)</source>
+      <translation>Kopírovať všetok označený text (štýly 1-3)</translation>
     </message>
     <message>
       <location filename="../src/dialogs/MainWindow.ui" line="1491"/>

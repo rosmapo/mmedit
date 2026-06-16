@@ -31,6 +31,7 @@
 #include <QMessageBox>
 #include <QStringList>
 #include <QClipboard>
+#include <algorithm>
 #include <QStandardPaths>
 #include <QDesktopServices>
 #include <QWindow>
@@ -923,6 +924,59 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         if (markerAppDecorator && markerAppDecorator->isEnabled()) {
             markerAppDecorator->clearAll(currentEditor());
         }
+    });
+
+    // Copy the text of every range marked with a given style (color) to the clipboard,
+    // one entry per line, in the order the ranges appear in the document.
+    auto copy_marked_callback = [=, this]() {
+        MarkerAppDecorator *markerAppDecorator = app->findChild<MarkerAppDecorator*>(QString(), Qt::FindDirectChildrenOnly);
+
+        if (markerAppDecorator && markerAppDecorator->isEnabled()) {
+            if (sender()->property("MarkerNumber").isValid()) {
+                ScintillaNext *editor = currentEditor();
+                const QStringList marked = markerAppDecorator->markedText(editor, sender()->property("MarkerNumber").toInt());
+
+                if (!marked.isEmpty()) {
+                    QApplication::clipboard()->setText(marked.join('\n'));
+                }
+            }
+        }
+    };
+
+    connect(ui->actionCopyMarkedStyle1, &QAction::triggered, this, copy_marked_callback);
+    connect(ui->actionCopyMarkedStyle2, &QAction::triggered, this, copy_marked_callback);
+    connect(ui->actionCopyMarkedStyle3, &QAction::triggered, this, copy_marked_callback);
+
+    // Copy everything marked with any of the three styles, in document order
+    connect(ui->actionCopyAllMarkedStyles, &QAction::triggered, this, [=, this]() {
+        MarkerAppDecorator *markerAppDecorator = app->findChild<MarkerAppDecorator*>(QString(), Qt::FindDirectChildrenOnly);
+
+        if (!markerAppDecorator || !markerAppDecorator->isEnabled()) {
+            return;
+        }
+
+        ScintillaNext *editor = currentEditor();
+
+        // Merge the ranges from all three styles, then sort by document position
+        QVector<QPair<int, int>> allRanges;
+        for (int i = 0; i < 3; i++) {
+            allRanges += markerAppDecorator->markedRanges(editor, i);
+        }
+
+        if (allRanges.isEmpty()) {
+            return;
+        }
+
+        std::sort(allRanges.begin(), allRanges.end(), [](const QPair<int, int> &a, const QPair<int, int> &b) {
+            return a.first < b.first;
+        });
+
+        QStringList lines;
+        for (const auto &range : allRanges) {
+            lines.append(QString::fromUtf8(editor->get_text_range(range.first, range.second)));
+        }
+
+        QApplication::clipboard()->setText(lines.join('\n'));
     });
 
     connect(ui->actionToggleBookmark, &QAction::triggered, this, [this]() {
