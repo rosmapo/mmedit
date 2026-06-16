@@ -280,11 +280,7 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     connect(dockedEditor, &DockedEditor::editorCloseRequested, this, &MainWindow::closeFile);
 
     connect(dockedEditor, &DockedEditor::lastEditorClosed, this, [=, this]() {
-        if (app->getSettings()->exitOnLastTabClosed()) {
-            close();
-        } else {
-            newFile();
-        }
+        close();
     });
     connect(dockedEditor, &DockedEditor::editorActivated, this, &MainWindow::activateEditor);
     connect(dockedEditor, &DockedEditor::contextMenuRequestedForEditor, this, &MainWindow::tabBarRightClicked);
@@ -1565,13 +1561,18 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     });
 
     // Show minimap immediately when an editor is added (e.g. on startup/session restore)
-    connect(dockedEditor, &DockedEditor::editorAdded, this, [minimapPanel, this](ScintillaNext *editor) {
-        Q_UNUSED(editor)
-        // Set to current editor if minimap has no editor yet
-        if (currentEditor()) {
-            minimapPanel->setEditor(currentEditor());
-        }
-    });
+    // Opravený kód v MainWindow.cpp
+	connect(dockedEditor, &DockedEditor::editorAdded, this, [minimapPanel, this](ScintillaNext *editor) {
+		// Okamžité záložné priradenie: zabezpečí, že minimapa nezostane
+		// s neplatným pointerom na vymazaný editor.
+		minimapPanel->setEditor(editor);
+
+		// Ak už DockedEditor eviduje aktuálny editor, prepíšeme ho ním
+		// (užitočné napr. pri hromadnom načítavaní relácie s viacerými súbormi).
+		if (currentEditor()) {
+			minimapPanel->setEditor(currentEditor());
+		}
+	});
 
     connect(app->getSettings(), &ApplicationSettings::showMenuBarChanged, this, [this](bool showMenuBar) {
         // Don't 'hide' it, else the actions won't be enabled
@@ -1938,17 +1939,6 @@ void MainWindow::closeCurrentFile()
 
 void MainWindow::closeFile(ScintillaNext *editor)
 {
-    // Early out. If we aren't exiting on last tab closed and this is the last
-    // editor, don't close it — there is nothing to fall back to.
-    // NOTE: The original condition checked getInitialEditor() != nullptr which
-    // caused a premature return almost every time (any existing editor would
-    // satisfy it), effectively preventing tab closing from working via this
-    // code path. The correct guard is: is this the only remaining editor AND
-    // we don't want to exit when the last tab is closed?
-    if (!app->getSettings()->exitOnLastTabClosed() && editorCount() <= 1) {
-        return;
-    }
-
     if (!checkEditorsBeforeClose({editor})) {
         return;
     }

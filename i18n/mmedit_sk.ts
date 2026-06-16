@@ -2561,11 +2561,6 @@
       <translation>Preklad:</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="123"/>
-      <source>Exit on last tab closed</source>
-      <translation>Ukončiť so zatvorením poslednej karty</translation>
-    </message>
-    <message>
       <location filename="../src/dialogs/PreferencesDialog.ui" line="132"/>
       <source>Default Font</source>
       <translation>Predvolené písmo</translation>
