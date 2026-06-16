@@ -433,6 +433,21 @@
       <translation>Na konci znovu od &amp;začiatku</translation>
     </message>
     <message>
+      <location filename="../src/dialogs/FindReplaceDialog.ui" line="311"/>
+      <source>Mark All</source>
+      <translation>Označiť každý výskyt</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/FindReplaceDialog.ui" line="321"/>
+      <source>Clear all marks</source>
+      <translation>Zrušiť označenie</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/FindReplaceDialog.ui" line="331"/>
+      <source>Copy Marked Text</source>
+      <translation>Kopírovať označený text</translation>
+    </message>
+    <message>
       <location filename="../src/dialogs/FindReplaceDialog.cpp" line="60"/>
       <source>Replace</source>
       <translation>Nahradiť</translation>
