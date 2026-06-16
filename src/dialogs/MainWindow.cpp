@@ -1559,23 +1559,17 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
 	ui->menuView->addAction(actionToggleMinimap);
 	recordDefaultShortcut(actionToggleMinimap); // zapíše default pre editor skratiek
 
-    // Connect minimap to editor switching.
-    // NOTE: editorActivated fires both when switching tabs and when a tab is
-    // closed (ADS activates the next tab). Guard against null so MinimapPanel
-    // never receives an invalid pointer during teardown.
+    // Connect minimap to editor switching
     connect(dockedEditor, &DockedEditor::editorActivated, this, [minimapPanel](ScintillaNext *editor) {
-        if (editor) {
-            minimapPanel->setEditor(editor);
-        }
+        minimapPanel->setEditor(editor);
     });
 
-    // Show minimap immediately when an editor is added (e.g. on startup/session restore).
-    // Use the 'editor' parameter directly instead of currentEditor() — during tab
-    // close + open sequences currentEditor() can still point to the editor being
-    // removed, which would give MinimapPanel a dangling pointer.
-    connect(dockedEditor, &DockedEditor::editorAdded, this, [minimapPanel](ScintillaNext *editor) {
-        if (editor) {
-            minimapPanel->setEditor(editor);
+    // Show minimap immediately when an editor is added (e.g. on startup/session restore)
+    connect(dockedEditor, &DockedEditor::editorAdded, this, [minimapPanel, this](ScintillaNext *editor) {
+        Q_UNUSED(editor)
+        // Set to current editor if minimap has no editor yet
+        if (currentEditor()) {
+            minimapPanel->setEditor(currentEditor());
         }
     });
 
