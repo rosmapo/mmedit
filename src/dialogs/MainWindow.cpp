@@ -1559,17 +1559,23 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
 	ui->menuView->addAction(actionToggleMinimap);
 	recordDefaultShortcut(actionToggleMinimap); // zapíše default pre editor skratiek
 
-    // Connect minimap to editor switching
+    // Connect minimap to editor switching.
+    // NOTE: editorActivated fires both when switching tabs and when a tab is
+    // closed (ADS activates the next tab). Guard against null so MinimapPanel
+    // never receives an invalid pointer during teardown.
     connect(dockedEditor, &DockedEditor::editorActivated, this, [minimapPanel](ScintillaNext *editor) {
-        minimapPanel->setEditor(editor);
+        if (editor) {
+            minimapPanel->setEditor(editor);
+        }
     });
 
-    // Show minimap immediately when an editor is added (e.g. on startup/session restore)
-    connect(dockedEditor, &DockedEditor::editorAdded, this, [minimapPanel, this](ScintillaNext *editor) {
-        Q_UNUSED(editor)
-        // Set to current editor if minimap has no editor yet
-        if (currentEditor()) {
-            minimapPanel->setEditor(currentEditor());
+    // Show minimap immediately when an editor is added (e.g. on startup/session restore).
+    // Use the 'editor' parameter directly instead of currentEditor() — during tab
+    // close + open sequences currentEditor() can still point to the editor being
+    // removed, which would give MinimapPanel a dangling pointer.
+    connect(dockedEditor, &DockedEditor::editorAdded, this, [minimapPanel](ScintillaNext *editor) {
+        if (editor) {
+            minimapPanel->setEditor(editor);
         }
     });
 
@@ -1938,8 +1944,14 @@ void MainWindow::closeCurrentFile()
 
 void MainWindow::closeFile(ScintillaNext *editor)
 {
-    // Early out. If we aren't exiting on last tab closed, and it exists, there's no point in continuing
-    if (!app->getSettings()->exitOnLastTabClosed() && getInitialEditor() != Q_NULLPTR) {
+    // Early out. If we aren't exiting on last tab closed and this is the last
+    // editor, don't close it — there is nothing to fall back to.
+    // NOTE: The original condition checked getInitialEditor() != nullptr which
+    // caused a premature return almost every time (any existing editor would
+    // satisfy it), effectively preventing tab closing from working via this
+    // code path. The correct guard is: is this the only remaining editor AND
+    // we don't want to exit when the last tab is closed?
+    if (!app->getSettings()->exitOnLastTabClosed() && editorCount() <= 1) {
         return;
     }
 
@@ -2243,7 +2255,10 @@ void MainWindow::moveFileToTrash(ScintillaNext *editor)
             closeCurrentFile();
 
             // Since the file no longer exists, specifically remove it from the recent files list
-            app->getRecentFilesListManager()->removeFile(editor->getFilePath());
+            // NOTE: filePath was captured before closeCurrentFile() because the editor pointer
+            // is invalidated after close() — accessing editor->getFilePath() here would be
+            // a use-after-free.
+            app->getRecentFilesListManager()->removeFile(filePath);
         }
         else {
             QMessageBox::warning(this, tr("Error Deleting File"),  tr("Something went wrong deleting <b>%1</b>?").arg(filePath));
