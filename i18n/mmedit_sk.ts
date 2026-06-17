@@ -509,7 +509,7 @@
     <message>
       <location filename="../src/docks/FolderAsWorkspaceDock.ui" line="14"/>
       <source>Folder as Workspace</source>
-      <translation>Priečinok ako pracovný priestor</translation>
+      <translation>Pracovný priestor</translation>
     </message>
   </context>
   <context>
