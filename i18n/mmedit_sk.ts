@@ -2061,8 +2061,8 @@
       <translation>HEX prezerač</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/MainWindow.cpp" line="502"/>
-      <source>Minimap</source>
+      <location filename="../src/dialogs/MainWindow.cpp" line="1546"/>
+      <source>Toggle Minimap</source>
       <translation>Minimapa</translation>
     </message>
     <message>
