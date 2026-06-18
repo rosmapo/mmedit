@@ -2601,6 +2601,11 @@
       <translation>Zvýrazniť aktuálny riadok</translation>
     </message>
     <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="221"/>
+      <source>Show modified line markers</source>
+      <translation>Zobrazovať označenie zmenených riadkov</translation>
+    </message>
+    <message>
       <location filename="../src/dialogs/PreferencesDialog.ui" line="214"/>
       <location filename="../src/dialogs/PreferencesDialog.cpp" line="122"/>
       <source>Default Directory</source>

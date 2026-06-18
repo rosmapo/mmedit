@@ -216,6 +216,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="checkBoxShowChangeHistory">
+         <property name="text">
+          <string>Show modified line markers</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QGroupBox" name="groupBoxTabs">
          <property name="title">
           <string>Indentation</string>

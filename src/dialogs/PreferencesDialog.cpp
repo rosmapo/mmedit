@@ -103,6 +103,7 @@ PreferencesDialog::PreferencesDialog(ApplicationSettings *settings, QWidget *par
     MapSettingToCheckBox(ui->checkBoxShowLineNumbers, &ApplicationSettings::showLineNumbers, &ApplicationSettings::setShowLineNumbers, &ApplicationSettings::showLineNumbersChanged);
     MapSettingToCheckBox(ui->checkBoxAutoCompletion, &ApplicationSettings::autoCompletion, &ApplicationSettings::setAutoCompletion, &ApplicationSettings::autoCompletionChanged);
     MapSettingToCheckBox(ui->checkBoxHighlightCurrentLine, &ApplicationSettings::highlightCurrentLine, &ApplicationSettings::setHighlightCurrentLine, &ApplicationSettings::highlightCurrentLineChanged);
+    MapSettingToCheckBox(ui->checkBoxShowChangeHistory, &ApplicationSettings::showChangeHistory, &ApplicationSettings::setShowChangeHistory, &ApplicationSettings::showChangeHistoryChanged);
 
     // ── Spell Check ───────────────────────────────────────────────────────
     {

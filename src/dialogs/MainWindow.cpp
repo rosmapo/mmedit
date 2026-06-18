@@ -1524,6 +1524,13 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         ui->actionSpellCheck->setChecked(enabled);
     });
     ui->actionSpellCheck->setChecked(app->getSettings()->spellCheckEnabled());
+
+    // Change history: propagate setting changes to all already-open editors
+    connect(app->getSettings(), &ApplicationSettings::showChangeHistoryChanged, this, [=, this](bool enabled) {
+        for (auto *editor : editors()) {
+            applyChangeHistoryToEditor(editor, enabled);
+        }
+    });
     connect(mdPreviewDock, &QDockWidget::visibilityChanged, mdPreviewDock, [mdPreviewDock](bool visible) {
         if (visible) mdPreviewDock->updatePreview();
     });
@@ -2561,6 +2568,62 @@ void MainWindow::applyDarkModeToAllEditors()
     }
 }
 
+// Change history uses Scintilla's built-in SC_CHANGE_HISTORY_* support.
+// We assign it its own dedicated margin (MARGIN_CHANGE_HISTORY = 4) so it
+// never overlaps the bookmark margin (margin 1) used by BookMarkDecorator.
+//
+// Margin layout used in this project:
+//   0 – line numbers
+//   1 – bookmarks / markers  (BookMarkDecorator)
+//   2 – fold margin
+//   3 – (reserved / unused)
+//   4 – change history       (this feature)
+//
+// SC_CHANGE_HISTORY_ENABLED  turns on tracking.
+// SC_CHANGE_HISTORY_MARKERS  paints the coloured bars via Scintilla markers
+//                            28–31 (SC_MARKNUM_HISTORY_*).  Those markers live
+//                            in their own margin so they cannot collide with
+//                            bookmarks which use markers 0–2 in margin 1.
+static constexpr int MARGIN_CHANGE_HISTORY = 4;
+
+void MainWindow::applyChangeHistoryToEditor(ScintillaNext *editor, bool enabled)
+{
+    if (enabled) {
+        // Enable tracking + marker-based rendering
+        // ENABLED|MARKERS: Scintilla tracks changes and places markers 21-24 on lines.
+        // MARKERS also auto-adds history bits to margin 1's mask - we immediately
+        // strip them out so margin 1 (bookmarks) never renders history bars.
+        editor->setChangeHistory(SC_CHANGE_HISTORY_ENABLED | SC_CHANGE_HISTORY_MARKERS);
+
+        // Remove history bits from margin 1 (bookmark margin) so they don't render there.
+        constexpr int historyMask = (1 << SC_MARKNUM_HISTORY_REVERTED_TO_ORIGIN)
+                                  | (1 << SC_MARKNUM_HISTORY_SAVED)
+                                  | (1 << SC_MARKNUM_HISTORY_MODIFIED)
+                                  | (1 << SC_MARKNUM_HISTORY_REVERTED_TO_MODIFIED);
+        editor->setMarginMaskN(1, editor->marginMaskN(1) & ~historyMask);
+
+        // Dedicated 4 px margin for change history bars only.
+        editor->setMarginTypeN(MARGIN_CHANGE_HISTORY, SC_MARGIN_SYMBOL);
+        editor->setMarginWidthN(MARGIN_CHANGE_HISTORY, 2);
+        editor->setMarginMaskN(MARGIN_CHANGE_HISTORY, historyMask);
+
+        // SC_MARK_LEFTRECT = 2 px bar on the left edge of the margin cell.
+        editor->markerDefine(SC_MARKNUM_HISTORY_SAVED,                SC_MARK_LEFTRECT);
+        editor->markerDefine(SC_MARKNUM_HISTORY_MODIFIED,             SC_MARK_LEFTRECT);
+        editor->markerDefine(SC_MARKNUM_HISTORY_REVERTED_TO_ORIGIN,   SC_MARK_LEFTRECT);
+        editor->markerDefine(SC_MARKNUM_HISTORY_REVERTED_TO_MODIFIED, SC_MARK_LEFTRECT);
+
+        // green=saved  orange=modified(unsaved)  blue=reverted-to-origin  purple=reverted-to-modified
+        editor->markerSetBack(SC_MARKNUM_HISTORY_SAVED,               0x5EC522);
+        editor->markerSetBack(SC_MARKNUM_HISTORY_MODIFIED,            0x0B9EF5);
+        editor->markerSetBack(SC_MARKNUM_HISTORY_REVERTED_TO_ORIGIN,  0xF6823B);
+        editor->markerSetBack(SC_MARKNUM_HISTORY_REVERTED_TO_MODIFIED,0xF755A8);
+    } else {
+        editor->setChangeHistory(SC_CHANGE_HISTORY_DISABLED);
+        editor->setMarginWidthN(MARGIN_CHANGE_HISTORY, 0);
+    }
+}
+
 void MainWindow::bringWindowToForeground()
 {
     qInfo(Q_FUNC_INFO);
@@ -2902,6 +2965,9 @@ void MainWindow::addEditor(ScintillaNext *editor)
 
     // The editor has been entirely configured at this point, so add it to the docked editor
     dockedEditor->addEditor(editor);
+
+    // Apply change-history margin state from current settings
+    applyChangeHistoryToEditor(editor, app->getSettings()->showChangeHistory());
 }
 
 void MainWindow::checkForUpdates(bool silent)

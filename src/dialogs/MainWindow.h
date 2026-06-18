@@ -175,6 +175,7 @@ private:
     void captureDefaultShortcuts();
     void recordDefaultShortcut(QAction *action);
     void initUpdateCheck();
+    void applyChangeHistoryToEditor(ScintillaNext *editor, bool enabled);
     ScintillaNext *getInitialEditor();
     void openFileList(const QStringList &fileNames);
     bool checkEditorsBeforeClose(const QVector<ScintillaNext *> &editors);

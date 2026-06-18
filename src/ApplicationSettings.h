@@ -127,6 +127,7 @@ public:
     DEFINE_SETTING(TrimTrailingWhitespaceOnSave, trimTrailingWhitespaceOnSave, bool)
     DEFINE_SETTING(DateTimeFormat, dateTimeFormat, QString)
     DEFINE_SETTING(HighlightCurrentLine, highlightCurrentLine, bool)
+    DEFINE_SETTING(ShowChangeHistory, showChangeHistory, bool)
     DEFINE_SETTING(SpellCheckEnabled, spellCheckEnabled, bool)
     DEFINE_SETTING(SpellCheckLanguage, spellCheckLanguage, QString)
 };
