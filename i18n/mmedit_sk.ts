@@ -2516,123 +2516,219 @@
       <translation>Predvoľby</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="37"/>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="25"/>
+      <source>Appearance</source>
+      <translation>Vzhľad</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="75"/>
+      <source>Application</source>
+      <translation>Aplikácia</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="202"/>
+      <source>Editor</source>
+      <translation>Editor</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="34"/>
+      <source>Translation:</source>
+      <translation>Jazyk aplikácie:</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="44"/>
       <source>Show menu bar</source>
       <translation>Zobraziť panel ponuky</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="44"/>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="51"/>
       <source>Show toolbar</source>
       <translation>Zobraziť panel nástrojov</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="51"/>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="58"/>
       <source>Show status bar</source>
       <translation>Zobraziť stavový riadok</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="58"/>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="84"/>
       <source>Restore previous session</source>
       <translation>Obnoviť predchádzajúcu reláciu</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="70"/>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="93"/>
       <source>Unsaved changes</source>
       <translation>Neuložené zmeny</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="77"/>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="100"/>
       <source>Temporary files</source>
       <translation>Dočasné súbory</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="89"/>
-      <source>Recenter find/replace dialog when opened</source>
-      <translation>Pri otvorení znovu vycentrovať dialógové okno nájsť/nahradiť</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="96"/>
-      <source>Combine search results</source>
-      <translation>Kombinovať výsledky vyhľadávania</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="114"/>
-      <source>Translation:</source>
-      <translation>Preklad:</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="132"/>
-      <source>Default Font</source>
-      <translation>Predvolené písmo</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="138"/>
-      <source>Font</source>
-      <translation>Písmo</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="148"/>
-      <source>Font Size</source>
-      <translation>Veľkosť písma</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="155"/>
-      <source>pt</source>
-      <translation>pt</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="188"/>
-      <source>Default Line Endings</source>
-      <translation>Predvolené ukončenia riadkov</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="200"/>
-      <source>Highlight URLs</source>
-      <translation>Zvýrazniť URL</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="207"/>
-      <source>Show Line Numbers</source>
-      <translation>Zobraziť čísla riadkov</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
-      <source>Highlight Current Line</source>
-      <translation>Zvýrazniť aktuálny riadok</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="221"/>
-      <source>Show modified line markers</source>
-      <translation>Zobrazovať označenie zmenených riadkov</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="214"/>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="109"/>
       <location filename="../src/dialogs/PreferencesDialog.cpp" line="122"/>
       <source>Default Directory</source>
       <translation>Predvolený adresár</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="220"/>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="116"/>
       <source>Follow Current Document</source>
       <translation>Nasledovať aktuálny dokument</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="227"/>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="123"/>
       <source>Last Used Directory</source>
       <translation>Naposledy použitý adresár</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="246"/>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="131"/>
       <source>...</source>
       <translation>...</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="277"/>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="146"/>
+      <source>Recenter find/replace dialog when opened</source>
+      <translation>Pri otvorení znovu vycentrovať dialógové okno nájsť/nahradiť</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="153"/>
+      <source>Combine search results</source>
+      <translation>Kombinovať výsledky vyhľadávania</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="159"/>
+      <source>Insert Date/Time</source>
+      <translation>Vložiť dátum/čas</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="165"/>
+      <source>Format:</source>
+      <translation>Formát:</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="175"/>
+      <source>ℹ</source>
+      <translation>ℹ</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="178"/>
+      <source>Format tokens:
+d / dd    – day (1 or 01)
+M / MM    – month (1 or 01)
+yyyy      – 4-digit year
+yy        – 2-digit year
+h / hh    – hour 0-23 (1 or 01)
+m / mm    – minute (1 or 01)
+s / ss    – second (1 or 01)
+dddd      – full day name
+MMMM      – full month name
+Examples:
+dd.MM.yyyy HH:mm:ss  →  05.06.2025 14:30:00
+yyyy-MM-dd           →  2025-06-05
+dddd d. MMMM yyyy    →  Thursday 5. June 2025</source>
+      <translation>Tokeny formátu:
+d / dd    – deň (1 alebo 01)
+M / MM    – mesiac (1 alebo 01)
+yyyy      – 4-ciferný rok
+yy        – 2-ciferný rok
+h / hh    – hodina 0-23 (1 alebo 01)
+m / mm    – minúta (1 alebo 01)
+s / ss    – sekunda (1 alebo 01)
+dddd      – celý názov dňa
+MMMM      – celý názov mesiaca
+Príklady:
+dd.MM.yyyy HH:mm:ss  →  05.06.2025 14:30:00
+yyyy-MM-dd           →  2025-06-05
+dddd d. MMMM yyyy    →  Štvrtok 5. jún 2025</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="184"/>
+      <source>Spell Check</source>
+      <translation>Kontrola pravopisu</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="190"/>
+      <source>Language:</source>
+      <translation>Jazyk:</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="209"/>
+      <source>Default Font</source>
+      <translation>Predvolené písmo</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="215"/>
+      <source>Font</source>
+      <translation>Písmo</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="224"/>
+      <source>Font Size</source>
+      <translation>Veľkosť písma</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="232"/>
+      <source> pt</source>
+      <translation> pt</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="248"/>
+      <source>Default Line Endings</source>
+      <translation>Predvolené ukončenia riadkov</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="258"/>
+      <source>Highlight URLs</source>
+      <translation>Zvýrazniť URL</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="265"/>
+      <source>Show Line Numbers</source>
+      <translation>Zobraziť čísla riadkov</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="272"/>
+      <source>Highlight Current Line</source>
+      <translation>Zvýrazniť aktuálny riadok</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="279"/>
+      <source>Show modified line markers</source>
+      <translation>Zobrazovať označenie zmenených riadkov</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="286"/>
+      <source>Auto Completion</source>
+      <translation>Automatické dopĺňanie</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="293"/>
+      <source>Indentation</source>
+      <translation>Odsadenie</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="300"/>
+      <source>Use spaces instead of tabs</source>
+      <translation>Používať medzery namiesto tabulátorov</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="307"/>
+      <source>Trim trailing whitespace on save</source>
+      <translation>Odstrániť koncové medzery pri ukladaní</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="315"/>
+      <source>Tab width (spaces):</source>
+      <translation>Šírka tabulátora (medzery):</translation>
+    </message>
+    <message>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="346"/>
       <source>TextLabel</source>
       <translation>TextLabel</translation>
     </message>
     <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="289"/>
+      <location filename="../src/dialogs/PreferencesDialog.ui" line="356"/>
       <source>An application restart is required to apply certain settings.</source>
       <translation>Na použitie určitých nastavení je vyžadovaný reštart aplikácie.</translation>
     </message>
@@ -2670,84 +2766,6 @@
       <location filename="../src/dialogs/PreferencesDialog.cpp" line="185"/>
       <source>&lt;System Default&gt;</source>
       <translation>&lt;Systémové predvolené&gt;</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="300"/>
-      <source>Indentation</source>
-      <translation>Odsadenie</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="227"/>
-      <source>Use spaces instead of tabs</source>
-      <translation>Používať medzery namiesto tabulátorov</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="243"/>
-      <source>Tab width (spaces):</source>
-      <translation>Šírka tabulátora (medzery):</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="330"/>
-      <source>Trim trailing whitespace on save</source>
-      <translation>Odstrániť koncové medzery pri ukladaní</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
-      <source>Insert Date/Time</source>
-      <translation>Vložiť dátum/čas</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
-      <source>Spell Check</source>
-      <translation>Kontrola pravopisu</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
-      <source>Enable Spell Check</source>
-      <translation>Zapnúť kontrolu pravopisu</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
-      <source>Language:</source>
-      <translation>Jazyk:</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
-      <source>Format:</source>
-      <translation>Formát:</translation>
-    </message>
-    <message>
-      <location filename="../src/dialogs/PreferencesDialog.ui" line="1"/>
-      <source>Format tokens:
-d / dd    – day (1 or 01)
-M / MM    – month (1 or 01)
-yyyy      – 4-digit year
-yy        – 2-digit year
-h / hh    – hour 0-23 (1 or 01)
-m / mm    – minute (1 or 01)
-s / ss    – second (1 or 01)
-dddd      – full day name
-MMMM      – full month name
-
-Examples:
-dd.MM.yyyy HH:mm:ss  →  05.06.2025 14:30:00
-yyyy-MM-dd           →  2025-06-05
-dddd d. MMMM yyyy    →  Thursday 5. June 2025</source>
-      <translation>Tokeny formátu:
-d / dd    – deň (1 alebo 01)
-M / MM    – mesiac (1 alebo 01)
-yyyy      – 4-ciferný rok
-yy        – 2-ciferný rok
-h / hh    – hodina 0-23 (1 alebo 01)
-m / mm    – minúta (1 alebo 01)
-s / ss    – sekunda (1 alebo 01)
-dddd      – celý názov dňa
-MMMM      – celý názov mesiaca
-
-Príklady:
-dd.MM.yyyy HH:mm:ss  →  05.06.2025 14:30:00
-yyyy-MM-dd           →  2025-06-05
-dddd d. MMMM yyyy    →  Štvrtok 5. jún 2025</translation>
     </message>
   </context>
   <context>

@@ -130,7 +130,6 @@ PreferencesDialog::PreferencesDialog(ApplicationSettings *settings, QWidget *par
             settings->setSpellCheckLanguage(ui->comboBoxSpellLang->itemText(i));
         });
     }
-    MapSettingToCheckBox(ui->checkBoxSpellCheck, &ApplicationSettings::spellCheckEnabled, &ApplicationSettings::setSpellCheckEnabled, &ApplicationSettings::spellCheckEnabledChanged);
 
     // ── Indentation settings ──────────────────────────────────────────────
     MapSettingToCheckBox(ui->checkBoxExpandTabs, &ApplicationSettings::expandTabs, &ApplicationSettings::setExpandTabs, &ApplicationSettings::expandTabsChanged);
