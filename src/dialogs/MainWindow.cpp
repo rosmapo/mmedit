@@ -474,7 +474,7 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         ScintillaNext *editor = currentEditor();
         if (!editor) return;
         QString text = QString::fromUtf8(editor->getSelText());
-        if (text.endsWith(QLatin1Char(' '))) text.chop(1);
+        if (text.endsWith(QLatin1Char(' '))) text.chop(1);
         bool nextUpper = true;
         for (QChar &c : text) {
             if (c.isSpace() || c == QLatin1Char('-') || c == QLatin1Char('_')) {
@@ -491,7 +491,7 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
         ScintillaNext *editor = currentEditor();
         if (!editor) return;
         QString text = QString::fromUtf8(editor->getSelText());
-        if (text.endsWith(QLatin1Char(' '))) text.chop(1);
+        if (text.endsWith(QLatin1Char(' '))) text.chop(1);
         bool nextUpper = true;
         for (QChar &c : text) {
             if (c == QLatin1Char('.') || c == QLatin1Char('!') || c == QLatin1Char('?')) {
@@ -1597,10 +1597,18 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
     connect(app->getSettings(), &ApplicationSettings::showStatusBarChanged, ui->statusBar, &QStatusBar::setVisible);
 
     ui->actionDarkMode->setChecked(app->getSettings()->darkMode());
-    connect(app->getSettings(), &ApplicationSettings::darkModeChanged, this, [this, minimapPanel](bool dark) {
+    connect(app->getSettings(), &ApplicationSettings::darkModeChanged, this, [this, app, minimapPanel](bool dark) {
         ui->actionDarkMode->setChecked(dark);
         applyDarkModeToAllEditors();
         minimapPanel->refreshStyles();
+
+        // Change history bar colours/thickness differ per theme; refresh them
+        // on every already-open editor when the theme is toggled at runtime.
+        if (app->getSettings()->showChangeHistory()) {
+            for (auto *editor : editors()) {
+                applyChangeHistoryToEditor(editor, true);
+            }
+        }
     });
     connect(ui->actionDarkMode, &QAction::triggered, this, [this, app](bool checked) {
         app->getSettings()->setDarkMode(checked);
@@ -2602,22 +2610,36 @@ void MainWindow::applyChangeHistoryToEditor(ScintillaNext *editor, bool enabled)
                                   | (1 << SC_MARKNUM_HISTORY_REVERTED_TO_MODIFIED);
         editor->setMarginMaskN(1, editor->marginMaskN(1) & ~historyMask);
 
-        // Dedicated 4 px margin for change history bars only.
+        // Bar thickness/colours depend on the active theme: the dark-theme
+        // palette is too low-contrast against a white editor background, so
+        // light mode gets its own (darker/more saturated) colours and a
+        // thicker 3 px bar, while dark mode keeps the original 2 px bar.
+        const bool dark = app->getSettings()->darkMode();
+
+        // Dedicated margin for change history bars only.
         editor->setMarginTypeN(MARGIN_CHANGE_HISTORY, SC_MARGIN_SYMBOL);
-        editor->setMarginWidthN(MARGIN_CHANGE_HISTORY, 2);
+        editor->setMarginWidthN(MARGIN_CHANGE_HISTORY, dark ? 2 : 3);
         editor->setMarginMaskN(MARGIN_CHANGE_HISTORY, historyMask);
 
-        // SC_MARK_LEFTRECT = 2 px bar on the left edge of the margin cell.
+        // SC_MARK_LEFTRECT bar width follows the margin width set above.
         editor->markerDefine(SC_MARKNUM_HISTORY_SAVED,                SC_MARK_LEFTRECT);
         editor->markerDefine(SC_MARKNUM_HISTORY_MODIFIED,             SC_MARK_LEFTRECT);
         editor->markerDefine(SC_MARKNUM_HISTORY_REVERTED_TO_ORIGIN,   SC_MARK_LEFTRECT);
         editor->markerDefine(SC_MARKNUM_HISTORY_REVERTED_TO_MODIFIED, SC_MARK_LEFTRECT);
 
         // green=saved  orange=modified(unsaved)  blue=reverted-to-origin  purple=reverted-to-modified
-        editor->markerSetBack(SC_MARKNUM_HISTORY_SAVED,               0x5EC522);
-        editor->markerSetBack(SC_MARKNUM_HISTORY_MODIFIED,            0x0B9EF5);
-        editor->markerSetBack(SC_MARKNUM_HISTORY_REVERTED_TO_ORIGIN,  0xF6823B);
-        editor->markerSetBack(SC_MARKNUM_HISTORY_REVERTED_TO_MODIFIED,0xF755A8);
+        if (dark) {
+            editor->markerSetBack(SC_MARKNUM_HISTORY_SAVED,               0x5EC522);
+            editor->markerSetBack(SC_MARKNUM_HISTORY_MODIFIED,            0x0B9EF5);
+            editor->markerSetBack(SC_MARKNUM_HISTORY_REVERTED_TO_ORIGIN,  0xF6823B);
+            editor->markerSetBack(SC_MARKNUM_HISTORY_REVERTED_TO_MODIFIED,0xF755A8);
+        } else {
+            // Darker/more saturated variants tuned for contrast on a white background.
+            editor->markerSetBack(SC_MARKNUM_HISTORY_SAVED,               0x1E8E1E);
+            editor->markerSetBack(SC_MARKNUM_HISTORY_MODIFIED,            0x0660C4);
+            editor->markerSetBack(SC_MARKNUM_HISTORY_REVERTED_TO_ORIGIN,  0xC4630A);
+            editor->markerSetBack(SC_MARKNUM_HISTORY_REVERTED_TO_MODIFIED,0xA8147E);
+        }
     } else {
         editor->setChangeHistory(SC_CHANGE_HISTORY_DISABLED);
         editor->setMarginWidthN(MARGIN_CHANGE_HISTORY, 0);
