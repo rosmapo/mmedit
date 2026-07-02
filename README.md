@@ -1,5 +1,7 @@
 # mmedit
 
+If you like this project and want to support its development:
+
 [![Buy Me a Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/mirosmar)
 
 mmedit is a fork of the NotepadNext project that I created to meet my own needs. I couldn't find a text editor for Linux that combined speed, multi-cursor support, and good system integration (such as dark mode and polkit support).
