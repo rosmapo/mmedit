@@ -19,13 +19,13 @@ sudo apt update
 sudo apt install cmake ninja-build build-essential qt6-base-dev qt6-base-private-dev libxkbcommon-dev libhunspell-dev
 
 ### Clone repo
-git clone --depth=1 https://github.com/rosmapo/mmedit
+git clone --depth=1 https://github.com/rosmapo/mmedit  
 cd mmedit
 
 ### Compilation
-mkdir build
-cd build
-cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release
+mkdir build  
+cd build  
+cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release  
 cmake --build .
 
 ## Original Project
