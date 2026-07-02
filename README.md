@@ -1,8 +1,10 @@
 # mmedit
 
-mmedit is a Linux-focused fork of NotepadNext.
+[![Buy Me a Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/mirosmar)
 
-The project is based on the original NotepadNext source code and includes custom modifications, fixes and Linux-specific improvements.
+mmedit is a fork of the NotepadNext project that I created to meet my own needs. I couldn't find a text editor for Linux that combined speed, multi-cursor support, and good system integration (such as dark mode and polkit support).
+
+This project owes its existence to the NotepadNext community and to my desire to add features that I personally needed. Over time, the code has also been improved with the assistance of AI models to achieve the level of usability, comfort, and stability I was aiming for.
 
 ## Platform
 
